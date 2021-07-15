@@ -2,7 +2,6 @@ import React from 'react';
 import { Feather} from '@expo/vector-icons';
 import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native';
 
-import fundoImg from '../../assets/image.png';
 import icone from '../../assets/icon.jpg';
 
 import styles from './styles';
@@ -12,7 +11,6 @@ export default function Perfil({navigation}){
     return(
         <ScrollView  style = {styles.container} >
             <View style = {styles.headerTop}>
-                {/* <Image source = {fundoImg} style = {styles.backgroundImage} /> */}
                 <View style={styles.imageperfil}>
                     <Image source = {icone} style = {styles.perfil} />
                 </View>
