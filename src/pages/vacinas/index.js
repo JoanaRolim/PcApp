@@ -9,18 +9,24 @@ import fundoImg from '../../assets/image.png';
 export default function Vacinas({navigation}){
     return(
         <ScrollView style = {styles.container} >
-            <ImageBackground source = {fundoImg} style = {styles.backgroundImage} />
-            <TouchableOpacity
-                style={ styles.navigation }
-                onPress={() => navigation.toggleDrawer()}
-            >
-                <Feather name = "align-justify" size = {25} color = "#000000" />
-            </TouchableOpacity>
+            <View style = {styles.descricao}>
+                <View style = {styles.detalhes}>
+                    
+                    <View>
+                        <Text style = {styles.vacina}>Vacinas: Raiva</Text>
+                        <Text style = {styles.data}>Data:  07/02/2020</Text>
+                        <Text style = {styles.local}>Local: Clinica Amiguinhos 70 cm</Text>
+                        
+                    </View>
+                    
+                    <TouchableOpacity 
+                        style = {styles.icone} 
+                        onPress ={()=>{}} 
+                    >
+                        <Feather name = "edit" size = {20} color = "#000000" />
+                    </TouchableOpacity>
 
-            <View style = {styles.header}>
-                <Text style = {styles.headerText}>
-                    Vacina
-                </Text>
+                </View>
             </View>
         </ScrollView>
     );

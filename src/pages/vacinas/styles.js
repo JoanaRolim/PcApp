@@ -25,4 +25,32 @@ export default StyleSheet.create({
         marginTop: 30,
         fontSize: 48,
     },
+    descricao:{
+        margin: 24,
+
+    },
+    detalhes:{
+        padding: 24,
+        borderRadius: 8,
+        backgroundColor: '#40697faa',
+        marginBottom: 16,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    vacina:{
+        marginTop: 8,
+        fontSize: 18,
+        marginBottom: 24,
+    },
+    local:{
+        marginTop: 8,
+        fontSize: 18,
+        marginBottom: 24,
+    },
+    data:{
+        marginTop: 8,
+        fontSize: 18,
+        marginBottom: 24,
+    },
+    
 });

@@ -6,12 +6,11 @@ export default StyleSheet.create({
     },
     backgroundImage:{
         resizeMode: 'cover',
-        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
         width: '100%',
-        height: '30%',
+        flex:1,
     },
     navigation:{
         marginTop: 50, 
@@ -23,10 +22,11 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     perfil:{
-        width: 120,
-        height: 120,
-        borderRadius: 60,
-        marginTop: 80,
+        resizeMode: 'cover',
+        width: "100%",
+        height: 300,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
     },
     header: {
         justifyContent: 'center',
@@ -45,7 +45,7 @@ export default StyleSheet.create({
     detalhes:{
         padding: 24,
         borderRadius: 8,
-        backgroundColor: '#BDE1ED',
+        backgroundColor: '#40697faa',
         marginBottom: 16,
         flexDirection: 'row',
         justifyContent: 'space-between'

@@ -8,9 +8,21 @@ import Vacinas from './pages/vacinas';
 
 export default function DrawerNavigator(){
     return (
-      <Navigator screenOptions = {{headerShown: false}}>
-          <Screen name = "Perfil" component= {Perfil} />
-          <Screen name = "Vacinas" component= {Vacinas} />
+      <Navigator screenOptions = {{headerShown: true, headerStyle: {
+        backgroundColor: '#0F3E53',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },}}>
+          <Screen name = "Perfil" options={{
+          title: 'Perfil',
+          
+        }} component= {Perfil} />
+          <Screen name = "Vacinas" options={{
+          title: 'Vacinas',
+          
+        }} component= {Vacinas} />
       </Navigator>
     );
 }

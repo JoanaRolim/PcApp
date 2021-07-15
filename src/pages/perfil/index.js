@@ -3,7 +3,7 @@ import { Feather} from '@expo/vector-icons';
 import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native';
 
 import fundoImg from '../../assets/image.png';
-import icone from '../../assets/icon.jpg'
+import icone from '../../assets/icon.jpg';
 
 import styles from './styles';
 
@@ -11,23 +11,19 @@ import styles from './styles';
 export default function Perfil({navigation}){
     return(
         <ScrollView  style = {styles.container} >
-            <Image source = {fundoImg} style = {styles.backgroundImage} />
-            <TouchableOpacity
-                style={ styles. navigation }
-                onPress={() => navigation.toggleDrawer()}
-            >
-                <Feather name = "align-justify" size = {25} color = "#000000" />
-            </TouchableOpacity>
-            <View style={styles.imageperfil}>
-                <Image source = {icone} style = {styles.perfil} />
-            </View>
-            <View style = {styles.header}>
-                <Text style = {styles.headerText}>
-                    Pepita
-                </Text>
-                <Text style = {styles.headerBellow}>
-                    9 anos
-                </Text>
+            <View style = {styles.headerTop}>
+                {/* <Image source = {fundoImg} style = {styles.backgroundImage} /> */}
+                <View style={styles.imageperfil}>
+                    <Image source = {icone} style = {styles.perfil} />
+                </View>
+                <View style = {styles.header}>
+                    <Text style = {styles.headerText}>
+                        Pepita
+                    </Text>
+                    <Text style = {styles.headerBellow}>
+                        9 anos
+                    </Text>
+                </View>
             </View>
             <View style = {styles.descricao}>
                 <View style = {styles.detalhes}>
