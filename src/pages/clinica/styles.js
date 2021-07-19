@@ -13,10 +13,6 @@ export default StyleSheet.create({
     width: "100%",
     height: "30%"
   },
-  navigation: {
-    marginTop: 50,
-    marginLeft: 20
-  },
   circle: {
     marginTop: -30,
     marginRight: 30,
@@ -26,20 +22,16 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  headerText: {
-    marginTop: 138,
-    fontSize: 48
-  },
   descricao: {
     marginTop: 24
   },
   detalhes: {
-    padding: 15,
-    borderRadius: 10,
+    padding: 25,
+    borderRadius: 12,
     backgroundColor: "#BDE1ED",
     margin: 17,
     marginBottom: 15,
-    marginTop: 0,
+    marginTop: 10,
     flexDirection: "row",
     justifyContent: "space-between"
   },

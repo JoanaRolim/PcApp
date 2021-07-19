@@ -1,5 +1,6 @@
 import React from "react"
 import { createDrawerNavigator } from "@react-navigation/drawer"
+import { Feather } from "@expo/vector-icons"
 
 const { Navigator, Screen } = createDrawerNavigator()
 
@@ -7,6 +8,8 @@ import Perfil from "./pages/perfil"
 import Vacinas from "./pages/vacinas"
 import Clinicas from "./pages/clinica"
 import Consultas from "./pages/consulta"
+
+import { TouchableOpacity } from "react-native"
 
 export default function DrawerNavigator() {
   return (
@@ -22,30 +25,45 @@ export default function DrawerNavigator() {
         }
       }}
     >
-      <Screen
-        name="Perfil"
-        options={{
-          title: "Perfil"
-        }}
-        component={Perfil}
-      />
+      <Screen name="Perfil" options={{ title: "Perfil" }} component={Perfil} />
       <Screen
         name="Vacinas"
         options={{
-          title: "Vacinas"
+          title: "Vacinas",
+          headerRight: () => (
+            <TouchableOpacity style={{ paddingRight: 20 }}>
+              <Feather name="plus-circle" size={20} color="#ffffffff" />
+            </TouchableOpacity>
+          )
         }}
         component={Vacinas}
       />
 
       <Screen
-        name="Clinícas"
+        name="Clinicas"
         options={{
-          title: "Clinícas"
+          title: "Clínicas",
+          headerRight: () => (
+            <TouchableOpacity style={{ paddingRight: 20 }}>
+              <Feather name="plus-circle" size={20} color="#ffffffff" />
+            </TouchableOpacity>
+          )
         }}
         component={Clinicas}
       />
 
-      <Screen name="Consultas" component={Consultas} />
+      <Screen
+        name="Consultas"
+        options={{
+          title: "Consultas",
+          headerRight: () => (
+            <TouchableOpacity style={{ paddingRight: 20 }}>
+              <Feather name="plus-circle" size={20} color="#ffffffff" />
+            </TouchableOpacity>
+          )
+        }}
+        component={Consultas}
+      />
     </Navigator>
   )
 }

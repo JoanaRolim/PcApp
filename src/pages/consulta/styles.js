@@ -12,12 +12,12 @@ export default StyleSheet.create({
     marginTop: 24
   },
   detalhes: {
-    padding: 17,
+    padding: 19,
     borderRadius: 10,
     backgroundColor: "#BDE1ED",
-    margin: 17,
+    margin: 20,
     marginBottom: 15,
-    marginTop: 0,
+    marginTop: 10,
     flexDirection: "row",
     justifyContent: "space-around"
   },
