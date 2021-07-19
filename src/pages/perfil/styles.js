@@ -4,14 +4,6 @@ export default StyleSheet.create({
     container: {
         flex: 1,
     },
-    backgroundImage:{
-        resizeMode: 'cover',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'absolute',
-        width: '100%',
-        flex:1,
-    },
     navigation:{
         marginTop: 50, 
         marginLeft: 20
@@ -40,12 +32,13 @@ export default StyleSheet.create({
         fontSize: 24,
     },
     descricao:{
-        marginTop: 24,
+        margin: 24,
+
     },
     detalhes:{
         padding: 24,
         borderRadius: 8,
-        backgroundColor: '#40697faa',
+        backgroundColor: '#89BCD2',
         marginBottom: 16,
         flexDirection: 'row',
         justifyContent: 'space-between'

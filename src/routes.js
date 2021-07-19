@@ -6,14 +6,16 @@ const { Navigator, Screen } = createStackNavigator();
 
 import DrawerNavigator from './DrawerNavigator';
 import Login from './pages/login/index';
+import Cadastro from './pages/cadastro/index';
 
 export default function Routes(){
     return (
         <NavigationContainer>
 
             <Navigator screenOptions = {{headerShown: false}}>
-                <Screen name = "Login" component= {Login} />
-                <Screen name = "Drawer" component= {DrawerNavigator} />
+                <Screen name = "Login" component = {Login} />
+                <Screen name = "Cadastro" component = {Cadastro} />
+                <Screen name = "Drawer" component = {DrawerNavigator} />
             </Navigator>
 
         </NavigationContainer>

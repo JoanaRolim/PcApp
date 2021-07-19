@@ -23,6 +23,7 @@ export default function Perfil({navigation}){
                     </Text>
                 </View>
             </View>
+            
             <View style = {styles.descricao}>
                 <View style = {styles.detalhes}>
                     
@@ -43,6 +44,7 @@ export default function Perfil({navigation}){
 
                 </View>
             </View>
+
         </ScrollView>
     );
 }

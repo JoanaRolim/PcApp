@@ -43,12 +43,11 @@ export default StyleSheet.create({
         backgroundColor: '#0E5676',
         borderRadius: 3,
         padding: 5,
-        color: '#ffffff',
-        width: '100%',
+        color: '#ffffff'
+        
     },
     containersenha: {
         padding: 20,
-        
     },
     senha:{
         paddingBottom: 10,
@@ -62,20 +61,5 @@ export default StyleSheet.create({
         padding: 10,
         backgroundColor: '#CDECF5',
         borderRadius: 20,
-    },
-    containercadastro: {
-        padding: 20,
-        alignItems: 'center',
-    },
-    cadastrotext:{
-        color: '#ffffff',
-        fontSize: 15,
-        textDecorationLine: 'underline',
-    },
-    inputArea:{
-        flexDirection: 'row',
-        width: '100%',
-        alignItems: 'center',
-        
     },
 });

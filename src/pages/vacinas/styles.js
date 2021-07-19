@@ -32,7 +32,7 @@ export default StyleSheet.create({
     detalhes:{
         padding: 24,
         borderRadius: 8,
-        backgroundColor: '#40697faa',
+        backgroundColor: '#89BCD2',
         marginBottom: 16,
         flexDirection: 'row',
         justifyContent: 'space-between'
