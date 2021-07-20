@@ -54,6 +54,9 @@ export default function Login({navigation}){
                     <Button
                         title="Entrar"
                         color="#000000"
+                        onPress={() => {
+                            navigation.navigate('Drawer')
+                            }}
                     />
                 </View>
 

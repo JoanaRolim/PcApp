@@ -38,7 +38,7 @@ export default function Login({navigation}){
                         title="Avançar"
                         color="#000000"
                         onPress={() => {
-                            navigation.navigate('Drawer')
+                            navigation.navigate('Infos')
                             }}
                     />
                 </View>
