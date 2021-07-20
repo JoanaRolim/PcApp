@@ -4,7 +4,7 @@ import { View, Image, Text, TextInput, TouchableOpacity, Button } from "react-na
 import styles from "./styles"
 import background from "../../assets/image3.png"
 
-export default function Login({ navigation }) {
+export default function Cadastro({ navigation }) {
   const [input, setInput] = useState("")
   const [hidePass, sethidePass] = useState(true)
 
@@ -42,7 +42,7 @@ export default function Login({ navigation }) {
             title="Avançar"
             color="#000000"
             onPress={() => {
-              navigation.navigate("Drawer")
+              navigation.navigate("Infos")
             }}
           />
         </View>
