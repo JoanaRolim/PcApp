@@ -1,10 +1,10 @@
-import React from "react"
-import { Feather } from "@expo/vector-icons"
-import { FontAwesome } from "@expo/vector-icons"
-import { View, Image, Text, ScrollView, TouchableOpacity, ImageBackground } from "react-native"
+import React from "react";
+import { Feather } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
+import { View, Image, Text, ScrollView, TouchableOpacity, ImageBackground } from "react-native";
 
 import styles from "./styles"
-import fundoImg from "../../assets/image.png"
+
 
 export default function Consultas({ navigation }) {
   return (
