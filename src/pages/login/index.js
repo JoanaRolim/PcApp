@@ -37,9 +37,15 @@ export default function Login({ navigation }) {
           </View>
         </View>
 
-        <View style={styles.containerbutton}>
-          <Button title="Entrar" color="#000000" />
-        </View>
+                <View style = {styles.containerbutton}>
+                    <Button
+                        title="Entrar"
+                        color="#000000"
+                        onPress={() => {
+                            navigation.navigate('Drawer')
+                            }}
+                    />
+                </View>
 
         <View style={styles.containercadastro}>
           <TouchableOpacity

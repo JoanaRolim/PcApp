@@ -25,6 +25,15 @@ export default function Cadastro({ navigation }) {
             <TextInput style={styles.input} keyboardType="email-address" />
           </View>
 
+                <View style = {styles.containerbutton}>
+                    <Button
+                        title="Avançar"
+                        color="#000000"
+                        onPress={() => {
+                            navigation.navigate('Infos')
+                            }}
+                    />
+                </View>
           <View style={styles.containersenha}>
             <Text style={styles.senha}>Senha</Text>
 

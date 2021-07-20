@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { Feather} from '@expo/vector-icons';
-import {View, Image, Text, ScrollView, TouchableOpacity, ImageBackground} from 'react-native'
+import {View, Image, Text, ScrollView, TouchableOpacity, ImageBackground} from 'react-native';
 
 import styles from './styles';
 
