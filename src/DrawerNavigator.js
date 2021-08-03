@@ -1,6 +1,7 @@
 import React from "react"
 import { createDrawerNavigator } from "@react-navigation/drawer"
 import { Feather } from "@expo/vector-icons"
+import { useFonts, Quicksand_700Bold, Quicksand_400Regular } from "@expo-google-fonts/dev"
 
 const { Navigator, Screen } = createDrawerNavigator()
 
@@ -17,11 +18,16 @@ export default function DrawerNavigator() {
       screenOptions={{
         headerShown: true,
         headerStyle: {
-          backgroundColor: "#0F3E53"
+          backgroundColor: "#086281"
         },
-        headerTintColor: "#fff",
+        headerTintColor: "white",
         headerTitleStyle: {
-          fontWeight: "bold"
+          fontWeight: "bold",
+          fontFamily: "Quicksand_400Regular",
+          fontStyle: "normal",
+          fontSize: 24,
+          lineHeight: 30,
+          color: "white"
         }
       }}
     >
@@ -32,7 +38,7 @@ export default function DrawerNavigator() {
           title: "Vacinas",
           headerRight: () => (
             <TouchableOpacity style={{ paddingRight: 20 }}>
-              <Feather name="plus-circle" size={20} color="#ffffffff" />
+              <Feather name="plus-circle" size={22} color="#ffffffff" />
             </TouchableOpacity>
           )
         }}
@@ -45,7 +51,7 @@ export default function DrawerNavigator() {
           title: "Clínicas",
           headerRight: () => (
             <TouchableOpacity style={{ paddingRight: 20 }}>
-              <Feather name="plus-circle" size={20} color="#ffffffff" />
+              <Feather name="plus-circle" size={22} color="#ffffffff" />
             </TouchableOpacity>
           )
         }}
@@ -58,7 +64,7 @@ export default function DrawerNavigator() {
           title: "Consultas",
           headerRight: () => (
             <TouchableOpacity style={{ paddingRight: 20 }}>
-              <Feather name="plus-circle" size={20} color="#ffffffff" />
+              <Feather name="plus-circle" size={22} color="#ffffffff" />
             </TouchableOpacity>
           )
         }}

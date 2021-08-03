@@ -26,12 +26,12 @@ export default StyleSheet.create({
     marginTop: 24
   },
   detalhes: {
-    padding: 25,
-    borderRadius: 12,
+    padding: 24,
+    borderRadius: 8,
     backgroundColor: "#89BCD2",
     margin: 17,
-    marginBottom: 15,
-    marginTop: 10,
+    marginBottom: 0,
+    marginTop: 0,
     flexDirection: "row",
     justifyContent: "space-between"
   },
