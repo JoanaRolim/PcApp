@@ -7,6 +7,7 @@ import background from "../../assets/image3.png";
 export default function Cadastro({ navigation }) {
   const [input, setInput] = useState("")
   const [hidePass, sethidePass] = useState(true)
+  const usersType = ["Usuário", "Dono de Clínica"]
 
   return (
     <View style={styles.container}>

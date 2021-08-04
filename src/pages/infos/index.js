@@ -2,9 +2,7 @@ import React, { useState } from "react"
 import { Feather } from "@expo/vector-icons"
 import { View, TextInput, Text, ScrollView, Button, Image, TouchableOpacity } from "react-native"
 
-import NumberPlease from "react-native-number-please"
-
-import icone from "../../assets/camera.png"
+import icone from "../../assets/icon.jpg"
 
 import styles from "./styles"
 
