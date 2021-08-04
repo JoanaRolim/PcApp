@@ -18,7 +18,7 @@ export default function Infos({ navigation }) {
 
                 <View>
                     <Text style={styles.containerinput}>Nome do Pet:</Text>
-                    <TextInput style={styles.input} keyboardType="text" />
+                    <TextInput style={styles.input} keyboardType="default" />
 
                     <Text style={styles.containerinput}>Idade do Pet:</Text>
                     <TextInput style={styles.input} keyboardType="numeric" />
@@ -27,16 +27,16 @@ export default function Infos({ navigation }) {
                     <TextInput style={styles.input} keyboardType="numeric" />
 
                     <Text style={styles.containerinput}>Alergias do Pet:</Text>
-                    <TextInput style={styles.input} keyboardType="text" />
+                    <TextInput style={styles.input} keyboardType="default" />
 
                     <Text style={styles.containerinput}>Altura do Pet:</Text>
                     <TextInput style={styles.input} keyboardType="numeric" />
 
                     <Text style={styles.containerinput}>O Pet tem castração:</Text>
-                    <TextInput style={styles.input} keyboardType="text" />
+                    <TextInput style={styles.input} keyboardType="default" />
                     
                     <Text style={styles.containerinput}>Dono do Pet:</Text>
-                    <TextInput style={styles.input} keyboardType="text" />
+                    <TextInput style={styles.input} keyboardType="default" />
                 </View>
 
                 <View style={styles.containericon}>
