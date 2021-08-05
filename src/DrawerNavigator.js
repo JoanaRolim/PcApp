@@ -1,7 +1,6 @@
 import React from "react"
 import { createDrawerNavigator } from "@react-navigation/drawer"
 import { Feather } from "@expo/vector-icons"
-import { useFonts, Quicksand_700Bold, Quicksand_400Regular } from "@expo-google-fonts/dev"
 
 const { Navigator, Screen } = createDrawerNavigator()
 
@@ -23,7 +22,6 @@ export default function DrawerNavigator() {
         headerTintColor: "white",
         headerTitleStyle: {
           fontWeight: "bold",
-          fontFamily: "Quicksand_400Regular",
           fontStyle: "normal",
           fontSize: 24,
           lineHeight: 30,
