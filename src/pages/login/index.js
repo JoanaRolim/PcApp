@@ -1,64 +1,68 @@
-import React, { useState } from "react";
-import { View, Image, Text, TextInput, TouchableOpacity, Button, KeyboardAvoidingView, Platform, SafeAreaView, ScrollView} from "react-native";
-import styles from "./styles";
-import background from "../../assets/image3.png";
-import { Feather } from "@expo/vector-icons";
+import React, { useState } from "react"
+import { View, Image, Text, TextInput, TouchableOpacity, Button } from "react-native"
+import styles from "./styles"
+import background from "../../assets/icon.png"
+import { Feather } from "@expo/vector-icons"
 
 export default function Login({ navigation }) {
-  const [password, setPassword] = useState("");
-  const [hidePass, sethidePass] = useState(true);
+  const [input, setInput] = useState("")
+  const [hidePass, sethidePass] = useState(true)
+
 
   return (
     <View style={styles.container}>
-        <View style={styles.background}>
-            <Image source={background} style={styles.fundo} />
+      <View style={styles.background}>
+        <Image source={background} style={styles.fundo} />
+      </View>
+
+      <View style={styles.fundocor}>
+        <View style={styles.containermsg}>
+          <Text style={styles.mensagem}>Login</Text>
         </View>
 
-        <View style={styles.fundocor}>
-            <View style={styles.containermsg}>
-                <Text style={styles.mensagem}>Bem-Vindo!</Text>
+        <View style={styles.containeremailsenha}>
+          <View style={styles.containeremail}>
+            <Text style={styles.email}>Email</Text>
+            <View style={styles.input} >
+                <Feather name="mail" size={21} color="black" />
+                <TextInput style = {{flex: 1, marginLeft: 5}} keyboardType="email-address" />
             </View>
+          </View>
 
-            <View style={styles.containeremailsenha}>
-                <View style={styles.containeremail}>
-                    <Text style={styles.email}>Email</Text>
-                    <TextInput style={styles.input} keyboardType="email-address" />
-                </View>
+          <View style={styles.containersenha}>
+            <Text style={styles.senha}>Senha</Text>
 
-                <View style={styles.containersenha}>
-                    <Text style={styles.senha}>Senha</Text>
-
-                <View style={styles.inputArea}  >
-                    <TextInput style={styles.input} value={password} onChangeText={texto => setPassword(texto)} secureTextEntry={hidePass} keyboardType="default"/>
-                    <TouchableOpacity style={styles.icon} onPress={() => sethidePass(!hidePass)}>
-                        {hidePass ? <Feather name="eye" size={20} color="#ffffffff" /> : <Feather name="eye-off" size={20} color="#ffffffff" />}
-                    </TouchableOpacity>
-                </View>
+            <View style={styles.input} keyboardType="password">
+                <TextInput style = {{flex: 1, marginRight: 5}} value={input} onChange={texto => setInput(texto)} secureTextEntry={hidePass} />
+                <TouchableOpacity style={styles.icon} onPress={() => sethidePass(!hidePass)}>
+                    {hidePass ? <Feather name="eye" size={21} color="black" /> : <Feather name="eye-off" size={21} color="black" />}
+                </TouchableOpacity>
             </View>
+          </View>
         </View>
 
-        <View style = {styles.containerbutton}>
-            <Button
-                title="Entrar"
-                color="#000000"
-                onPress={() => {
-                navigation.navigate('Drawer')
-                }}
-                />
+        <View style={styles.containerbutton}>
+          <Button
+            title="Entrar"
+            size="50"
+            color="white"
+            onPress={() => {
+              navigation.navigate("Drawer")
+            }}
+          />
         </View>
 
         <View style={styles.containercadastro}>
-            <TouchableOpacity
-                style={styles.cadastro}
-                onPress={() => {
-                navigation.navigate("Cadastro")
-                }}
-            >
-                <Text style={styles.cadastrotext}>Você é novo por aqui? Faça seu cadastro</Text>
-            </TouchableOpacity>
-            </View>
+          <TouchableOpacity
+            style={styles.cadastro}
+            onPress={() => {
+              navigation.navigate("Cadastro")
+            }}
+          >
+            <Text style={styles.cadastrotext}>Não tem uma conta? Cadastre-se</Text>
+          </TouchableOpacity>
         </View>
-        <View style = {{flex: 1}}/>
+      </View>
     </View>
   )
 }

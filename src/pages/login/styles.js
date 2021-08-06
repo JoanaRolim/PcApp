@@ -1,84 +1,79 @@
-import { StyleSheet } from "react-native";
+import { Rowdies_300Light } from "@expo-google-fonts/dev"
+import { StyleSheet } from "react-native"
 
 export default StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#0F3E53"
-    },
-    background: {
-        width: "100%",
-        justifyContent: "center",
-        alignItems: "center"
-    },
-    fundo: {
-        resizeMode: "cover",
-        width: "100%",
-        height: 300
-    },
-    fundocor: {
-        padding: 20
-    },
-    containermsg: {
-        margin: 20,
-        alignItems: "center"
-    },
-    mensagem: {
-        color: "#ffffff",
-        fontSize: 30
-    },
-    containeremailsenha: {
-        paddingLeft: 20,
-        paddingRight: 20,
-        paddingBottom: 30
-    },
-    containeremail: {
-        padding: 20
-    },
-    email: {
-        paddingBottom: 10,
-        color: "#ffffff",
-        fontSize: 20
-    },
-    input: {
-        backgroundColor: "#0E5676",
-        borderRadius: 3,
-        padding: 5,
-        color: "#ffffff",
-        width: "100%"
-    },
-    containersenha: {
-        padding: 20
-    },
-    senha: {
-        paddingBottom: 10,
-        color: "#ffffff",
-        fontSize: 20
-    },
-    containerbutton: {
-        marginBottom: 10,
-        marginLeft: 40,
-        marginRight: 40,
-        padding: 10,
-        backgroundColor: "#CDECF5",
-        borderRadius: 20
-    },
-    containercadastro: {
-        padding: 20,
-        alignItems: "center"
-    },
-    cadastrotext: {
-        color: "#ffffff",
-        fontSize: 15,
-        textDecorationLine: "underline"
-    },
-    inputArea: {
-        flexDirection: "row",
-        width: "100%",
-        alignItems: "center"
-    },
-    icon: {
-        position: "absolute",
-        top: 2,
-        right: 5
-  }
-});
+  container: {
+    flex: 1,
+    backgroundColor: "white"
+  },
+  background: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  fundo: {
+    resizeMode: "cover",
+    marginTop: 70,
+  },
+  fundocor: {
+    padding: 20
+  },
+  containermsg: {
+    margin: 40,
+    alignItems: "center"
+  },
+  mensagem: {
+    color: "black",
+    fontSize: 33,
+    fontWeight: "bold",
+  },
+  containeremailsenha: {
+    paddingHorizontal:20,
+    paddingBottom: 30
+  },
+  email: {
+    paddingBottom: 10,
+    color: "black",
+    fontSize: 24,
+  },
+  input: {
+    flexDirection: "row",
+    backgroundColor: "#DEF0F6",
+    borderRadius: 5,
+    padding: 5,
+    color: "black",
+    width: "100%"
+  },
+  senha: {
+    paddingBottom: 10,
+    color: "black",
+    fontSize: 24
+  },
+  containerbutton: {
+    backgroundColor: "#FE395D",
+    borderRadius: 25,
+    padding: 5,
+    marginLeft: 20,
+    marginRight: 20,
+    fontSize: 55,
+    fontWeight: "bold",
+    alignContent: "center"
+  },
+  containercadastro: {
+    padding: 20,
+    alignItems: "center"
+  },
+  cadastrotext: {
+    color: "black",
+    fontSize: 15,
+    textDecorationLine: "underline",
+    top: 40,
+    right: 6
+  },
+  inputArea: {
+    flexDirection: "row",
+    width: "100%",
+    alignItems: "center"
+  },
+
+})
