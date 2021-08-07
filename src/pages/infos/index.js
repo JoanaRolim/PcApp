@@ -53,18 +53,11 @@ export default function Infos({ navigation }) {
       <View style={styles.containerfoto}>
         <Image source={icone} style={styles.foto} />
       </View>
-
-      <View style={styles.containerbutton}>
+    
+      <TouchableOpacity style={styles.containerbutton} onPress = { () => {navigation.navigate("Drawer")} } >
+        <Text style={styles.button} >Salvar</Text>
         <Feather style={styles.chevron} name="chevron-right" size={40} color="white" />
-        <Button
-          style={styles.button}
-          title="Salvar"
-          color="#ffffff"
-          onPress={() => {
-            navigation.navigate("Drawer")
-          }}
-        />
-      </View>
+      </TouchableOpacity>
     </ScrollView>
   )
 }

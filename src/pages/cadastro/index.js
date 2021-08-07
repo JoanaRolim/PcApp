@@ -44,7 +44,8 @@ export default function Cadastro({ navigation }) {
             <Text style={styles.senha}>Senha</Text>
             <View style={styles.inputArea} keyboardType="password">
                 <View style={styles.input}>
-                    <TextInput style={{flex: 1,  marginRight: 5}} value={input} onChange={texto => setInput(texto)} secureTextEntry={hidePass} />
+                    <Feather name="lock" size={21} color="black" />
+                    <TextInput style={{flex: 1,  marginRight: 5,marginLeft: 5}} value={input} onChange={texto => setInput(texto)} secureTextEntry={hidePass} />
                     <TouchableOpacity onPress={() => sethidePass(!hidePass)}>
                     {hidePass ? <Feather name="eye" size={21} color="black" /> : <Feather name="eye-off" size={21} color="black" />}
                     </TouchableOpacity>

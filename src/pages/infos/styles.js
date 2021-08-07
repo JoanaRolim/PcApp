@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native"
+import { color } from "react-native-reanimated"
 
 export default StyleSheet.create({
   header: {
@@ -37,21 +38,23 @@ export default StyleSheet.create({
     borderRadius: 180
   },
   containerbutton: {
-    marginTop: 20,
+    paddingTop: 20,
     backgroundColor: "#086281",
     paddingBottom: 30,
     width: "100%",
-    height: 70,
+    
     alignItems: "center",
     alignContent: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    flexDirection: 'row',
   },
   button: {
     fontSize: 24,
     fontWeight: "bold",
     alignContent: "center",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    color: "white"
   },
   containerfoto: {
     alignItems: "center"
@@ -69,8 +72,5 @@ export default StyleSheet.create({
   icon: {
     marginTop: 12
   },
-  chevron: {
-    top: 38,
-    left: 40
-  }
+  
 })
