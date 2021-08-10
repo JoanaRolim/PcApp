@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useHistory } from 'react-router-dom';
-import Axios from 'axios';
+import api from '../../services/api';
 import { Feather } from "@expo/vector-icons"
 import { View, TextInput, Text, ScrollView, Button, Image, TouchableOpacity } from "react-native"
 
@@ -22,15 +22,20 @@ export default function Infos({ navigation }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-      await Axios.post('http://localhost:5000/api/v1/auth/register', { name, tipo, raca, idade, peso, altura, alergia, castracao });
-
+     await api.post('pet/create', { name, tipo, raca, idade, peso, altura, alergia, castracao });
+  
       alert('Pet Criado com sucesso!');
+      
 
      // history.push('/newuser');
     try {
     } catch (e) {
       console.log('Erro ao tentar cadastrar novo pet! Por favor, tente novamente.');
     }
+  }
+
+  function test(){
+    console.log( { name, tipo, raca, idade, peso, altura, alergia, castracao })
   }
 
   return (
@@ -44,28 +49,28 @@ export default function Infos({ navigation }) {
             <View style={styles.detalhes}>
               <View>
                 <Text style={styles.containerinput}>Nome:</Text>
-                <TextInput onChange={e => setName(e.target.value)} style={styles.input} placeholder="Exemplo: Pepita, Bolinha..." keyboardType="email-address" />
+                <TextInput value={name} onChangeText={value => setName(value)} style={styles.input} placeholder="Exemplo: Pepita, Bolinha..." keyboardType="email-address" />
 
                 <Text style={styles.containerinput}>Tipo:</Text>
-                <TextInput  onChange={e => setTipo(e.target.value)}  style={styles.input} placeholder="Exemplo: cachorro, gato, coelho..." keyboardType="numeric" />
+                <TextInput value={tipo} onChangeText={value => setTipo(value)} style={styles.input} placeholder="Exemplo: cachorro, gato, coelho..." keyboardType="email-address" />
 
                 <Text style={styles.containerinput}>Raça:</Text>
-                <TextInput  onChange={e => setRaca(e.target.value)}  style={styles.input} placeholder="Exemplo: vira-lata, pinscher..."  keyboardType="numeric" />
+                <TextInput value={raca} onChangeText={value => setRaca(value)}  style={styles.input} placeholder="Exemplo: vira-lata, pinscher..."  keyboardType="email-address" />
 
                 <Text style={styles.containerinput}>Idade:</Text>
-                <TextInput  onChange={e => setIdade(e.target.value)}  style={styles.input} placeholder="Idade do seu pet"  keyboardType="email-address" />
+                <TextInput value={idade} onChangeText={value => setIdade(value)}  style={styles.input} placeholder="Idade do seu pet"  keyboardType="numeric" />
 
                 <Text style={styles.containerinput}>Peso:</Text>
-                <TextInput  onChange={e => setPeso(e.target.value)}  style={styles.input} placeholder="Peso em kg"  keyboardType="numeric" />
+                <TextInput value={peso} onChangeText={value => setPeso(value)}  style={styles.input} placeholder="Peso em kg"  keyboardType="numeric" />
 
                 <Text style={styles.containerinput}>Altura:</Text>
-                <TextInput  onChange={e => setAltura(e.target.value)} style={styles.input} placeholder="Altura em cm"  keyboardType="email-address" />
+                <TextInput value={altura} onChangeText={value => setAltura(value)} style={styles.input} placeholder="Altura em cm"  keyboardType="numeric" />
 
                 <Text style={styles.containerinput}>Alergias:</Text>
-                <TextInput  onChange={e => setAlergia(e.target.value)}  style={styles.input} placeholder="Exemplo: ibuprofeno, dermatite atópica"  keyboardType="email-address" />
+                <TextInput value={alergia} onChangeText={value => setAlergia(value)}  style={styles.input} placeholder="Exemplo: ibuprofeno, dermatite atópica"  keyboardType="email-address" />
 
                 <Text style={styles.containerinput}>Castração:</Text>
-                <TextInput  onChange={e => setCastracao(e.target.value)} style={styles.input} placeholder="Responda com Sim ou Não"  keyboardType="email-address" />
+                <TextInput value={castracao} onChangeText={value => setCastracao(value)} style={styles.input} placeholder="Responda com Sim ou Não"  keyboardType="email-address" />
                 
               </View>
               <View style={styles.containericon}>
@@ -81,7 +86,7 @@ export default function Infos({ navigation }) {
             <Image source={icone} style={styles.foto} />
           </View>
         
-          <TouchableOpacity style={styles.containerbutton} onPress = { () => {navigation.navigate("Drawer")} } type="submit">
+          <TouchableOpacity style={styles.containerbutton} onPress = {() => {test()}} type="submit">
             <Text style={styles.button} >Salvar</Text>
             <Feather style={styles.chevron} name="chevron-right" size={40} color="black" />
           </TouchableOpacity>

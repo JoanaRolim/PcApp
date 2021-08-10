@@ -4,7 +4,7 @@ import styles from "./styles"
 import background from "../../assets/icon.png"
 import { Feather } from "@expo/vector-icons"
 import { useHistory } from 'react-router-dom';
-import Axios from 'axios';
+import api from '../../services/api';
 
 export default function Login({ navigation }) {
   const [input, setInput] = useState("")
@@ -16,7 +16,7 @@ export default function Login({ navigation }) {
   
     async function handleSubmit(e) {
       e.preventDefault();
-      const response = await Axios.post('http://localhost:5000/api/v1/auth/login', { email, password });
+      const response = await api.post('auth/login', { email, password });
       if (response.data) {
         localStorage.setItem('email', response.data.name);
         localStorage.setItem('id', response.data.id);
@@ -49,7 +49,7 @@ export default function Login({ navigation }) {
               <Text style={styles.email}>Email</Text>
               <View style={styles.input} >
                   <Feather name="mail" size={21} color="black" />
-                  <TextInput onChange={e => setEmail(e.target.value)} style = {{flex: 1, marginLeft: 5}} keyboardType="email-address" />
+                  <TextInput value={email} onChangeText={value => setEmail(value)} style = {{flex: 1, marginLeft: 5}} keyboardType="email-address" />
               </View>
             </View>
 
@@ -58,7 +58,7 @@ export default function Login({ navigation }) {
 
               <View style={styles.input} keyboardType="password">
                   <Feather name="lock" size={21} color="black" />
-                  <TextInput onChange={e => setPassword(e.target.value)} style = {{flex: 1, marginRight: 5, marginLeft: 5}} secureTextEntry={hidePass} />
+                  <TextInput value={password} onChangeText={value => setPassword(value)} style = {{flex: 1, marginRight: 5, marginLeft: 5}} secureTextEntry={hidePass} />
                   <TouchableOpacity style={styles.icon} onPress={() => sethidePass(!hidePass)}>
                       {hidePass ? <Feather name="eye" size={21} color="black" /> : <Feather name="eye-off" size={21} color="black" />}
                   </TouchableOpacity>

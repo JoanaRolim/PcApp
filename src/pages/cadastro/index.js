@@ -6,7 +6,7 @@ import DropDownPicker from "react-native-dropdown-picker"
 import styles from "./styles"
 import background from "../../assets/icon.png"
 import { useHistory } from 'react-router-dom';
-import Axios from 'axios';
+import api from '../../services/api';
 
 export default function Cadastro({ navigation }) {
   const [input, setInput] = useState("")
@@ -23,7 +23,7 @@ export default function Cadastro({ navigation }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-      await Axios.post('http://localhost:5000/api/v1/auth/register', { name, email, password, role });
+      await api.post('user/create', { name, email, password, role });
 
       alert('Usuário Criado com sucesso!');
 
@@ -52,7 +52,7 @@ export default function Cadastro({ navigation }) {
               <Text style={styles.email}>Nome</Text>
               <View style={styles.input}>
                   <Feather name="user" size={21} color="black" />
-                  <TextInput onChange={e => setName(e.target.value)} style={{flex: 1,  marginLeft: 5}} keyboardType="email-address" />
+                  <TextInput value={name} onChangeText={value => setName(value)} style={{flex: 1,  marginLeft: 5}} keyboardType="email-address" />
               </View>
             </View>
 
@@ -60,7 +60,7 @@ export default function Cadastro({ navigation }) {
               <Text style={styles.email}>Email</Text>
               <View style={styles.input}>
                   <Feather  name="mail" size={21} color="black" />
-                  <TextInput onChange={e => setEmail(e.target.value)} style={{flex: 1,  marginLeft: 5}}  keyboardType="email-address" />
+                  <TextInput value={email} onChangeText={value => setEmail(value)} style={{flex: 1,  marginLeft: 5}}  keyboardType="email-address" />
               </View>
             </View>
 
@@ -69,7 +69,7 @@ export default function Cadastro({ navigation }) {
               <View style={styles.inputArea} keyboardType="password">
                   <View style={styles.input}>
                       <Feather name="lock" size={21} color="black" />
-                      <TextInput onChange={e => setPassword(e.target.value)} style={{flex: 1,  marginRight: 5,marginLeft: 5}}  secureTextEntry={hidePass} />
+                      <TextInput value={password} onChangeText={value => setPassword(value)} style={{flex: 1,  marginRight: 5,marginLeft: 5}}  secureTextEntry={hidePass} />
                       <TouchableOpacity onPress={() => sethidePass(!hidePass)}>
                       {hidePass ? <Feather name="eye" size={21} color="black" /> : <Feather name="eye-off" size={21} color="black" />}
                       </TouchableOpacity>
@@ -80,9 +80,9 @@ export default function Cadastro({ navigation }) {
             <View style={styles.containertipo}>
               <Text style={styles.tipo}>Tipo de Usuário</Text>
               <DropDownPicker
-                value = {value}
-                setValue = {setValue}
-                onChange={e => setRole(e.target.value)}
+                value = {role}
+                setValue={value}
+                value={name} onChangeText={value => setRole(value)}
                 open = {open}
                 setOpen = {setOpen}
                 items={[
