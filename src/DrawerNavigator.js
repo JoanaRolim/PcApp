@@ -41,6 +41,19 @@ function Perfil_navigator(){
              component={Perfil_clinicas}>
 
             </Stack.Screen>
+
+            <Stack.Screen
+              name="Pets"
+              options={{
+                title: "Pets",
+                headerRight: () => (
+                  <TouchableOpacity style={{ paddingRight: 20 }}>
+                    <Octicons name="gear" size={22} color="#ffffffff" />
+                  </TouchableOpacity>
+                )
+              }}
+              component={Pets} />
+              
         </Stack.Navigator>
     )
 }
@@ -102,19 +115,6 @@ export default function DrawerNavigator() {
           )
         }}
         component={Consultas}
-      />
-
-      <Screen
-        name="Pets"
-        options={{
-          title: "Pets",
-          headerRight: () => (
-            <TouchableOpacity style={{ paddingRight: 20 }}>
-              <Octicons name="gear" size={22} color="#ffffffff" />
-            </TouchableOpacity>
-          )
-        }}
-        component={Pets}
       />
 
     </Navigator>

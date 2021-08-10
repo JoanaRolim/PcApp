@@ -53,7 +53,7 @@ export default StyleSheet.create({
     fontSize: 24
   },
   containerbutton: {
-    marginTop: 30,
+    marginTop: 95,
     marginLeft: 20,
     marginRight:20,
     backgroundColor: "#7AEBC7",
@@ -61,17 +61,12 @@ export default StyleSheet.create({
     padding: 5,
     fontSize: 55,
     fontWeight: "bold",
-    alignContent: "center"
+    alignContent: "center",
   },
   inputArea: {
     flexDirection: "row",
     width: "100%",
     alignItems: "center"
-  },
-  icon: {
-    position: "absolute",
-    top: 4,
-    left: 6
   },
   selector: {
     backgroundColor: "#DEF0F6",
@@ -80,7 +75,8 @@ export default StyleSheet.create({
     width: 266,
     height: 40,
     color: "black",
-    width: "100%"
+    width: "100%",
+    zIndex: 1
   },
   user: {
     position: "absolute",

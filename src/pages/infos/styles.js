@@ -30,7 +30,7 @@ export default StyleSheet.create({
     marginRight: 10,
     width: 360,
     height: 24,
-    backgroundColor: "#DEF0F6"
+    backgroundColor: "#E8E6E6"
   },
   foto: {
     padding: 5,
@@ -39,7 +39,7 @@ export default StyleSheet.create({
   },
   containerbutton: {
     paddingTop: 20,
-    backgroundColor: "#086281",
+    backgroundColor: "#7AE8C7",
     paddingBottom: 30,
     width: "100%",
     
@@ -54,7 +54,7 @@ export default StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
     justifyContent: "center",
-    color: "white"
+    color: "black"
   },
   containerfoto: {
     alignItems: "center"
