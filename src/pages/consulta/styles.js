@@ -1,48 +1,54 @@
 import { StyleSheet } from "react-native"
 
 export default StyleSheet.create({
-  containerConsulta: {
+  container: {
     flex: 1
   },
   header: {
     justifyContent: "center",
     alignItems: "center"
   },
+  headerText: {
+    marginTop: 30,
+    fontSize: 48
+  },
   descricao: {
-    marginTop: 24
+    margin: 24
   },
   detalhes: {
-    padding: 24,
-    borderRadius: 8,
-    backgroundColor: "#89BCD2",
-    margin: 17,
-    marginBottom: 15,
-    marginTop: 10,
+    padding: 22,
+    width: 370,
+    height: 220,
+    borderRadius: 10,
+    backgroundColor: "#F6F4DA",
+    marginTop: 18,
+    marginLeft: 6,
     flexDirection: "row",
-    justifyContent: "space-around"
+    justifyContent: "space-between",
+    padding: 20
   },
-  nomeconsulta: {
-    marginTop: 45,
+  clinica: {
+    marginTop: 10,
     fontSize: 18,
-    marginLeft: -300,
-    marginBottom: 5
+    lineHeight: 22,
+    marginBottom: 15
+  },
+  profissional: {
+    marginTop: 10,
+    fontSize: 18,
+    lineHeight: 22,
+    marginBottom: 15
+  },
+  servico: {
+    marginTop: 10,
+    fontSize: 18,
+    marginBottom: 15,
+    lineHeight: 22
   },
   data: {
     marginTop: 10,
     fontSize: 18,
-    marginLeft: -300,
-    marginBottom: 0
-  },
-  horario: {
-    marginTop: 10,
-    marginLeft: -300,
-    fontSize: 18,
-    marginBottom: 0
-  },
-  descricaoconsulta: {
-    marginTop: 10,
-    fontSize: 18,
-    marginLeft: -300,
+    lineHeight: 22,
     marginBottom: 15
   }
 })

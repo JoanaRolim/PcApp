@@ -86,7 +86,7 @@ export default function Infos({ navigation }) {
             <Image source={icone} style={styles.foto} />
           </View>
         
-          <TouchableOpacity style={styles.containerbutton} onPress = {() => {test()}} type="submit">
+          <TouchableOpacity style={styles.containerbutton} onPress = {() => navigation.navigate("Drawer")} type="submit">
             <Text style={styles.button} >Salvar</Text>
             <Feather style={styles.chevron} name="chevron-right" size={40} color="black" />
           </TouchableOpacity>

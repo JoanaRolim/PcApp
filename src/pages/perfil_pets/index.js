@@ -2,7 +2,9 @@ import React from 'react';
 import { Feather} from '@expo/vector-icons';
 import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native';
 
-import icone from '../../assets/icon.jpg';
+import icone from '../../assets/perfil.png';
+import petCat from '../../assets/cat.png';
+import petDog from '../../assets/dog.png';
 
 import styles from './styles';
 
@@ -10,7 +12,9 @@ import styles from './styles';
 export default function Perfil({navigation}){
     return(
         <ScrollView  style = {styles.container} >
-            
+            <View style={styles.containerfoto}>
+            <Image source={icone} style={styles.foto} />
+          </View> 
             <View style = {styles.nome_usuario} >
                 <Text style = {styles.text_nome_usuario} >Lady Gaga</Text>
             </View>
@@ -20,11 +24,12 @@ export default function Perfil({navigation}){
                     <Text style = {styles.text_menu} >Pets</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress = { () => {navigation.navigate("Clinicas_perfil")} } >
-                    <Text style = {styles.text_menu} >Clinicas</Text>
+                    <Text style = {styles.text_menu} >Clínicas</Text>
                 </TouchableOpacity>
             </View>
 
             <View style = {styles.pets}>
+            <Image source={petDog} style={styles.fotoPet} />
                 <View style = {styles.pets_text} >
                     <Text style = {styles.text_nome} >
                         Pepita
@@ -36,25 +41,26 @@ export default function Perfil({navigation}){
                 <View style = {styles.list}>
                     <TouchableOpacity onPress = { () => {navigation.navigate("Pets")} } >
                         <View style = {styles.icone} >
-                            <Feather name="list" size={21} color="black" />
+                            <Feather name="more-vertical" size={23} color="black" />
                         </View>
                     </TouchableOpacity>
                 </View>
             </View>
 
             <View style = {styles.pets}>
+            <Image source={petCat} style={styles.fotoPet} />
                 <View style = {styles.pets_text} >
                     <Text style = {styles.text_nome} >
-                        Pepita
+                        Simba
                     </Text>
                     <Text style = {styles.text_idade}>
-                        5 anos
+                        3 anos
                     </Text>
                 </View>
                 <View style = {styles.list}>
                     <TouchableOpacity onPress = { () => {navigation.navigate("Pets")} }>
                         <View style = {styles.icone} >
-                            <Feather name="list" size={21} color="black" />
+                            <Feather name="more-vertical" size={23} color="black" />
                         </View>
                     </TouchableOpacity>
                 </View>

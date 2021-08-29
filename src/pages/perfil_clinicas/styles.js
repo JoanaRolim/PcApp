@@ -6,7 +6,7 @@ export default StyleSheet.create({
   
   },
   nome_usuario:{
-    paddingVertical: 50,
+    paddingVertical: 25,
     alignItems: "center",
     
   },
@@ -27,30 +27,45 @@ export default StyleSheet.create({
         fontSize: 20,
     },
     pets:{
-        flex: 1,
-        backgroundColor: '#FAD3CB',
-        marginVertical: 10,
-        marginHorizontal: 20,
-        borderRadius: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        padding: 15,
+      flex: 1,
+      width: 380,
+      backgroundColor: '#FAD3CB',
+      marginVertical: 10,
+      marginHorizontal: 20,
+      marginTop: 10,
+      borderRadius: 10,
+      marginLeft: 25,
+      flexDirection: 'row',
+      padding: 17,
     },
     text_nome: {
-        fontSize: 18,
+        fontSize: 17,
+        lineHeight: 19,
         fontWeight: 'bold',
         marginBottom: 5,
+        fontStyle: "normal"
     },
     text_infos: {
-        fontSize: 17,
+        fontSize: 15,
+        lineHeight: 19,
+        fontWeight: "normal",
+        fontStyle: "normal"
     },
     icone: {
-        flexDirection: 'row',
+        alignContent: "center",
+        alignSelf: 'center'
     },
     list: {
         alignSelf: 'center',
     },
-    pets_text: {
-        
+    foto: {
+      width: 103,
+      height: 101,
+      borderRadius: 200,
+      marginLeft: 160,
+      marginTop: 30
+    },
+    containerFoto: {
+      alignItems: 'center'
     },
 })

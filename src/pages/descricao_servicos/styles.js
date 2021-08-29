@@ -6,17 +6,18 @@ export default StyleSheet.create({
   },
     headerText:{
         marginLeft: 35,
-        height: 40,
-        fontSize: 20,
+        fontSize: 28,
+        height: 33,
         fontStyle: 'normal',
+        textTransform: "uppercase",
         fontWeight: 'bold',
         alignSelf: "auto",
-        lineHeight: 25,
+        lineHeight: 36,
         marginTop: 45
     },
     icone: {
-        flexDirection: 'row'
-
+        marginLeft: 370,
+        marginTop: -25
     },
   detalhes: {
     fontStyle: "normal",
@@ -25,7 +26,7 @@ export default StyleSheet.create({
     marginLeft: 35,
     marginEnd: 18
   },
-    cnpj: {
+    infos: {
       marginTop: 3,
       fontSize: 15,
       lineHeight: 19
@@ -59,7 +60,7 @@ export default StyleSheet.create({
     top: {
       marginTop: 75,
     },
-    infos:{
+    agendamento:{
       width: 375,
       height: 65,
       backgroundColor: '#FAD3CB',

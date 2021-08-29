@@ -28,20 +28,46 @@ export default StyleSheet.create({
   },
   vacina: {
     marginTop: 8,
-    fontSize: 18,
+    fontSize: 17,
     lineHeight: 22,
     marginBottom: 24
   },
   local: {
     marginTop: 8,
-    fontSize: 18,
+    fontSize: 17,
     marginBottom: 24,
     lineHeight: 22
   },
   data: {
     marginTop: 8,
-    fontSize: 18,
+    fontSize: 17,
     lineHeight: 22,
     marginBottom: 24
+  },
+    containerbutton: {
+    marginTop: 473,
+    backgroundColor: "#086281",
+    width: "100%",
+    height: 76,
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    flexDirection: 'row',
+  },
+  button: {
+    fontSize: 24,
+    lineHeight: 30,
+    color: "white",
+    fontWeight: "bold",
+    alignContent: "center",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  containericon: {
+    flexDirection: "row"
+  },
+  icon: {
+    marginTop: 12
   }
 })

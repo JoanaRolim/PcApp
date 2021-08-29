@@ -17,31 +17,30 @@ export default StyleSheet.create({
   },
   detalhes: {
     padding: 22,
-    width: 370,
+    width: 386,
+    height: 130,
     borderRadius: 10,
-    backgroundColor: "#D0EFE6",
-    marginBottom: 15,
-    marginTop: 18,
-    marginLeft: 7,
+    backgroundColor: "#FCFF78",
+    marginTop: 15,
+    padding: 25,
     flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10,
+  },
+  nome: {
+    fontWeight: "bold",
+    fontSize: 16,
+    lineHeight: 19,
+    marginBottom: 8
+  },
+  avaliacao: {
+    fontSize: 15,
+    lineHeight: 19,
+  },
+  icone: {
     justifyContent: "space-between"
   },
-  vacina: {
-    marginTop: 8,
-    fontSize: 18,
-    lineHeight: 22,
-    marginBottom: 24
-  },
-  local: {
-    marginTop: 8,
-    fontSize: 18,
-    marginBottom: 24,
-    lineHeight: 22
-  },
-  data: {
-    marginTop: 8,
-    fontSize: 18,
-    lineHeight: 22,
-    marginBottom: 24
+  nota: {
+      fontSize: 17
   }
 })
