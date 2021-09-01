@@ -7,7 +7,7 @@ export default StyleSheet.create({
     headerText:{
         marginLeft: 35,
         fontSize: 28,
-        height: 33,
+        height: 70,
         fontStyle: 'normal',
         textTransform: "uppercase",
         fontWeight: 'bold',
@@ -17,70 +17,46 @@ export default StyleSheet.create({
     },
     icone: {
         marginLeft: 370,
-        marginTop: -25
+        marginTop: -65
     },
   detalhes: {
     fontStyle: "normal",
-    fontWeight: "500",
-    justifyContent: "space-between",
     marginLeft: 35,
     marginEnd: 18
   },
     infos: {
-      marginTop: 3,
+      marginTop: 35,
       fontSize: 15,
-      lineHeight: 19
-    },
-    endereco: {
-      marginTop: 3,
-      fontSize: 15,
-      lineHeight: 19
-    },
-    telefone: {
-      marginTop: 3,
-      fontSize: 15,
-      lineHeight: 19
-    },
-    avaliacao: {
-      marginTop: 30,
-      textAlign: "center",
-      fontStyle: 'normal',
-      fontWeight: "500",  
-      fontSize: 17,
-      lineHeight: 21,
-      textDecorationLine: "underline",
-      color: "black"
-    },
-    iconstar: {
-      marginTop: 25,
-      lineHeight: 21,
-      marginStart: 135,
-      position: "absolute"
+      lineHeight: 19,
+      fontWeight: "bold"
     },
     top: {
-      marginTop: 75,
+      marginTop: 45,
     },
     agendamento:{
       width: 375,
       height: 65,
-      backgroundColor: '#FAD3CB',
+      backgroundColor: '#D0EFE6',
       borderRadius: 10,
       marginLeft: 26,
       textAlign: "center",
-      padding: 18,
-      marginBottom: 30
+      padding: 18
   },
   text: {
-    marginLeft: 22,
+      marginLeft: 25,
       fontSize: 17,
-      lineHeight: 25,
+      lineHeight: 20,
       fontStyle: "normal",
       fontWeight: "500",
       marginBottom: 5,
-      marginTop: 0
+      marginTop: -20
   },
   icone_info: {
       marginLeft: 300,
-      marginTop: -27
+      marginTop: -28
+  },
+  icone_calendar: {
+    marginLeft: 0,
+    marginTop: 5
   }
 })

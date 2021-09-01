@@ -42,7 +42,7 @@ export default function DescricaoServicos({ navigation }) {
       <View style = {styles.agendamento}>
                 <View >
                 <TouchableOpacity onPress = { () => {navigation.navigate("")} }>
-                <FontAwesome name="calendar" size={15} color="black"/>
+                <FontAwesome style = {styles.icone_calendar} name="calendar" size={20} color="black"/>
                 </TouchableOpacity>
                     <Text style = {styles.text} >
                         Agendamento
