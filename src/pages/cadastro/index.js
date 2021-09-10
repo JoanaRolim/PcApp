@@ -25,15 +25,14 @@ export default function Cadastro({ navigation }) {
     e.preventDefault();
       await api.post('user/create', { name, email, password, role });
 
-      alert('Usuário Criado com sucesso!');
+      alert('Cadastro realizado com sucesso!');
 
-     // history.push('/newuser');
+     // history.push('/login'); ->>>>NAO SEIIIIIIIIIII
     try {
     } catch (e) {
-      console.log('Erro ao tentar cadastrar novo usuário! Por favor, tente novamente.');
+      console.log('Erro ao tentar cadastrar! Por favor, tente novamente.');
     }
   }
-
 
   return (
     <View style={styles.container}>
