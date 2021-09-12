@@ -16,15 +16,14 @@ export default StyleSheet.create({
     margin: 24
   },
   detalhes: {
-    width: 380,
-    height: 210,
+    flex: 1,
     borderRadius: 10,
     backgroundColor: "#7AE8C7",
-    marginTop: 15,
-    padding: 29,
+    marginTop: 20,
+    padding: 30,
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 10
+    marginBottom: 0
   },
   nome: {
     fontSize: 17,
@@ -47,10 +46,11 @@ export default StyleSheet.create({
     marginBottom: 24
   },
     containerbutton: {
-    marginTop: 473,
+    marginTop: 455,
     backgroundColor: "#086281",
     width: "100%",
-    height: 79,
+    paddingTop: 20,
+    paddingBottom: 30,
     alignItems: "center",
     alignContent: "center",
     justifyContent: "center",

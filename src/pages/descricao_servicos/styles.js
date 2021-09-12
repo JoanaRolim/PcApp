@@ -7,19 +7,19 @@ export default StyleSheet.create({
     headerText:{
         marginLeft: 35,
         fontSize: 28,
-        height: 70,
         fontStyle: 'normal',
         textTransform: "uppercase",
         fontWeight: 'bold',
         alignSelf: "auto",
-        lineHeight: 36,
-        marginTop: 45
+
+        marginTop: 50
     },
     icone: {
         marginLeft: 370,
-        marginTop: -65
+        marginTop: -25
     },
   detalhes: {
+    flex: 1,
     fontStyle: "normal",
     marginLeft: 35,
     marginEnd: 18
@@ -27,36 +27,35 @@ export default StyleSheet.create({
     infos: {
       marginTop: 35,
       fontSize: 15,
-      lineHeight: 19,
       fontWeight: "bold"
     },
     top: {
-      marginTop: 45,
+      marginVertical: 40,
     },
     agendamento:{
-      width: 375,
-      height: 65,
+      flex: 1,
       backgroundColor: '#D0EFE6',
       borderRadius: 10,
-      marginLeft: 26,
+      marginVertical: 10,
+      marginHorizontal: 25,
       textAlign: "center",
-      padding: 18
+      flexDirection: "row",
+      justifyContent: "space-between",
+      padding: 22
+
   },
   text: {
       marginLeft: 25,
       fontSize: 17,
-      lineHeight: 20,
       fontStyle: "normal",
       fontWeight: "500",
       marginBottom: 5,
       marginTop: -20
   },
   icone_info: {
-      marginLeft: 300,
-      marginTop: -28
+    marginHorizontal: 5,
   },
   icone_calendar: {
-    marginLeft: 0,
-    marginTop: 5
+    marginEnd: 10
   }
 })

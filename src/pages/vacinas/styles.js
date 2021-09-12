@@ -16,8 +16,8 @@ export default StyleSheet.create({
     margin: 24
   },
   detalhes: {
+    flex: 1,
     padding: 22,
-    width: 370,
     borderRadius: 10,
     backgroundColor: "#D0EFE6",
     marginBottom: 15,
@@ -29,19 +29,16 @@ export default StyleSheet.create({
   vacina: {
     marginTop: 8,
     fontSize: 18,
-    lineHeight: 22,
     marginBottom: 24
   },
   local: {
     marginTop: 8,
     fontSize: 18,
     marginBottom: 24,
-    lineHeight: 22
   },
   data: {
     marginTop: 8,
     fontSize: 18,
-    lineHeight: 22,
     marginBottom: 24
   }
 })

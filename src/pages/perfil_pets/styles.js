@@ -27,7 +27,6 @@ export default StyleSheet.create({
     },
     pets:{
         flex: 1,
-        width: 375,
         backgroundColor: '#FAD3CB',
         marginVertical: 10,
         marginHorizontal: 20,
@@ -40,7 +39,6 @@ export default StyleSheet.create({
     text_nome: {
       marginLeft: 22,
         fontSize: 17,
-        lineHeight: 21,
         fontStyle: "normal",
         fontWeight: "bold",
         marginBottom: 5,
@@ -50,11 +48,10 @@ export default StyleSheet.create({
         marginLeft: 22,
         fontStyle: "normal",
         fontWeight:"500",
-        lineHeight: 21,
     },
     icone: {
         flexDirection: 'row',
-        marginLeft: 170,
+        marginLeft: 250,
     },
     list: {
         alignSelf: 'center',
@@ -63,8 +60,7 @@ export default StyleSheet.create({
         
     },
     foto: {
-      width: 103,
-      height: 101,
+
       borderRadius: 200,
       marginLeft: 160,
       marginTop: 30
@@ -73,8 +69,6 @@ export default StyleSheet.create({
       alignItems: 'center'
     },
     fotoPet: {
-      width: 54,
-      height: 52,
       borderRadius: 220,
       marginLeft: 15
     },

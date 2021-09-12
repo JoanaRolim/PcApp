@@ -56,7 +56,7 @@ export default function Clinicas({ navigation }) {
                 </View>
                 <View style = {styles.list}>
                     <TouchableOpacity onPress = { () => {navigation.navigate("Servicos")} }>
-                        <View style = {styles.icone_info} >
+                        <View style = {styles.icone_service} >
                             <Feather name="more-vertical" size={23} color="black" />
                         </View>
                     </TouchableOpacity>

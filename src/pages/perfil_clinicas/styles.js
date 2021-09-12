@@ -28,7 +28,6 @@ export default StyleSheet.create({
     },
     pets:{
       flex: 1,
-      width: 380,
       backgroundColor: '#FAD3CB',
       marginVertical: 10,
       marginHorizontal: 20,
@@ -40,14 +39,12 @@ export default StyleSheet.create({
     },
     text_nome: {
         fontSize: 17,
-        lineHeight: 19,
         fontWeight: 'bold',
         marginBottom: 5,
         fontStyle: "normal"
     },
     text_infos: {
         fontSize: 15,
-        lineHeight: 19,
         fontWeight: "normal",
         fontStyle: "normal"
     },
@@ -59,8 +56,6 @@ export default StyleSheet.create({
         alignSelf: 'center',
     },
     foto: {
-      width: 103,
-      height: 101,
       borderRadius: 200,
       marginLeft: 160,
       marginTop: 30

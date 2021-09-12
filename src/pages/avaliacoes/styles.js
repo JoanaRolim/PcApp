@@ -16,9 +16,8 @@ export default StyleSheet.create({
     margin: 24
   },
   detalhes: {
+    flex: 1,
     padding: 22,
-    width: 386,
-    height: 130,
     borderRadius: 10,
     backgroundColor: "#FCFF78",
     marginTop: 15,
@@ -30,12 +29,10 @@ export default StyleSheet.create({
   nome: {
     fontWeight: "bold",
     fontSize: 16,
-    lineHeight: 19,
     marginBottom: 8
   },
   avaliacao: {
     fontSize: 15,
-    lineHeight: 19,
   },
   icone: {
     justifyContent: "space-between"

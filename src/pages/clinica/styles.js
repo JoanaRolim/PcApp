@@ -6,12 +6,10 @@ export default StyleSheet.create({
   },
     headerText:{
         marginLeft: 35,
-        height: 40,
         fontSize: 20,
         fontStyle: 'normal',
         fontWeight: 'bold',
         alignSelf: "auto",
-        lineHeight: 25,
         marginTop: 45
     },
     icone: {
@@ -28,17 +26,14 @@ export default StyleSheet.create({
     cnpj: {
       marginTop: 3,
       fontSize: 15,
-      lineHeight: 19
     },
     endereco: {
       marginTop: 3,
       fontSize: 15,
-      lineHeight: 19
     },
     telefone: {
       marginTop: 3,
       fontSize: 15,
-      lineHeight: 19
     },
     avaliacao: {
       marginTop: 30,
@@ -46,40 +41,40 @@ export default StyleSheet.create({
       fontStyle: 'normal',
       fontWeight: "500",  
       fontSize: 17,
-      lineHeight: 21,
       textDecorationLine: "underline",
       color: "black"
     },
     iconstar: {
       marginTop: 25,
-      lineHeight: 21,
-      marginStart: 135,
-      position: "absolute"
+      marginStart: 130,
     },
     top: {
       marginTop: 75,
     },
     infos:{
-      width: 375,
-      height: 65,
+      flex: 1,
       backgroundColor: '#FAD3CB',
+      marginHorizontal: 20,
       borderRadius: 10,
       marginLeft: 26,
       textAlign: "center",
-      padding: 18,
+      flexDirection: 'row',
+      padding: 19,
       marginBottom: 30
   },
   text: {
     marginLeft: 22,
       fontSize: 17,
-      lineHeight: 25,
       fontStyle: "normal",
       fontWeight: "500",
       marginBottom: 5,
       marginTop: 0
   },
   icone_info: {
-      marginLeft: 300,
-      marginTop: -27
+      marginLeft: 200 
+  },
+  icone_service: {
+    marginLeft: 230
   }
+
 })

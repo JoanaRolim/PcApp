@@ -16,8 +16,8 @@ export default StyleSheet.create({
     margin: 24
   },
   detalhes: {
+    flex: 1,
     padding: 22,
-    width: 370,
     borderRadius: 10,
     backgroundColor: "#D0EFE6",
     marginBottom: 15,
@@ -29,26 +29,24 @@ export default StyleSheet.create({
   vacina: {
     marginTop: 8,
     fontSize: 17,
-    lineHeight: 22,
     marginBottom: 24
   },
   local: {
     marginTop: 8,
     fontSize: 17,
     marginBottom: 24,
-    lineHeight: 22
   },
   data: {
     marginTop: 8,
     fontSize: 17,
-    lineHeight: 22,
     marginBottom: 24
   },
     containerbutton: {
-    marginTop: 473,
+    paddingTop: 20,
+    paddingBottom: 30,
+    marginTop: 470,
     backgroundColor: "#086281",
     width: "100%",
-    height: 76,
     alignItems: "center",
     alignContent: "center",
     justifyContent: "center",
@@ -57,7 +55,6 @@ export default StyleSheet.create({
   },
   button: {
     fontSize: 24,
-    lineHeight: 30,
     color: "white",
     fontWeight: "bold",
     alignContent: "center",

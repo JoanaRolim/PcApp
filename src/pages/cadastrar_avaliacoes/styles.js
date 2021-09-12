@@ -16,37 +16,33 @@ export default StyleSheet.create({
     margin: 24
   },
   detalhes: {
+    flex: 1,
     padding: 22,
-    width: 390,
-    height: 170,
     borderRadius: 10,
     backgroundColor: "#FCFF78",
-    marginTop: 15,
-    padding: 30,
+    marginTop: 20,
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 10
   },
   nome: {
     fontSize: 17,
-    lineHeight: 19,
     marginBottom: 24
   },
   avaliacao: {
     fontSize: 17,
-    lineHeight: 19,
     marginBottom: 24
   },
   nota: {
     fontSize: 17,
-    lineHeight: 19,
     marginBottom: 24
   },
     containerbutton: {
-    marginTop: 514,
+    marginTop: 512,
     backgroundColor: "#086281",
     width: "100%",
-    height: 79,
+    paddingTop: 20,
+    paddingBottom: 30,
     alignItems: "center",
     alignContent: "center",
     justifyContent: "center",
@@ -55,7 +51,6 @@ export default StyleSheet.create({
   },
   button: {
     fontSize: 24,
-    lineHeight: 30,
     color: "white",
     fontWeight: "bold",
     alignContent: "center",

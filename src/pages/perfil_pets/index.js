@@ -9,6 +9,10 @@ import petDog from '../../assets/dog.png';
 import styles from './styles';
 
 
+//  fotos do caes
+//<Image source={petDog} style={styles.fotoPet} />
+//<Image source={petCat} style={styles.fotoPet} />
+
 export default function Perfil({navigation}){
     return(
         <ScrollView  style = {styles.container} >
@@ -29,7 +33,7 @@ export default function Perfil({navigation}){
             </View>
 
             <View style = {styles.pets}>
-            <Image source={petDog} style={styles.fotoPet} />
+           
                 <View style = {styles.pets_text} >
                     <Text style = {styles.text_nome} >
                         Pepita
@@ -48,7 +52,7 @@ export default function Perfil({navigation}){
             </View>
 
             <View style = {styles.pets}>
-            <Image source={petCat} style={styles.fotoPet} />
+            
                 <View style = {styles.pets_text} >
                     <Text style = {styles.text_nome} >
                         Simba

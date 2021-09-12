@@ -17,8 +17,6 @@ export default StyleSheet.create({
   },
   detalhes: {
     padding: 22,
-    width: 370,
-    height: 220,
     borderRadius: 10,
     backgroundColor: "#F6F4DA",
     marginTop: 18,
@@ -30,25 +28,21 @@ export default StyleSheet.create({
   clinica: {
     marginTop: 10,
     fontSize: 18,
-    lineHeight: 22,
     marginBottom: 15
   },
   profissional: {
     marginTop: 10,
     fontSize: 18,
-    lineHeight: 22,
     marginBottom: 15
   },
   servico: {
     marginTop: 10,
     fontSize: 18,
     marginBottom: 15,
-    lineHeight: 22
   },
   data: {
     marginTop: 10,
     fontSize: 18,
-    lineHeight: 22,
     marginBottom: 15
   }
 })

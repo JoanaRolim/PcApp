@@ -16,9 +16,8 @@ export default StyleSheet.create({
     margin: 24
   },
   detalhes: {
+    flex: 1,
     padding: 22,
-    width: 355,
-    height: 110,
     borderRadius: 10,
     backgroundColor: "#FAD3CB",
     marginTop: 15,
@@ -31,15 +30,12 @@ export default StyleSheet.create({
   nome: {
     fontWeight: "bold",
     fontSize: 15,
-    lineHeight: 19,
     marginBottom: 2
   },
   crm: {
     fontSize: 15,
-    lineHeight: 19,
   },
   local: {
     fontSize: 15,
-    lineHeight: 19,
   }
 })

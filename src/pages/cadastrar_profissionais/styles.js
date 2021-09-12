@@ -16,32 +16,29 @@ export default StyleSheet.create({
     margin: 24
   },
   detalhes: {
+    flex: 1,
     padding: 22,
-    width: 365,
-    height: 135,
     borderRadius: 10,
     backgroundColor: "#FAD3CB",
     marginTop: 15,
     marginLeft: 10,
-    padding: 30,
     flexDirection: "row",
     justifyContent: "space-between",
   },
   nome: {
     fontSize: 17,
-    lineHeight: 19,
     marginBottom: 24
   },
   crm: {
     fontSize: 17,
-    lineHeight: 19,
     marginBottom: 24
   },
     containerbutton: {
-    marginTop: 558,
+    marginTop: 550,
     backgroundColor: "#086281",
     width: "100%",
-    height: 79,
+    paddingTop: 20,
+    paddingBottom: 30,
     alignItems: "center",
     alignContent: "center",
     justifyContent: "center",
@@ -50,7 +47,6 @@ export default StyleSheet.create({
   },
   button: {
     fontSize: 24,
-    lineHeight: 30,
     color: "white",
     fontWeight: "bold",
     alignContent: "center",
