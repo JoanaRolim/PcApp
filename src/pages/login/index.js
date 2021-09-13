@@ -16,7 +16,7 @@ export default function Login({ navigation }) {
   
     async function handleSubmit(e) {
       e.preventDefault();
-      const response = await api.post('auth/login', { email, password });
+      const response = await api.post('adminauth/login/login', { email, password });
       if (response.data) {
         localStorage.setItem('email', response.data.name);
         localStorage.setItem('id', response.data.id);

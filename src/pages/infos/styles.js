@@ -42,7 +42,6 @@ export default StyleSheet.create({
     backgroundColor: "#7AE8C7",
     paddingBottom: 30,
     width: "100%",
-    
     alignItems: "center",
     alignContent: "center",
     justifyContent: "center",
