@@ -19,14 +19,14 @@ export default function Infos({ navigation }) {
   const [castracao, setCastracao] = useState();
 
   const history = useHistory();
-  const token = localStorage.getItem('token');
+ // const token = localStorage.getItem('token');
 
   async function handleSubmit(e) {
     e.preventDefault();
      await api.post('pet/create', { name, type, breed, age, weight, height, allergy, castracao }, {
-     headers: {
+   /*  headers: {
       Authorization: 'Bearer ' + token
-     }
+     } */
     });
       alert('Pet cadastrado com sucesso!');
       
