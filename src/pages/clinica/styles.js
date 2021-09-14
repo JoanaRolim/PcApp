@@ -13,16 +13,16 @@ export default StyleSheet.create({
         marginTop: 45
     },
     icone: {
-        flexDirection: 'row'
-
+        
     },
-  detalhes: {
+
+    detalhes: {
     fontStyle: "normal",
     fontWeight: "500",
     justifyContent: "space-between",
     marginLeft: 35,
     marginEnd: 18
-  },
+    },
     cnpj: {
       marginTop: 3,
       fontSize: 15,
@@ -58,23 +58,18 @@ export default StyleSheet.create({
       borderRadius: 10,
       marginLeft: 26,
       textAlign: "center",
-      flexDirection: 'row',
+      flexDirection:'row',
+      justifyContent: 'space-between',
       padding: 19,
       marginBottom: 30
   },
   text: {
-    marginLeft: 22,
+      marginLeft: 22,
       fontSize: 17,
       fontStyle: "normal",
       fontWeight: "500",
       marginBottom: 5,
       marginTop: 0
   },
-  icone_info: {
-      marginLeft: 200 
-  },
-  icone_service: {
-    marginLeft: 230
-  }
 
 })
