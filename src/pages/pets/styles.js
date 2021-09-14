@@ -39,9 +39,7 @@ export default StyleSheet.create({
         backgroundColor: '#DEF0F6',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: 370,
-        height: 346,
-        marginLeft: 30,
+        marginHorizontal: 30,
         padding: 20
     },
     raca:{
@@ -85,14 +83,15 @@ export default StyleSheet.create({
         backgroundColor: '#DEF0F6',
         borderRadius: 10,
         flexDirection: 'row',
+        justifyContent: 'space-between',
         padding: 20,
-        width: 370,
-        marginLeft: 30,
-        height: 70,
-        marginTop: 30
+        marginHorizontal: 30,
+        marginTop: 30,
     },
     list: {
         alignSelf: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     text_vacina: {
         marginTop: 5,
@@ -105,10 +104,9 @@ export default StyleSheet.create({
         backgroundColor: '#DEF0F6',
         borderRadius: 10,
         flexDirection: 'row',
+        justifyContent: 'space-between',
         padding: 20,
-        width: 370,
-        marginLeft: 30,
-        height: 70,
+        marginHorizontal: 30,
         marginTop: 30
     },
     text_historico: {
@@ -123,9 +121,7 @@ export default StyleSheet.create({
         backgroundColor: '#D0EFE6',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: 370,
-        height: 176,
-        marginLeft: 30,
+        marginHorizontal: 30,
         padding: 20
     },
     text_consultas: {
@@ -136,7 +132,7 @@ export default StyleSheet.create({
     },
     icone: {
         flexDirection: 'row',
-        marginLeft: 250,
+        justifyContent: 'space-between',
     },
     iconeconsulta: {
         flexDirection: 'row',

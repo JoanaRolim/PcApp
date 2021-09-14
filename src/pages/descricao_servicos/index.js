@@ -9,7 +9,7 @@ export default function DescricaoServicos({ navigation }) {
   return (
     <ScrollView  style = {styles.containerClinica} >
 
-    <View>
+    <View style = {styles.container_eco}>
         <Text style = {styles.headerText}>
             Ecografia
         </Text>

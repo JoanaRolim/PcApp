@@ -84,7 +84,7 @@ export default function DrawerNavigator() {
       }}
     >
 
-      <Screen name = "Perfil" options = {{title: "Perfil",}} component= {Perfil_navigator}></Screen>
+      <Screen name = "Perfil"  component= {Perfil_navigator}></Screen>
 
      <Screen
         name="Vacinas"
@@ -124,11 +124,6 @@ export default function DrawerNavigator() {
         name="Profissionais"
         options={{
           title: "Profissionais",
-          headerRight: () => (
-            <TouchableOpacity style={{ paddingRight: 20 }}>
-              <Feather name="plus-circle" size={27} color="#ffffffff" />
-            </TouchableOpacity>
-          )
         }}
         component={Profissionais}
       />

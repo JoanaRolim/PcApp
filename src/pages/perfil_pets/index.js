@@ -16,9 +16,9 @@ import styles from './styles';
 export default function Perfil({navigation}){
     return(
         <ScrollView  style = {styles.container} >
-            <View style={styles.containerfoto}>
-            <Image source={icone} style={styles.foto} />
-          </View> 
+            <View style={styles.containerFoto}>
+                <Image source={icone} style={styles.foto} />
+            </View> 
             <View style = {styles.nome_usuario} >
                 <Text style = {styles.text_nome_usuario} >Lady Gaga</Text>
             </View>

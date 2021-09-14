@@ -11,12 +11,10 @@ export default StyleSheet.create({
         textTransform: "uppercase",
         fontWeight: 'bold',
         alignSelf: "auto",
-
         marginTop: 50
     },
     icone: {
-        marginLeft: 370,
-        marginTop: -25
+        marginTop: 50,
     },
   detalhes: {
     flex: 1,
@@ -57,5 +55,10 @@ export default StyleSheet.create({
   },
   icone_calendar: {
     marginEnd: 10
+  },
+  container_eco: {
+      marginRight: 15,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
   }
 })

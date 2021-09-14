@@ -35,10 +35,10 @@ export default function Pets({navigation}){
                     >
                         <Feather name = "edit" size = {24} color = "#000000" />
                    </TouchableOpacity>
-                   </View>
-                   </View>
+                </View>
+            </View>
 
-         <View style = {styles.vacinas}>
+            <View style = {styles.vacinas}>
                 <View>
                     <Text style = {styles.text_vacina} >
                         Vacinas
@@ -59,7 +59,7 @@ export default function Pets({navigation}){
                 </View>
                 <View style = {styles.list}>
                     <TouchableOpacity onPress = { () => {navigation.navigate("Consultas")} }>
-                    <Feather style = {styles.iconeconsulta} name="more-vertical" size={21} color="black" />
+                    <Feather style = {styles.icone} name="more-vertical" size={21} color="black" />
                         </TouchableOpacity>
                 </View>
             </View>

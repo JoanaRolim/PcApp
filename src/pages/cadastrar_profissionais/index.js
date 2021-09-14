@@ -4,7 +4,8 @@ import {View, Image, Text, ScrollView, TouchableOpacity, TextInput, ImageBackgro
 
 import styles from './styles';
 
-export default function CadastrarProfissionais({navigation}){
+export default function CadastrarProfissionais({navigation,route}){
+React.useEffect(()=>{console.log(route.params.teste);},[])
     return(
         <ScrollView style = {styles.container} >
             <View style = {styles.descricao}>
@@ -12,9 +13,10 @@ export default function CadastrarProfissionais({navigation}){
                 <View style = {styles.detalhes}>
                     
                     <View>
-                        <TextInput style = {styles.nome}  placeholder= "Nome do Profissional:" placeholderTextColor="black"></TextInput>
-
-                        <TextInput style = {styles.crm}  placeholder= "CRM:" placeholderTextColor="black"></TextInput>
+                        <Text style = {styles.inputTitle}  >Nome do Profissional:</Text>
+                        <TextInput style = {styles.input}   placeholderTextColor="black"></TextInput>
+                        <Text style = {styles.inputTitle}  >CRM:</Text>
+                        <TextInput style = {styles.input}   placeholderTextColor="black"></TextInput>
                     </View>
 
                 </View>

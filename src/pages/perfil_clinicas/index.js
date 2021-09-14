@@ -10,7 +10,7 @@ import styles from './styles';
 export default function Perfil({navigation}){
     return(
         <ScrollView  style = {styles.container} >
-                 <View style={styles.containerfoto}>
+                 <View style={styles.containerFoto}>
             <Image source={icone} style={styles.foto} />
           </View> 
             

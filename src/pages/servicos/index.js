@@ -18,7 +18,7 @@ export default function Servicos({navigation}){
                     
                     <TouchableOpacity 
                         style = {styles.icone} 
-                        onPress = { () => {navigation.navigate("CadastrarServicos")}}
+                        onPress = { () => {navigation.navigate("DescricaoServicos")}}
                     >
                         <Feather name = "more-vertical" size = {24} color = "#000000" />
                     </TouchableOpacity>
@@ -34,7 +34,7 @@ export default function Servicos({navigation}){
                     
                     <TouchableOpacity 
                         style = {styles.icone} 
-                        onPress = { () => {navigation.navigate("CadastrarServicos")}} 
+                        onPress = { () => {navigation.navigate("DescricaoServicos")}} 
                     >
                         <Feather name = "more-vertical" size = {24} color = "#000000" />
                     </TouchableOpacity>

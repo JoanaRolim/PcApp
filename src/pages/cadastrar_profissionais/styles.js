@@ -25,13 +25,16 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  nome: {
+  input: {
     fontSize: 17,
-    marginBottom: 24
+    marginBottom: 24,
+    backgroundColor: "#aaaaaa50",
+    borderWidth: 1,
+
   },
-  crm: {
+  inputTitle: {
     fontSize: 17,
-    marginBottom: 24
+    marginBottom: 5,
   },
     containerbutton: {
     marginTop: 550,
