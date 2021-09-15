@@ -37,7 +37,7 @@ export default function Perfil({navigation}){
                     </Text>
                 </View>
                 <View style = {styles.list}>
-                    <TouchableOpacity onPress = { () => {navigation.navigate("Clinicas")} } >
+                    <TouchableOpacity onPress = { () => {navigation.navigate("ClinicasInfo")} } >
                         <View>
                             <Feather style = {styles.icone}  name="more-vertical" size={23} color="black" />
                         </View>
@@ -55,7 +55,7 @@ export default function Perfil({navigation}){
                     </Text>
                 </View>
                 <View style = {styles.list}>
-                    <TouchableOpacity onPress = { () => {navigation.navigate("Clinicas")}} >
+                    <TouchableOpacity onPress = { () => {navigation.navigate("ClinicasInfo")}} >
                         <View>
                             <Feather style = {styles.icone}  name="more-vertical" size={23} color="black" />
                         </View>

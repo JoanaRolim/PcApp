@@ -5,6 +5,16 @@ import {View, Image, Text, ScrollView, TouchableOpacity, ImageBackground} from '
 import styles from './styles';
 
 export default function Vacinas({navigation}){
+    React.useLayoutEffect(()=>{
+        navigation.setOptions({
+            headerRight: () => (
+                <TouchableOpacity onPress = {()=>{navigation.navigate("CadastrarVacinas", {teste:null} )}} style={{ paddingRight: 20 }}>
+                  <Feather name="plus-circle" size={27} color="#ffffffff" />
+                </TouchableOpacity>
+              )
+        })
+    },[navigation])
+
     return(
         <ScrollView style = {styles.container} >
             <View style = {styles.descricao}>
@@ -19,7 +29,7 @@ export default function Vacinas({navigation}){
                     
                     <TouchableOpacity 
                         style = {styles.icone} 
-                        onPress = { () => {navigation.navigate("CadastrarVacinas")}}
+                        onPress = { () => {navigation.navigate("CadastrarVacinas", {teste:"teste"} )}}
                     >
                         <Feather name = "edit" size = {24} color = "#000000" />
                     </TouchableOpacity>

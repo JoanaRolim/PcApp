@@ -10,7 +10,7 @@ const Stack = createStackNavigator()
 
 import Perfil_pets from "./pages/perfil_pets"
 import Vacinas from "./pages/vacinas"
-import Clinicas from "./pages/clinica"
+import ClinicasInfo from "./pages/clinica_info"
 import Consultas from "./pages/consulta"
 import Pets from "./pages/pets"
 import Perfil_clinicas from "./pages/perfil_clinicas"
@@ -22,10 +22,12 @@ import CadastrarProfissionais from "./pages/cadastrar_profissionais"
 import Avaliacoes from "./pages/avaliacoes"
 import CadastrarAvaliacoes from "./pages/cadastrar_avaliacoes"
 import DescricaoServicos from "./pages/descricao_servicos"
+import Clinicas from "./pages/clininas"
 
 function Perfil_navigator(){
     return(
         <Stack.Navigator screenOptions = {{headerShown: false}}>
+
             <Stack.Screen name="Perfil_pets" 
             options={{ 
             title: "Perfil",
@@ -60,8 +62,53 @@ function Perfil_navigator(){
                 )
               }}
               component={Pets} />
+
+        <Stack.Screen
+            name="Vacinas"
+            options={{
+            title: "Vacinas",
+            }}
+            component={Vacinas}
+        />
               
+        <Stack.Screen
+        name="Consultas"
+        options={{
+          title: "Histórico"
+        }}
+        component={Consultas}
+      />
         </Stack.Navigator>
+        
+    )
+}
+
+function Perfil_navigator_Clinica(){
+    return(
+        <Stack.Navigator screenOptions = {{headerShown: false}}>
+              
+        <Stack.Screen
+        name="Clinicas_"
+        options={{
+          title: "Clinicas",
+        }}
+        component={Clinicas}
+      />
+
+        <Stack.Screen
+        name="Servicos"
+        options={{
+          title: "Serviços",
+          headerRight: () => (
+            <TouchableOpacity style={{ paddingRight: 20 }}>
+              <Feather name="plus-circle" size={27} color="#ffffffff" />
+            </TouchableOpacity>
+          )
+        }}
+        component={Servicos}
+      />
+        </Stack.Navigator>
+        
     )
 }
 
@@ -85,39 +132,20 @@ export default function DrawerNavigator() {
     >
 
       <Screen name = "Perfil"  component= {Perfil_navigator}></Screen>
+      <Screen name = "Clinicas"  component= {Perfil_navigator_Clinica}></Screen>
 
-     <Screen
-        name="Vacinas"
-        options={{
-          title: "Vacinas",
-          headerRight: ({CadastrarVacinas}) => (
-            <TouchableOpacity style={{ paddingRight: 20 }}>
-              <Feather name="plus-circle" size={27} color="#ffffffff" />
-            </TouchableOpacity>
-          )
-        }}
-        component={Vacinas}
-      />
 
   <Screen
-        name="Consultas"
+        name="ClinicasInfo"
         options={{
-          title: "Histórico"
-        }}
-        component={Consultas}
-      />
-
-  <Screen
-        name="Clinicas"
-        options={{
-          title: "Clínica",
+          title: "ClínicaInfo",
           headerRight: () => (
             <TouchableOpacity style={{ paddingRight: 20 }}>
               <Feather name="settings" size={25} color="#ffffffff" />
             </TouchableOpacity>
           )
         }}
-        component={Clinicas}
+        component={ClinicasInfo}
       />
 
     <Screen
@@ -128,23 +156,12 @@ export default function DrawerNavigator() {
         component={Profissionais}
       />
 
-    <Screen
-        name="Servicos"
-        options={{
-          title: "Serviços",
-          headerRight: () => (
-            <TouchableOpacity style={{ paddingRight: 20 }}>
-              <Feather name="plus-circle" size={27} color="#ffffffff" />
-            </TouchableOpacity>
-          )
-        }}
-        component={Servicos}
-      />
+    
 
     <Screen
         name="CadastrarVacinas"
         options={{
-          title: "Cadastrar"
+          title: "Cadastrar Vacinas"
         }}
         component={CadastrarVacinas}
       />
@@ -152,7 +169,7 @@ export default function DrawerNavigator() {
     <Screen
         name="CadastrarServicos"
         options={{
-          title: "Cadastrar"
+          title: "Cadastrar Serviços"
         }}
         component={CadastrarServicos}
       />
@@ -160,7 +177,7 @@ export default function DrawerNavigator() {
       <Screen
         name="CadastrarProfissionais"
         options={{
-          title: "Cadastrar"
+          title: "Cadastrar Profissionais"
         }}
         component={CadastrarProfissionais}
       />
@@ -181,10 +198,12 @@ export default function DrawerNavigator() {
     <Screen
         name="CadastrarAvaliacoes"
         options={{
-          title: "Cadastrar",
+          title: "Cadastrar Avalições",
         }}
         component={CadastrarAvaliacoes}
       />
+
+    
 
 
     <Screen

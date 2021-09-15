@@ -5,7 +5,8 @@ import {View, Image, Text, ScrollView, TouchableOpacity, ImageBackground, TextIn
 
 import styles from './styles';
 
-export default function CadastrarAvaliacoes({navigation}){
+export default function CadastrarAvaliacoes({navigation,route}){
+React.useEffect(()=>{console.log(route.params.teste);},[])
     return(
         <ScrollView style = {styles.container} >
             <View style = {styles.descricao}>

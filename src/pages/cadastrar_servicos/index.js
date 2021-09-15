@@ -4,7 +4,8 @@ import {View, Image, Text, ScrollView, TouchableOpacity, TextInput,ImageBackgrou
 
 import styles from './styles';
 
-export default function Servicos({navigation}){
+export default function Servicos({navigation,route}){
+React.useEffect(()=>{console.log(route.params.teste);},[])
     return(
         <ScrollView style = {styles.container} >
             <View style = {styles.descricao}>

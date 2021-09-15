@@ -4,7 +4,8 @@ import {View, Image, Text, ScrollView, TouchableOpacity, TextInput, ImageBackgro
 
 import styles from './styles';
 
-export default function CadastarVacinas({navigation}){
+export default function CadastarVacinas({navigation,route}){
+React.useEffect(()=>{console.log(route.params.teste);},[])
     return(
         <ScrollView style = {styles.container} >
             <View style = {styles.descricao}>

@@ -5,7 +5,7 @@ import { View, Image, Text, ScrollView, TouchableOpacity, ImageBackground, Scrol
 
 import styles from "./styles"
 
-export default function Clinicas({ navigation }) {
+export default function ClinicasInfo({ navigation }) {
   return (
     <ScrollView  style = {styles.containerClinica} >
 
