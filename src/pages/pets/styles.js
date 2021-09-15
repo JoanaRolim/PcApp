@@ -4,35 +4,22 @@ export default StyleSheet.create({
     container: {
         flex: 1,
     },
-    perfil:{
-        width: 100,
-        height: 98,
-        borderRadius: 50,
-        marginLeft: 35,
-        marginTop: 30
-    },
     headerText:{
-        width: 75,
-        height: 25,
-        marginLeft: 155,
-        marginTop: -80,
-        fontSize: 20,
+        marginLeft: 60,
+        marginTop: 40,
+        fontSize: 24,
         fontStyle: 'normal',
-        fontWeight: 'bold',
-        lineHeight: 25
+        fontWeight: 'bold'
     },
     headerBellow:{
-        width: 65,
-        height: 19,
-        marginLeft: 155,
+        marginLeft: 60,
         marginTop: 0,
         fontStyle: 'normal',
         fontWeight: 'normal',
-        fontSize: 15,
-        lineHeight: 19,
+        fontSize: 17,
     },
     descricao:{
-        marginTop: 74,
+        marginTop: 44,
     },
     detalhes:{
         borderRadius: 10,

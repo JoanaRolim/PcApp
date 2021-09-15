@@ -9,7 +9,6 @@ export default function Pets({navigation}){
     return(
         <ScrollView  style = {styles.container} >
             <View>
-            <Image source = {icone} style = {styles.perfil} />
                 <Text style = {styles.headerText}>
                     Pepita
                 </Text>
@@ -31,7 +30,7 @@ export default function Pets({navigation}){
                     
                     <TouchableOpacity 
                         style = {styles.icone} 
-                        onPress ={()=>{}} 
+                        onPress ={()=>{navigation.navigate("EditarPet")} } 
                     >
                         <Feather name = "edit" size = {24} color = "#000000" />
                    </TouchableOpacity>

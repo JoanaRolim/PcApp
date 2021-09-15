@@ -13,7 +13,7 @@ export default function DescricaoServicos({ navigation }) {
         <Text style = {styles.headerText}>
             Ecografia
         </Text>
-            <TouchableOpacity style = {styles.icone} onPress ={()=>{navigation.navigate("")}} >
+            <TouchableOpacity style = {styles.icone} onPress ={()=>{navigation.navigate("EditarServico")}} >
                 <Feather name = "edit" size = {19} color = "#000000" />
         </TouchableOpacity>
     </View>

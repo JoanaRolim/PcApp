@@ -12,7 +12,7 @@ export default function ClinicasInfo({ navigation }) {
     <View>
         <Text style = {styles.headerText}>
             Clínica 4 Patas  {" "}
-            <TouchableOpacity style = {styles.icone} onPress ={()=>{navigation.navigate("")}} >
+            <TouchableOpacity style = {styles.icone} onPress ={()=>{navigation.navigate("EditarClinica")}} >
                         <Feather name = "edit" size = {24} color = "#000000" />
         </TouchableOpacity>
         </Text>

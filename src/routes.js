@@ -7,8 +7,10 @@ const { Navigator, Screen } = createStackNavigator();
 // import DrawerNavigator from "./DrawerNavigator";
 import Login from "./pages/login/index";
 import Cadastro from "./pages/cadastro/index";
-import Infos from "./pages/infos/index";
+import Infos from "./pages/cadastrar_pet";
+import CadastrarClinica from "./pages/cadastrar_clinica";
 import DrawerNavigator from "./DrawerNavigator";
+
 
 import Perfil_pets from "./pages/perfil_pets";
 import Vacinas from "./pages/vacinas";
@@ -25,6 +27,11 @@ import Avaliacoes from "./pages/avaliacoes";
 import CadastrarAvaliacoes from "./pages/cadastrar_avaliacoes";
 import DescricaoServicos from "./pages/descricao_servicos";
 import Clinicas from "./pages/clininas";
+import EditarClinica from "./pages/editar_clinica";
+import EditarPet from "./pages/editar_pet";
+import EditarProfissional from "./pages/editar_profissional";
+import EditarServico from "./pages/editar_servico";
+import EditarVacina from "./pages/editar_vacina";
 
 export default function Routes() {
     return (
@@ -55,6 +62,11 @@ export default function Routes() {
                     options={{ headerShown: false }}
                     component={Cadastro}
                 />
+                  <Screen
+                    name="CadastrarClinica"
+                    options={{ headerShown: false }}
+                    component={CadastrarClinica}
+                />
                 <Screen
                     name="Infos"
                     options={{ headerShown: false }}
@@ -75,11 +87,27 @@ export default function Routes() {
                 />
 
                 <Screen
+                    name="EditarClinica"
+                    options={{
+                        title: "Clínica Informações",
+                    }}
+                    component={EditarClinica}
+                />
+
+                <Screen
                     name="Profissionais"
                     options={{
                         title: "Profissionais",
                     }}
                     component={Profissionais}
+                />
+
+                <Screen
+                    name="EditarProfissional"
+                    options={{
+                        title: "Editar Profissional",
+                    }}
+                    component={EditarProfissional}
                 />
 
                 <Screen
@@ -130,6 +158,15 @@ export default function Routes() {
                     component={DescricaoServicos}
                 />
 
+            <Screen
+                    name="EditarServico"
+                    options={{
+                        title: "Editar Serviço",
+                    }}
+                    component={EditarServico}
+                />
+
+
                 <Screen
                     name="Servicos"
                     options={{
@@ -153,6 +190,13 @@ export default function Routes() {
                     }}
                     component={Pets}
                 />
+                  <Screen
+                    name="EditarPet"
+                    options={{
+                        title: "Pet Informações",
+                    }}
+                    component={EditarPet}
+                />
 
                 <Screen
                     name="Vacinas"
@@ -161,6 +205,15 @@ export default function Routes() {
                     }}
                     component={Vacinas}
                 />
+
+                <Screen
+                    name="EditarVacina"
+                    options={{
+                        title: "Editar Vacina",
+                    }}
+                    component={EditarProfissional}
+                />
+
 
                 <Screen
                     name="Consultas"

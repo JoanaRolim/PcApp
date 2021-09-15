@@ -5,6 +5,7 @@ const { Navigator, Screen } = createDrawerNavigator();
 
 import Perfil_pets from "./pages/perfil_pets";
 import Clinicas from "./pages/clininas";
+import CadastrarClinica from "./pages/cadastrar_clinica";
 
 export default function DrawerNavigator() {
     return (
@@ -25,7 +26,8 @@ export default function DrawerNavigator() {
             }}
         >
             <Screen name="Perfil" component={Perfil_pets} />
-            <Screen name="Clinicas" component={Clinicas} />
+            <Screen name="Clínicas" component={Clinicas} />
+            <Screen name="CadastrarClinica" component={CadastrarClinica} />
         </Navigator>
     );
 }

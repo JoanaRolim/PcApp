@@ -29,7 +29,7 @@ export default function Vacinas({navigation}){
                     
                     <TouchableOpacity 
                         style = {styles.icone} 
-                        onPress = { () => {navigation.navigate("CadastrarVacinas", {teste:"teste"} )}}
+                        onPress = { () => {navigation.navigate("EditarVacina" )}}
                     >
                         <Feather name = "edit" size = {24} color = "#000000" />
                     </TouchableOpacity>
@@ -47,7 +47,7 @@ export default function Vacinas({navigation}){
                     
                     <TouchableOpacity 
                         style = {styles.icone} 
-                        onPress = { () => {navigation.navigate("CadastrarVacinas")}}
+                        onPress = { () => {navigation.navigate("EditarVacina")}}
                     >
                         <Feather name = "edit" size = {24} color = "#000000" />
                     </TouchableOpacity>

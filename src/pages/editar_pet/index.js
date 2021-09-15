@@ -8,7 +8,7 @@ import icone from "../../assets/icon.jpg"
 
 import styles from "./styles"
 
-export default function Infos({ navigation }) {
+export default function EditarPet({ navigation }) {
   const [name, setName] = useState();
   const [type, setType] = useState();
   const [breed, setBreed] = useState();
@@ -44,7 +44,7 @@ export default function Infos({ navigation }) {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Cadastrar Pet</Text>
+        <Text style={styles.headerText}>Editar Pet</Text>
       </View>
 
         <View onSubmit={handleSubmit}>
@@ -76,23 +76,16 @@ export default function Infos({ navigation }) {
                 <TextInput value={castracao} onChangeText={value => setCastracao(value)} style={styles.input} placeholder="Responda com Sim ou Não"  keyboardType="email-address" />
                 
               </View>
-              <View style={styles.containericon}>
-                <Text style={styles.containerinput}>Insira uma foto do seu Pet:</Text>
-                <TouchableOpacity style={styles.icon} onPress={() => {}}>
-                  <Feather name="plus-circle" size={21} color="#000000" />
-                </TouchableOpacity>
-              </View> 
+              
             </View>
           </View>
-
-          <View style={styles.containerfoto}>
-            <Image source={icone} style={styles.foto} />
-          </View>
-        
-          <TouchableOpacity style={styles.containerbutton} onPress = {() => navigation.navigate("Drawer")} type="submit">
+           
+          <TouchableOpacity style={styles.containerbutton} onPress = {() => navigation.navigate("Pets")} type="submit">
             <Text style={styles.button} >Salvar</Text>
             <Feather style={styles.chevron} name="chevron-right" size={40} color="black" />
           </TouchableOpacity>
+
+    
       </View>
     </ScrollView>
   )

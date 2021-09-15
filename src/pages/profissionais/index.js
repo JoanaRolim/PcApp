@@ -29,7 +29,7 @@ React.useLayoutEffect(()=>{
                     
                     <TouchableOpacity 
                         style = {styles.icone} 
-                        onPress = { () => {navigation.navigate("CadastrarProfissionais", {teste:"teste"} )}} 
+                        onPress = { () => {navigation.navigate("EditarProfissional", {teste:"teste"} )}} 
                     >
                         <Feather name = "edit" size = {24} color = "#000000" />
                     </TouchableOpacity>
@@ -46,7 +46,7 @@ React.useLayoutEffect(()=>{
                     
                     <TouchableOpacity 
                         style = {styles.icone} 
-                        onPress = { () => {navigation.navigate("CadastrarProfissionais")}} 
+                        onPress = { () => {navigation.navigate("EditarProfissional")}} 
                     >
                         <Feather name = "edit" size = {24} color = "#000000" />
                     </TouchableOpacity>
@@ -63,7 +63,7 @@ React.useLayoutEffect(()=>{
                     
                     <TouchableOpacity 
                         style = {styles.icone} 
-                        onPress = { () => {navigation.navigate("CadastrarProfissionais")}}
+                        onPress = { () => {navigation.navigate("EditarProfissional")}}
                     >
                         <Feather name = "edit" size = {24} color = "#000000" />
                     </TouchableOpacity>
