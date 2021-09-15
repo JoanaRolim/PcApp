@@ -211,7 +211,7 @@ export default function Routes() {
                     options={{
                         title: "Editar Vacina",
                     }}
-                    component={EditarProfissional}
+                    component={EditarVacina}
                 />
 
 
