@@ -13,18 +13,20 @@ import {
 import styles from "./styles";
 
 export default function Avaliacoes({ navigation }) {
+    React.useLayoutEffect(()=>{
+        navigation.setOptions({
+            headerRight: () => (
+                <TouchableOpacity onPress = {()=>{navigation.navigate("CadastrarAvaliacoes", {teste:null} )}} style={{ paddingRight: 20 }}>
+                  <Feather name="plus-circle" size={27} color="#ffffffff" />
+                </TouchableOpacity>
+              )
+        })
+    },[navigation])
+
     return (
         <ScrollView style={styles.container}>
             <View style={styles.descricao}>
                 <View style={styles.detalhes}>
-                    <TouchableOpacity
-                        style={styles.icone}
-                        onPress={() => {
-                            navigation.navigate("CadastrarAvaliacoes", {
-                                teste: null,
-                            });
-                        }}
-                    >
                         <View>
                             <Text style={styles.nome}>
                                 Camila Marques Rodriguez
@@ -38,16 +40,9 @@ export default function Avaliacoes({ navigation }) {
                         <FontAwesome name="star" size={15} color="black">
                             <Text style={styles.nota}>10</Text>
                         </FontAwesome>
-                    </TouchableOpacity>
                 </View>
 
                 <View style={styles.detalhes}>
-                    <TouchableOpacity
-                        style={styles.icone}
-                        onPress={() => {
-                            navigation.navigate("CadastrarAvaliacoes");
-                        }}
-                    >
                         <View>
                             <Text style={styles.nome}>Joana Pacheco Rolim</Text>
                             <Text style={styles.avaliacao}>
@@ -59,16 +54,9 @@ export default function Avaliacoes({ navigation }) {
                         <FontAwesome name="star" size={15} color="black">
                             <Text style={styles.nota}>5</Text>
                         </FontAwesome>
-                    </TouchableOpacity>
                 </View>
 
                 <View style={styles.detalhes}>
-                    <TouchableOpacity
-                        style={styles.icone}
-                        onPress={() => {
-                            navigation.navigate("CadastrarAvaliacoes");
-                        }}
-                    >
                         <View>
                             <Text style={styles.nome}>Ana Paula Merencia</Text>
                             <Text style={styles.avaliacao}>
@@ -81,7 +69,6 @@ export default function Avaliacoes({ navigation }) {
                         <FontAwesome name="star" size={15} color="black">
                             <Text style={styles.nota}>8</Text>
                         </FontAwesome>
-                    </TouchableOpacity>
                 </View>
             </View>
         </ScrollView>

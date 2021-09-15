@@ -79,9 +79,8 @@ export default function Cadastro({ navigation }) {
             <View style={styles.containertipo}>
               <Text style={styles.tipo}>Tipo de Usuário</Text>
               <DropDownPicker
-                value = {role}
-                setValue={value}
-                value={name} onChangeText={value => setRole(value)}
+                value = {value}
+                setValue={setValue}
                 open = {open}
                 setOpen = {setOpen}
                 items={[

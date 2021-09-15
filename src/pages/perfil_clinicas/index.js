@@ -19,9 +19,6 @@ export default function Perfil({navigation}){
             </View>
 
             <View style = {styles.menu} >
-                <TouchableOpacity onPress = { () => {navigation.navigate("Perfil_pets")} }>
-                    <Text style = {styles.text_menu} >Pets</Text>
-                </TouchableOpacity>
                 <TouchableOpacity>
                     <Text style = {styles.text_menu} >Clínicas</Text>
                 </TouchableOpacity>

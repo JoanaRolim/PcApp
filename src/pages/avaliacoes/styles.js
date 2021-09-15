@@ -21,7 +21,8 @@ export default StyleSheet.create({
     backgroundColor: "#FCFF78",
     marginTop: 15,
     padding: 25,
-    justifyContent: 'space-between',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     marginBottom: 10,
   },
   nome: {

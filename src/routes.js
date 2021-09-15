@@ -69,7 +69,7 @@ export default function Routes() {
                 <Screen
                     name="ClinicasInfo"
                     options={{
-                        title: "Clínica Info",
+                        title: "Clínica Informações",
                     }}
                     component={ClinicasInfo}
                 />
