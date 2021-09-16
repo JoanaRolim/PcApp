@@ -8,7 +8,6 @@ const { Navigator, Screen } = createStackNavigator();
 import Login from "./pages/login/index";
 import Cadastro from "./pages/cadastro/index";
 import Infos from "./pages/cadastrar_pet";
-import CadastrarClinica from "./pages/cadastrar_clinica";
 import DrawerNavigator from "./DrawerNavigator";
 
 
@@ -20,6 +19,7 @@ import Pets from "./pages/pets";
 import Perfil_clinicas from "./pages/perfil_clinicas";
 import Profissionais from "./pages/profissionais";
 import Servicos from "./pages/servicos";
+import CadastrarClinica from "./pages/cadastrar_clinica";
 import CadastrarVacinas from "./pages/cadastrar_vacinas";
 import CadastrarServicos from "./pages/cadastrar_servicos";
 import CadastrarProfissionais from "./pages/cadastrar_profissionais";
@@ -62,11 +62,7 @@ export default function Routes() {
                     options={{ headerShown: false }}
                     component={Cadastro}
                 />
-                  <Screen
-                    name="CadastrarClinica"
-                    options={{ headerShown: false }}
-                    component={CadastrarClinica}
-                />
+            
                 <Screen
                     name="Infos"
                     options={{ headerShown: false }}
@@ -178,9 +174,18 @@ export default function Routes() {
                 <Screen
                     name="Clinicas_perfil"
                     options={{
-                        title: "Clinicas",
+                        title: "Clínicas",
                     }}
                     component={Perfil_clinicas}
+                ></Screen>
+
+
+                <Screen
+                    name="CadastrarClinica"
+                    options={{
+                        title: "Cadastrar Clínica",
+                    }}
+                    component={CadastrarClinica}
                 ></Screen>
 
                 <Screen
@@ -193,7 +198,7 @@ export default function Routes() {
                   <Screen
                     name="EditarPet"
                     options={{
-                        title: "Pet Informações",
+                        title: "Informações Pet",
                     }}
                     component={EditarPet}
                 />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Feather} from '@expo/vector-icons';
 import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native';
 
@@ -6,8 +6,53 @@ import icone from '../../assets/perfil.png';
 
 import styles from './styles';
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import api from '../../services/api';
+import { useIsFocused } from '@react-navigation/core';
 
 export default function Perfil({navigation}){
+    const [token, setToken] = useState('');
+    const [id, setId] = useState('');
+    const [clinicas, setClinicas] = useState([]);
+    const isFocused = useIsFocused();
+
+    async function onInit(){
+      const storageToken = await AsyncStorage.getItem('token');
+      setToken(storageToken);
+
+      getClinicas();
+}
+
+    async function getClinicas(){
+        const storageId = await AsyncStorage.getItem('id');
+        setId(storageId);
+        try{
+            const response = await api.get(`user/${storageId}/clinics`)
+
+            setClinicas(response.data.data)
+            console.log(clinicas)
+            console.log(response.data);
+
+        }catch(e){
+          console.log(e.response.data);
+        }
+    }
+
+    useEffect(() => {
+        onInit()
+    },[isFocused])
+
+    React.useLayoutEffect(()=>{
+        navigation.setOptions({
+            headerRight: () => (
+                <TouchableOpacity onPress = {()=>{navigation.navigate("CadastrarClinica", {teste:null} )}} style={{ paddingRight: 20 }}>
+                  <Feather name="plus-circle" size={27} color="#ffffffff" />
+                </TouchableOpacity>
+              )
+        })
+    },[navigation])
+
+
     return(
         <ScrollView  style = {styles.container} >
                  <View style={styles.containerFoto}>
@@ -24,41 +69,26 @@ export default function Perfil({navigation}){
                 </TouchableOpacity>
             </View>
 
-            <View style = {styles.pets}>
+           { clinicas.length > 0 ? clinicas.map(clinica=> ( 
+           <View style = {styles.pets}>
                 <View style = {styles.pets_text} >
                     <Text style = {styles.text_nome} >
-                        4 patas
+                       {clinica.name}
                     </Text>
                     <Text style = {styles.text_infos}>
-                        Av. República Argentina, 54 - Vila Militar, Foz do Iguaçu - PR
+                       {clinica.address}
                     </Text>
                 </View>
-                <View style = {styles.list}>
+                <View >
                     <TouchableOpacity onPress = { () => {navigation.navigate("ClinicasInfo")} } >
-                        <View>
-                            <Feather style = {styles.icone}  name="more-vertical" size={23} color="black" />
+                        <View style = {styles.list}>
+                            <Feather style = {styles.icone} name="more-vertical" size={23} color="black" />
                         </View>
                     </TouchableOpacity>
                 </View>
-            </View>
+            </View> 
+            )) : <Text style = {styles.list}> Sem clínicas cadastradas.</Text> }
 
-            <View style = {styles.pets}>
-                <View style = {styles.pets_text} >
-                    <Text style = {styles.text_nome} >
-                        Dogs and Cats
-                    </Text>
-                    <Text style = {styles.text_infos}>
-                        Av. Costa e Silva, 70 - Parque Presidente, Foz do Iguaçu - PR
-                    </Text>
-                </View>
-                <View style = {styles.list}>
-                    <TouchableOpacity onPress = { () => {navigation.navigate("ClinicasInfo")}} >
-                        <View>
-                            <Feather style = {styles.icone}  name="more-vertical" size={23} color="black" />
-                        </View>
-                    </TouchableOpacity>
-                </View>
-            </View>
 
         </ScrollView>
     );

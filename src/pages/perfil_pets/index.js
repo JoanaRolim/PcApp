@@ -39,6 +39,16 @@ export default function Perfil({navigation}){
         onInit()
     },[isFocused])
 
+    React.useLayoutEffect(()=>{
+        navigation.setOptions({
+            headerRight: () => (
+                <TouchableOpacity onPress = {()=>{navigation.navigate("Infos", {teste:null} )}} style={{ paddingRight: 20 }}>
+                  <Feather name="plus-circle" size={27} color="#ffffffff" />
+                </TouchableOpacity>
+              )
+        })
+    },[navigation])
+
     return(
         <ScrollView  style = {styles.container} >
             <View style={styles.containerFoto}>
@@ -57,7 +67,7 @@ export default function Perfil({navigation}){
                 </TouchableOpacity>
             </View>
 
-         {pets.length > 0 && pets.map(pet=> (
+         {pets.length > 0 ? pets.map(pet=> (
          <View key={pet._id} style = {styles.pets}>
            
            <View style = {styles.pets_text} >
@@ -65,7 +75,7 @@ export default function Perfil({navigation}){
                 {pet.name}
                </Text>
                <Text style = {styles.text_idade}>
-                  {pet.age} anos
+                  {pet.breed} 
                </Text>
            </View>
            <View style = {styles.list}>
@@ -75,7 +85,7 @@ export default function Perfil({navigation}){
                    </View>
                </TouchableOpacity>
            </View>
-       </View>)) }
+       </View>)) : <Text style = {styles.list}> Sem pets cadastrados.</Text> }
 
 
         </ScrollView>

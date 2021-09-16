@@ -38,6 +38,7 @@ export default StyleSheet.create({
     borderRadius: 180
   },
   containerbutton: {
+    marginTop: 159,
     paddingTop: 20,
     backgroundColor: "#7AE8C7",
     paddingBottom: 30,

@@ -49,11 +49,12 @@ export default StyleSheet.create({
         fontStyle: "normal"
     },
     icone: {
-        alignContent: "center",
-        alignSelf: 'center'
+      
     },
     list: {
         alignSelf: 'center',
+        flexDirection: "row",
+        justifyContent: "space-between"
     },
     foto: {
       borderRadius: 200,

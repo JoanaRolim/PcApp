@@ -27,7 +27,6 @@ export default function DrawerNavigator() {
         >
             <Screen name="Perfil" component={Perfil_pets} />
             <Screen name="Clínicas" component={Clinicas} />
-            <Screen name="CadastrarClinica" component={CadastrarClinica} />
         </Navigator>
     );
 }

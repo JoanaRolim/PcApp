@@ -4,9 +4,11 @@ import api from '../../services/api';
 import { Feather } from "@expo/vector-icons"
 import { View, TextInput, Text, ScrollView, Button, Image, TouchableOpacity } from "react-native"
 
-import icone from "../../assets/icon.jpg"
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useIsFocused } from '@react-navigation/core';
 
 import styles from "./styles"
+import { add } from "react-native-reanimated";
 
 export default function Infos({ navigation }) {
   const [name, setName] = useState();
@@ -18,28 +20,21 @@ export default function Infos({ navigation }) {
   const [allergy, setAllergy] = useState();
   const [castracao, setCastracao] = useState();
 
-  const history = useHistory();
- // const token = localStorage.getItem('token');
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-     await api.post('pet/create', { name, type, breed, age, weight, height, allergy, castracao }, {
-   /*  headers: {
-      Authorization: 'Bearer ' + token
-     } */
-    });
-      alert('Pet cadastrado com sucesso!');
-      
-     // history.push('/newuser');
+  async function addPet() {
     try {
+     const response = await api.post('pet/create');
+           if (response.data) {
+            await AsyncStorage.setItem('id', response.data.id);
+            await AsyncStorage.setItem('token', response.data.token);
+    
+           navigation.navigate("Drawer");
+           }
+
     } catch (e) {
       console.log('Erro ao tentar cadastrar pet! Por favor, tente novamente.');
     }
   }
-
-  /*function test(){
-    console.log( { name, type, breed, age, weight, height, allergy, castracao })
-  }*/
 
   return (
     <ScrollView style={styles.container}>
@@ -47,7 +42,7 @@ export default function Infos({ navigation }) {
         <Text style={styles.headerText}>Cadastrar Pet</Text>
       </View>
 
-        <View style={styles.descricao} onSubmit={handleSubmit}>
+        <View style={styles.descricao}>
                 <Text style={styles.containerinput}>Nome:</Text>
                 <TextInput value={name} onChangeText={value => setName(value)} style={styles.input} placeholder="Exemplo: Pepita, Bolinha..." keyboardType="email-address" />
 
@@ -72,12 +67,15 @@ export default function Infos({ navigation }) {
                 <Text style={styles.containerinput}>Castração:</Text>
                 <TextInput value={castracao} onChangeText={value => setCastracao(value)} style={styles.input} placeholder="Responda com Sim ou Não"  keyboardType="email-address" />
            
-      </View>
-      <TouchableOpacity style={styles.containerbutton} onPress = {() => navigation.navigate("Drawer")} type="submit">
+      <TouchableOpacity style={styles.containerbutton}  
+            onPress={() => {
+               addPet()
+              }}
+              type="submit">
             <Text style={styles.button} >Salvar</Text>
             <Feather style={styles.chevron} name="chevron-right" size={40} color="black" />
           </TouchableOpacity>
-
+          </View>
     </ScrollView>
   )
 }
