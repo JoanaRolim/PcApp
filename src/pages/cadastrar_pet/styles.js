@@ -11,6 +11,10 @@ export default StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#086281"
   },
+  container: {
+    flex: 1,
+    height: "100%"
+  },
   headerText: {
     fontSize: 30,
     color: "#ffffff"
@@ -19,7 +23,6 @@ export default StyleSheet.create({
     margin: 24,
     lineHeight: 30
   },
-  detalhes: {},
   containerinput: {
     padding: 10,
     fontSize: 20
@@ -39,6 +42,7 @@ export default StyleSheet.create({
   },
   containerbutton: {
     paddingTop: 20,
+    marginTop: 159,
     backgroundColor: "#7AE8C7",
     paddingBottom: 20,
     width: "100%",

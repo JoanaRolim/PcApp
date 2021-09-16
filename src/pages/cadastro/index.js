@@ -5,7 +5,6 @@ import SelectDropdown from "react-native-select-dropdown"
 import DropDownPicker from "react-native-dropdown-picker"
 import styles from "./styles"
 import background from "../../assets/icon.png"
-import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
 
 export default function Cadastro({ navigation }) {
@@ -19,15 +18,13 @@ export default function Cadastro({ navigation }) {
   const [password, setPassword] = useState();
   const [role, setRole] = useState();
 
-  const history = useHistory();
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+  async function handleSubmit() {
       await api.post('user/create', { name, email, password, role });
 
       alert('Cadastro realizado com sucesso!');
 
-     // history.push('/login'); ->>>>NAO SEIIIIIIIIIII
+     // history.push('/login'); 
     try {
     } catch (e) {
       console.log('Erro ao tentar cadastrar! Por favor, tente novamente.');

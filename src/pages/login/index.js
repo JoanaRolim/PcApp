@@ -3,8 +3,8 @@ import { View, Image, Text, TextInput, TouchableOpacity, Button } from "react-na
 import styles from "./styles"
 import background from "../../assets/icon.png"
 import { Feather } from "@expo/vector-icons"
-import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login({ navigation }) {
   const [input, setInput] = useState("")
@@ -12,23 +12,23 @@ export default function Login({ navigation }) {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const history = useHistory();
   
-    async function handleSubmit(e) {
-      e.preventDefault();
-      const response = await api.post('adminauth/login/login', { email, password });
+    async function handleSubmit() {
+      try {
+         
+      const response = await api.post('auth/login', { email, password });
       if (response.data) {
-        localStorage.setItem('email', response.data.name);
-        localStorage.setItem('id', response.data.id);
-        localStorage.setItem('role', response.data.role);
-  
-       // history.push('/');
+        await AsyncStorage.setItem('email', response.data.name);
+        await AsyncStorage.setItem('id', response.data.id);
+        await AsyncStorage.setItem('role', response.data.role);
+        await AsyncStorage.setItem('token', response.data.token);
+
+       navigation.navigate("Drawer");
       } else {
         console.log('Usuário/Senha incorreto.');
       }
-      try {
       } catch (e) {
-        console.log('There was a problem.');
+        console.log(e);
       }
     }
 
@@ -43,7 +43,7 @@ export default function Login({ navigation }) {
           <Text style={styles.mensagem}>Login</Text>
         </View>
 
-        <View onSubmit={handleSubmit} >
+        <View>
           <View style={styles.containeremailsenha}>
             <View style={styles.containeremail}>
               <Text style={styles.email}>Email</Text>
@@ -72,7 +72,7 @@ export default function Login({ navigation }) {
               size="50"
               color="white"
               onPress={() => {
-                navigation.navigate("Drawer")
+               handleSubmit()
               }}
               type="submit"
             />

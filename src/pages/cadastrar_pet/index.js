@@ -47,10 +47,7 @@ export default function Infos({ navigation }) {
         <Text style={styles.headerText}>Cadastrar Pet</Text>
       </View>
 
-        <View onSubmit={handleSubmit}>
-          <View style={styles.descricao}>
-            <View style={styles.detalhes}>
-              <View>
+        <View style={styles.descricao} onSubmit={handleSubmit}>
                 <Text style={styles.containerinput}>Nome:</Text>
                 <TextInput value={name} onChangeText={value => setName(value)} style={styles.input} placeholder="Exemplo: Pepita, Bolinha..." keyboardType="email-address" />
 
@@ -74,19 +71,13 @@ export default function Infos({ navigation }) {
 
                 <Text style={styles.containerinput}>Castração:</Text>
                 <TextInput value={castracao} onChangeText={value => setCastracao(value)} style={styles.input} placeholder="Responda com Sim ou Não"  keyboardType="email-address" />
-                
-              </View>
-              
-            </View>
-          </View>
            
-          <TouchableOpacity style={styles.containerbutton} onPress = {() => navigation.navigate("Drawer")} type="submit">
+      </View>
+      <TouchableOpacity style={styles.containerbutton} onPress = {() => navigation.navigate("Drawer")} type="submit">
             <Text style={styles.button} >Salvar</Text>
             <Feather style={styles.chevron} name="chevron-right" size={40} color="black" />
           </TouchableOpacity>
 
-    
-      </View>
     </ScrollView>
   )
 }

@@ -10,9 +10,6 @@ export default function CadastrarClinica({ navigation }) {
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Cadastrar Clínica</Text>
-      </View>
 
         <View>
           <View style={styles.descricao}>

@@ -43,10 +43,6 @@ export default function EditarPet({ navigation }) {
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Editar Pet</Text>
-      </View>
-
         <View onSubmit={handleSubmit}>
           <View style={styles.descricao}>
             <View style={styles.detalhes}>
