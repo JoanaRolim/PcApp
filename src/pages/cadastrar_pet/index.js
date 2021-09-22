@@ -58,7 +58,7 @@ export default function Infos({ navigation }) {
       } catch (e) {
         console.log(e);
       }
-    }else console.log("Usuário não pode cadastrar clínica")
+    }else console.log("Usuário não tem permissão para cadastrar clínica")
 }
       useEffect(() => {
         addPet()
