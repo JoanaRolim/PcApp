@@ -15,6 +15,7 @@ export default function Perfil({navigation}){
     const [id, setId] = useState('');
     const [clinicas, setClinicas] = useState([]);
     const isFocused = useIsFocused();
+    const [name, setName] = useState('')
 
     async function onInit(){
       const storageToken = await AsyncStorage.getItem('token');
@@ -26,12 +27,18 @@ export default function Perfil({navigation}){
     async function getClinicas(){
         const storageId = await AsyncStorage.getItem('id');
         setId(storageId);
+
+        const user = await AsyncStorage.getItem('name');
+        setName(user)
+
         try{
             const response = await api.get(`user/${storageId}/clinics`)
-
+            
             setClinicas(response.data.data)
             console.log(clinicas)
             console.log(response.data);
+            console.log(storageId)
+
 
         }catch(e){
           console.log(e.response.data);
@@ -60,7 +67,7 @@ export default function Perfil({navigation}){
           </View> 
             
             <View style = {styles.nome_usuario} >
-                <Text style = {styles.text_nome_usuario} >Lady Gaga</Text>
+                <Text style = {styles.text_nome_usuario} >{name}</Text>
             </View>
 
             <View style = {styles.menu} >
@@ -69,14 +76,15 @@ export default function Perfil({navigation}){
                 </TouchableOpacity>
             </View>
 
+
            { clinicas.length > 0 ? clinicas.map(clinica=> ( 
-           <View style = {styles.pets}>
-                <View style = {styles.pets_text} >
+           <View key={clinica._id} style = {styles.pets}>
+                <View style = {styles.clinica_text} >
                     <Text style = {styles.text_nome} >
                        {clinica.name}
                     </Text>
                     <Text style = {styles.text_infos}>
-                       {clinica.address}
+                       {clinica.address}{","} {clinica.cidade}{","} {clinica.estado} {'   '}
                     </Text>
                 </View>
                 <View >
@@ -87,7 +95,7 @@ export default function Perfil({navigation}){
                     </TouchableOpacity>
                 </View>
             </View> 
-            )) : <Text style = {styles.list}> Sem clínicas cadastradas.</Text> }
+            )) : <Text style = {styles.list}> Sem clínicas cadastradas.</Text> } 
 
 
         </ScrollView>

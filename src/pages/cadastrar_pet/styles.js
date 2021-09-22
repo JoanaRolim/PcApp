@@ -33,7 +33,9 @@ export default StyleSheet.create({
     marginRight: 10,
     width: 360,
     height: 24,
-    backgroundColor: "#E8E6E6"
+    backgroundColor: "#E8E6E6",
+    borderRadius: 5,
+    height: 40
   },
   foto: {
     padding: 5,
@@ -42,9 +44,9 @@ export default StyleSheet.create({
   },
   containerbutton: {
     paddingTop: 20,
-    marginTop: 159,
+    marginTop: 40,
     backgroundColor: "#7AE8C7",
-    paddingBottom: 20,
+    paddingBottom: 30,
     width: "100%",
     alignItems: "center",
     alignContent: "center",
@@ -58,6 +60,15 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     color: "black"
+  },
+  selector: {
+    borderRadius: 5,
+    backgroundColor: "#E8E6E6",
+    padding: 10,
+    height: 40,
+    color: "black",
+    zIndex: 1,
+    bottom: 5
   }
   
 })

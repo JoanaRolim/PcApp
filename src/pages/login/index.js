@@ -18,10 +18,10 @@ export default function Login({ navigation }) {
          
       const response = await api.post('auth/login', { email, password });
       if (response.data) {
-        await AsyncStorage.setItem('email', response.data.name);
         await AsyncStorage.setItem('id', response.data.id);
         await AsyncStorage.setItem('role', response.data.role);
         await AsyncStorage.setItem('token', response.data.token);
+        await AsyncStorage.setItem('name', response.data.name)
 
        navigation.navigate("Drawer");
       } else {

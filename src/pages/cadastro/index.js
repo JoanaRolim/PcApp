@@ -20,12 +20,8 @@ export default function Cadastro({ navigation }) {
 
 
   async function handleSubmit() {
-      await api.post('user/create', { name, email, password, role });
-
-      alert('Cadastro realizado com sucesso!');
-
-     // history.push('/login'); 
     try {
+      await api.post('user/create', { name, email, password, role });
     } catch (e) {
       console.log('Erro ao tentar cadastrar! Por favor, tente novamente.');
     }
@@ -81,8 +77,8 @@ export default function Cadastro({ navigation }) {
                 open = {open}
                 setOpen = {setOpen}
                 items={[
-                  { label: "Usuário", value: "item1" },
-                  { label: "Dono de Clínica", value: "item2" }
+                  { label: "Usuário", value: "user" },
+                  { label: "Dono de Clínica", value: "clinicOwner" }
                 ]}
                 style={styles.selector}
                 placeholder="Selecione"
@@ -99,8 +95,9 @@ export default function Cadastro({ navigation }) {
               color="#000000"
               type="submit"
               onPress={() => {
-                navigation.navigate("Infos")
-              }}
+                handleSubmit()
+               }}
+               type="submit"
             />
           </View>
         </View>

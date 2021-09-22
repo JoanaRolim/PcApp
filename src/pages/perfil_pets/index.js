@@ -13,17 +13,22 @@ export default function Perfil({navigation}){
     const [id, setId] = useState('');
     const [pets, setPets] = useState([ ]);
     const isFocused = useIsFocused();
+    const [name, setName] = useState('');
 
     async function onInit(){
       const storageToken = await AsyncStorage.getItem('token');
       setToken(storageToken);
 
-      getPets();
+      await getPets();
 }
 
     async function getPets(){
         const storageId = await AsyncStorage.getItem('id');
         setId(storageId);
+
+        const user = await AsyncStorage.getItem('name');
+        setName(user)
+        
         try{
             const response = await api.get(`user/${storageId}/pets`)
 
@@ -55,7 +60,7 @@ export default function Perfil({navigation}){
                 <Image source={icone} style={styles.foto} />
             </View> 
             <View style = {styles.nome_usuario} >
-                <Text style = {styles.text_nome_usuario} >Lady Gaga</Text>
+                <Text style = {styles.text_nome_usuario} >{name}</Text>
             </View>
 
             <View style = {styles.menu} >

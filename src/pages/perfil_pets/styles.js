@@ -34,7 +34,7 @@ export default StyleSheet.create({
         borderRadius: 10,
         marginLeft: 28,
         flexDirection: 'row',
-        padding: 15,
+        padding: 15
     },
     text_nome: {
       marginLeft: 22,
@@ -50,14 +50,15 @@ export default StyleSheet.create({
         fontWeight:"500",
     },
     icone: {
-        flexDirection: 'row',
-        marginLeft: 250,
+        display: 'flex',
+        width: "100%"
+        
     },
     list: {
         alignSelf: 'center',
     },
     pets_text: {
-        
+        width: "90%"
     },
     foto: {
       borderRadius: 200,

@@ -48,13 +48,17 @@ export default StyleSheet.create({
         fontWeight: "normal",
         fontStyle: "normal"
     },
-    icone: {
-      
+    clinica_text: {
+      width: "95%"
     },
     list: {
         alignSelf: 'center',
         flexDirection: "row",
         justifyContent: "space-between"
+    },
+    icone: {
+      display: 'flex',
+      width: "100%"
     },
     foto: {
       borderRadius: 200,

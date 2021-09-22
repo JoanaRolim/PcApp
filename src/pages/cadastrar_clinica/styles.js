@@ -30,7 +30,9 @@ export default StyleSheet.create({
     marginRight: 10,
     width: 360,
     height: 24,
-    backgroundColor: "#E8E6E6"
+    backgroundColor: "#E8E6E6",
+    borderRadius: 5,
+    height: 40
   },
   foto: {
     padding: 5,
@@ -38,7 +40,7 @@ export default StyleSheet.create({
     borderRadius: 180
   },
   containerbutton: {
-    marginTop: 159,
+    marginTop: 40,
     paddingTop: 20,
     backgroundColor: "#7AE8C7",
     paddingBottom: 30,
