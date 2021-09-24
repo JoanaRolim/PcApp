@@ -1,10 +1,46 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import { Feather} from '@expo/vector-icons';
 import {View, Image, Text, ScrollView, TouchableOpacity, ImageBackground} from 'react-native';
 
-import styles from './styles';
+import api from '../../services/api';
+import styles from "./styles"
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useIsFocused } from '@react-navigation/core';
 
 export default function Profissionais({navigation}){
+
+        const [token, setToken] = useState('');
+        const [vets, setVets] = useState([]);
+        const isFocused = useIsFocused();
+        const [name, setName] = useState('')
+        const [clinicName, setClinicName] = useState('') 
+    
+        async function onInit(){
+          const storageToken = await AsyncStorage.getItem('token');
+          setToken(storageToken);
+
+          const storageName = await AsyncStorage.getItem('clinicName');
+          setClinicName(storageName);
+    
+          getVets();
+    }
+    
+        async function getVets(){
+            const storageId = await AsyncStorage.getItem('clinicId');
+        
+            try{
+                const response = await api.get(`clinic/${storageId}/vets`)
+                setVets(response.data.data)
+    
+            }catch(e){
+              console.log(e.response.data);
+            }
+        }
+    
+        useEffect(() => {
+            onInit()
+        },[isFocused])
+
 React.useLayoutEffect(()=>{
     navigation.setOptions({
         headerRight: () => (
@@ -19,60 +55,23 @@ React.useLayoutEffect(()=>{
         <ScrollView style = {styles.container} >
             <View style = {styles.descricao}>
 
+                    {vets.length > 0 ? vets.map(vet=> (
                 <View style = {styles.detalhes}>
-                    
-                    <View>
-                        <Text style = {styles.nome}>Marcela Rocha</Text>
-                        <Text style = {styles.crm}>CRM: 1234567890</Text>
-                        <Text style = {styles.local}>Clínica 4 Patas</Text>
+                    <View key={vet._id}>
+                        <Text style = {styles.nome}>{vet.name}</Text>
+                        <Text style = {styles.crm}>CRMV: {vet.crmv}</Text>
+                        <Text style = {styles.local}>{clinicName}</Text>
                     </View>
                     
                     <TouchableOpacity 
-                        style = {styles.icone} 
-                        onPress = { () => {navigation.navigate("EditarProfissional", {teste:"teste"} )}} 
-                    >
-                        <Feather name = "edit" size = {24} color = "#000000" />
-                    </TouchableOpacity>
-
-                </View>
-
-                <View style = {styles.detalhes}>
-                    
-                    <View>
-                        <Text style = {styles.nome}>Rodrigo Martelli de Souza</Text>
-                        <Text style = {styles.crm}>CRM: 1234567890</Text>
-                        <Text style = {styles.local}>Clínica Latidos e Miados</Text>
-                    </View>
-                    
-                    <TouchableOpacity 
-                        style = {styles.icone} 
-                        onPress = { () => {navigation.navigate("EditarProfissional")}} 
-                    >
-                        <Feather name = "edit" size = {24} color = "#000000" />
-                    </TouchableOpacity>
-
-                </View>
-
-                <View style = {styles.detalhes}>
-                    
-                    <View>
-                        <Text style = {styles.nome}>Alice Rodrigues Morati</Text>
-                        <Text style = {styles.crm}>CRM: 1234567890</Text>
-                        <Text style = {styles.local}>PetShop Animais Amigos</Text>
-                    </View>
-                    
-                    <TouchableOpacity 
-                        style = {styles.icone} 
-                        onPress = { () => {navigation.navigate("EditarProfissional")}}
-                    >
-                        <Feather name = "edit" size = {24} color = "#000000" />
-                    </TouchableOpacity>
-
-                </View>
-
-
-            
-
+                                      style = {styles.icone} 
+                                      onPress = { () => {navigation.navigate("EditarProfissional", {teste:"teste"} )}} 
+                                  >
+                                      <Feather name = "edit" size = {24} color = "#000000" />
+                                  </TouchableOpacity>
+                                  </View>
+                                  )) :  <Text>Sem profissionais cadastrados.</Text>
+                    }
             </View>
         </ScrollView>
     );

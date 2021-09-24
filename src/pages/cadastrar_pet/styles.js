@@ -32,10 +32,11 @@ export default StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     width: 360,
-    height: 24,
     backgroundColor: "#E8E6E6",
     borderRadius: 5,
-    height: 40
+    borderColor: "gray",
+    height: 40,
+    paddingLeft: 7
   },
   foto: {
     padding: 5,
@@ -68,7 +69,8 @@ export default StyleSheet.create({
     height: 40,
     color: "black",
     zIndex: 1,
-    bottom: 5
+    bottom: 5,
+    borderColor: "gray"
   }
   
 })

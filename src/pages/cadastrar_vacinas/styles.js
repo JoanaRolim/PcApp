@@ -66,5 +66,20 @@ export default StyleSheet.create({
   },
   icon: {
     marginTop: 12
+  },
+  input: {
+    fontSize: 17,
+    marginBottom: 24,
+    backgroundColor: "#E8E6E6",
+    borderWidth: 1,
+    width: 320,
+    height: 36,
+    borderRadius: 10,
+    borderColor: "gray",
+    paddingLeft: 7
+  },
+  inputTitle: {
+    fontSize: 17,
+    marginBottom: 5,
   }
 })

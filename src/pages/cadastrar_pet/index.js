@@ -9,7 +9,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useIsFocused } from '@react-navigation/core';
 
 import styles from "./styles"
-import { add } from "react-native-reanimated";
 
 import {
    KeyboardAvoidingView,
@@ -48,7 +47,7 @@ export default function Infos({ navigation }) {
       castracao,
       user
     }
-    if(role === 'clinicOwner'){
+ 
       try {
       const response = await api.post('pet/create', data);
             if (response.data) {
@@ -58,7 +57,6 @@ export default function Infos({ navigation }) {
       } catch (e) {
         console.log(e);
       }
-    }else console.log("Usuário não tem permissão para cadastrar clínica")
 }
       useEffect(() => {
         addPet()

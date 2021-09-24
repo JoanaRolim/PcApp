@@ -1,31 +1,61 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import { Feather} from '@expo/vector-icons';
 import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native';
 
-import icone from '../../assets/icon.jpg';
-import styles from './styles';
+import api from '../../services/api';
+import styles from "./styles"
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useIsFocused } from '@react-navigation/core';
 
 export default function Pets({navigation}){
+    const [token, setToken] = useState('');
+    const [pet, setPet] = useState([]);
+    const isFocused = useIsFocused();
+    const [name, setName] = useState('')
+
+    async function onInit(){
+      const storageToken = await AsyncStorage.getItem('token');
+      setToken(storageToken);
+
+      getPet();
+}
+
+    async function getPet(){
+        const storageId = await AsyncStorage.getItem('petId');
+    
+        try{
+            const response = await api.get(`pet/${storageId}`)
+            setPet(response.data.data)
+
+        }catch(e){
+          console.log(e.response.data);
+        }
+    }
+
+    useEffect(() => {
+        onInit()
+    },[isFocused])
+
     return(
         <ScrollView  style = {styles.container} >
             <View>
                 <Text style = {styles.headerText}>
-                    Pepita
+                    {pet.name}
                 </Text>
                 <Text style = {styles.headerBellow}>
-                   Cachorro
+                   {pet.breed}
                 </Text>
             </View>
             <View style = {styles.descricao}>
                 <View style = {styles.detalhes}>
                     
                     <View>
-                        <Text style = {styles.raca}>Raça: Vira-lata</Text>
-                        <Text style = {styles.idade}>Idade: 5 anos</Text>
-                        <Text style = {styles.peso}>Peso: 3 kg</Text>
-                        <Text style = {styles.altura}>Altura: 50 cm</Text>
-                        <Text style = {styles.alergia}>Alergias: Ibuprofeno</Text>
-                        <Text style = {styles.castracao}>Castração: Sim</Text>
+                        <Text style = {styles.raca}>Raça: {pet.breed}</Text>
+                        <Text style = {styles.idade}>Idade: {pet.age} anos </Text>
+                        <Text style = {styles.peso}>Peso: {pet.weight} kg</Text>
+                        <Text style = {styles.altura}>Altura: {pet.height} cm</Text>
+                        <Text style = {styles.alergia}>Alergias: {pet.allergy}</Text>
+                        <Text style = {styles.castracao}>Castração: {pet.castracao}</Text>
                     </View>
                     
                     <TouchableOpacity 

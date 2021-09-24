@@ -46,7 +46,7 @@ export default StyleSheet.create({
     marginBottom: 24
   },
     containerbutton: {
-    marginTop: 455,
+    marginTop: 200,
     backgroundColor: "#086281",
     width: "100%",
     paddingTop: 20,
@@ -71,5 +71,31 @@ export default StyleSheet.create({
   },
   icon: {
     marginTop: 12
-  }
+  },
+  input: {
+    fontSize: 17,
+    marginBottom: 24,
+    backgroundColor: "#E8E6E6",
+    borderWidth: 1,
+    width: 320,
+    height: 36,
+    borderRadius: 10,
+    borderColor: "gray",
+    paddingLeft: 7
+  },
+  inputTitle: {
+    fontSize: 17,
+    marginBottom: 5,
+  },
+  selector: {
+    backgroundColor: "#E8E6E6",
+    borderRadius: 10,
+    padding: 5,
+    width: 266,
+    height: 40,
+    color: "black",
+    width: "100%",
+    zIndex: 1,
+    borderColor: "gray",
+  },
 })

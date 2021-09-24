@@ -1,19 +1,65 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import { Feather} from '@expo/vector-icons';
 import {View, Image, Text, ScrollView, TouchableOpacity, ImageBackground} from 'react-native';
+    
+import api from '../../services/api';
+import styles from "./styles"
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useIsFocused } from '@react-navigation/core';
 
-import styles from './styles';
+export default function Servicos({navigation}){    
+    const [token, setToken] = useState('');
+    const [services, setServices] = useState([]);
+    const isFocused = useIsFocused();
+    const [name, setName] = useState('')
+    const [clinicName, setClinicName] = useState('') 
+        
+  async function onInit(){
+      const storageToken = await AsyncStorage.getItem('token');
+      setToken(storageToken);
+    
+      const storageName = await AsyncStorage.getItem('clinicName');
+      setClinicName(storageName);
+        
+        getServices();
+        }
+        
+    async function getServices(){
+      const storageId = await AsyncStorage.getItem('clinicId');
+            
+        try{
+            const response = await api.get(`clinic/${storageId}/services`)
+            setServices(response.data.data)
+        
+        }catch(e){
+           console.log(e.response.data);
+        }
+   }
+        
+    useEffect(() => {
+        onInit()
+    },[isFocused])
+    
 
-export default function Servicos({navigation}){
+    React.useLayoutEffect(()=>{
+        navigation.setOptions({
+            headerRight: () => (
+                <TouchableOpacity onPress = {()=>{navigation.navigate("CadastrarServicos", {teste:null} )}} style={{ paddingRight: 20 }}>
+                  <Feather name="plus-circle" size={27} color="#ffffffff" />
+                </TouchableOpacity>
+              )
+        })
+    },[navigation])
+
     return(
         <ScrollView style = {styles.container} >
             <View style = {styles.descricao}>
 
+             {services.length > 0 ? services.map(service=> ( 
                 <View style = {styles.detalhes}>
-                    
                     <View>
-                        <Text style = {styles.nome}>Vacina contra raiva</Text>
-                        <Text style = {styles.local}>Clínica Animais Amigos</Text>
+                        <Text style = {styles.nome} >{service.name}</Text>
+                        <Text style = {styles.local}>{clinicName}</Text>
                     </View>
                     
                     <TouchableOpacity 
@@ -23,38 +69,8 @@ export default function Servicos({navigation}){
                         <Feather name = "more-vertical" size = {24} color = "#000000" />
                     </TouchableOpacity>
 
-                </View>
-
-                    <View style = {styles.detalhes}>
-                    
-                    <View>
-                        <Text style = {styles.nome}>Ecografia</Text>
-                        <Text style = {styles.local}>Clínica 4 Patas</Text>
-                    </View>
-                    
-                    <TouchableOpacity 
-                        style = {styles.icone} 
-                        onPress = { () => {navigation.navigate("DescricaoServicos")}} 
-                    >
-                        <Feather name = "more-vertical" size = {24} color = "#000000" />
-                    </TouchableOpacity>
-                    </View>
-
-                 <View style = {styles.detalhes}>
-                    
-                    <View>
-                        <Text style = {styles.nome}>Banho e tosa</Text>
-                        <Text style = {styles.local}>Clínica Latidos e Miados</Text>
-                    </View>
-                    
-                    <TouchableOpacity 
-                        style = {styles.icone} 
-                        onPress = { () => {navigation.navigate("CadastrarServicos")}}
-                    >
-                        <Feather name = "more-vertical" size = {24} color = "#000000" />
-                    </TouchableOpacity>
-    
-                 </View>     
+                </View> )) :  <Text>Sem serviços cadastrados.</Text>
+                } 
 
             </View>
         </ScrollView>

@@ -19,7 +19,7 @@ export default StyleSheet.create({
     flex: 1,
     padding: 22,
     borderRadius: 10,
-    backgroundColor: "#FAD3CB",
+    backgroundColor: "#F08080",
     marginTop: 15,
     marginLeft: 10,
     flexDirection: "row",
@@ -28,16 +28,20 @@ export default StyleSheet.create({
   input: {
     fontSize: 17,
     marginBottom: 24,
-    backgroundColor: "#aaaaaa50",
+    backgroundColor: "#E8E6E6",
     borderWidth: 1,
-
+    width: 320,
+    height: 36,
+    borderRadius: 10,
+    borderColor: "gray",
+    paddingLeft: 7
   },
   inputTitle: {
     fontSize: 17,
     marginBottom: 5,
   },
     containerbutton: {
-    marginTop: 550,
+    marginTop: 220,
     backgroundColor: "#086281",
     width: "100%",
     paddingTop: 20,

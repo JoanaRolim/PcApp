@@ -40,6 +40,14 @@ export default function Perfil({navigation}){
         }
     }
 
+    async function openPetInfo(id){
+        await AsyncStorage.setItem('petId', id);
+      
+
+        navigation.navigate("Pets")
+    }
+
+
     useEffect(() => {
         onInit()
     },[isFocused])
@@ -84,7 +92,7 @@ export default function Perfil({navigation}){
                </Text>
            </View>
            <View style = {styles.list}>
-               <TouchableOpacity onPress = { () => {navigation.navigate("Pets")} } >
+               <TouchableOpacity onPress = {() => openPetInfo(pet._id)} >
                    <View style = {styles.icone} >
                        <Feather name="more-vertical" size={23} color="black" />
                    </View>

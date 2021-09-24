@@ -6,6 +6,7 @@ import DropDownPicker from "react-native-dropdown-picker"
 import styles from "./styles"
 import background from "../../assets/icon.png"
 import api from '../../services/api';
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 export default function Cadastro({ navigation }) {
   const [input, setInput] = useState("")
@@ -18,12 +19,20 @@ export default function Cadastro({ navigation }) {
   const [password, setPassword] = useState();
   const [role, setRole] = useState();
 
-
   async function handleSubmit() {
     try {
-      await api.post('user/create', { name, email, password, role });
+       const response = await api.post('auth/register', { name, email, password, role });
+
+      AsyncStorage.setItem('id', response.data.id)
+      AsyncStorage.setItem('name', response.data.name);
+      AsyncStorage.setItem('email', response.data.email);
+      AsyncStorage.setItem('role', response.data.role);
+      AsyncStorage.setItem('token', response.data.token);
+
+      navigation.navigate("Drawer");
+
     } catch (e) {
-      console.log('Erro ao tentar cadastrar! Por favor, tente novamente.');
+      console.log(e);
     }
   }
 
@@ -97,7 +106,6 @@ export default function Cadastro({ navigation }) {
               onPress={() => {
                 handleSubmit()
                }}
-               type="submit"
             />
           </View>
         </View>

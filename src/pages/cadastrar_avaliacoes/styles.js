@@ -38,11 +38,11 @@ export default StyleSheet.create({
     marginBottom: 24
   },
     containerbutton: {
-    marginVertical: 535,
+    marginVertical: 385,
     backgroundColor: "#086281",
     width: "100%",
     paddingTop: 20,
-    paddingBottom: 30,
+    paddingBottom: 40,
     alignItems: "center",
     alignContent: "center",
     justifyContent: "center",
@@ -62,5 +62,29 @@ export default StyleSheet.create({
   },
   icon: {
     marginTop: 12
-  }
+  },
+  inputText: {
+    padding: 50,
+    width: 340,
+    backgroundColor: "#E8E6E6",
+    borderRadius: 10,
+    borderColor: "gray",
+    height: 40,
+    paddingLeft: 7,
+    marginBottom: 20
+  },
+  input: {
+    padding: 20,
+    width: 70,
+    backgroundColor: "#E8E6E6",
+    borderRadius: 10,
+    borderColor: "gray",
+    height: 40,
+    paddingLeft: 17,
+    marginBottom: 20
+  },
+  inputTitle: {
+    fontSize: 17,
+    marginBottom: 10,
+  },
 })

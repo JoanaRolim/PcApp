@@ -32,6 +32,8 @@ export default StyleSheet.create({
     height: 24,
     backgroundColor: "#E8E6E6",
     borderRadius: 5,
+    paddingLeft: 7,
+    borderColor: "gray",
     height: 40
   },
   foto: {

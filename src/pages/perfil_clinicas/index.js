@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Feather} from '@expo/vector-icons';
-import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Image, Text, ScrollView, TouchableOpacity, Button} from 'react-native';
 
 import icone from '../../assets/perfil.png';
 
@@ -35,14 +35,17 @@ export default function Perfil({navigation}){
             const response = await api.get(`user/${storageId}/clinics`)
             
             setClinicas(response.data.data)
-            console.log(clinicas)
-            console.log(response.data);
-            console.log(storageId)
-
 
         }catch(e){
           console.log(e.response.data);
         }
+    }
+
+    async function openClinicInfo(id){
+        await AsyncStorage.setItem('clinicId', id);
+      
+
+        navigation.navigate("ClinicasInfo")
     }
 
     useEffect(() => {
@@ -88,7 +91,7 @@ export default function Perfil({navigation}){
                     </Text>
                 </View>
                 <View >
-                    <TouchableOpacity onPress = { () => {navigation.navigate("ClinicasInfo")} } >
+                    <TouchableOpacity onPress = {() => openClinicInfo(clinica._id) } >
                         <View style = {styles.list}>
                             <Feather style = {styles.icone} name="more-vertical" size={23} color="black" />
                         </View>

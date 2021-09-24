@@ -77,7 +77,7 @@ export default function Routes() {
                 <Screen
                     name="ClinicasInfo"
                     options={{
-                        title: "Clínica Informações",
+                        title: "Informações da Clínica",
                     }}
                     component={ClinicasInfo}
                 />
@@ -85,7 +85,7 @@ export default function Routes() {
                 <Screen
                     name="EditarClinica"
                     options={{
-                        title: "Clínica Informações",
+                        title: "Editar Informações da Clínica",
                     }}
                     component={EditarClinica}
                 />
@@ -109,7 +109,7 @@ export default function Routes() {
                 <Screen
                     name="CadastrarVacinas"
                     options={{
-                        title: "Cadastrar Vacinas",
+                        title: "Cadastrar Vacina",
                     }}
                     component={CadastrarVacinas}
                 />
@@ -117,7 +117,7 @@ export default function Routes() {
                 <Screen
                     name="CadastrarServicos"
                     options={{
-                        title: "Cadastrar Serviços",
+                        title: "Cadastrar Serviço",
                     }}
                     component={CadastrarServicos}
                 />
@@ -125,7 +125,7 @@ export default function Routes() {
                 <Screen
                     name="CadastrarProfissionais"
                     options={{
-                        title: "Cadastrar Profissionais",
+                        title: "Cadastrar Profissional",
                     }}
                     component={CadastrarProfissionais}
                 />
@@ -141,7 +141,7 @@ export default function Routes() {
                 <Screen
                     name="CadastrarAvaliacoes"
                     options={{
-                        title: "Cadastrar Avalições",
+                        title: "Cadastrar Avaliação",
                     }}
                     component={CadastrarAvaliacoes}
                 />
@@ -198,7 +198,7 @@ export default function Routes() {
                   <Screen
                     name="EditarPet"
                     options={{
-                        title: "Informações Pet",
+                        title: "Informações do Pet",
                     }}
                     component={EditarPet}
                 />

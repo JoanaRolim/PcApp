@@ -38,6 +38,9 @@ export default StyleSheet.create({
     avaliacao: {
       marginTop: 30,
       textAlign: "center",
+      alignItems: "center",
+      alignContent: "center",
+      display: "flex",
       fontStyle: 'normal',
       fontWeight: "500",  
       fontSize: 17,
@@ -46,7 +49,7 @@ export default StyleSheet.create({
     },
     iconstar: {
       marginTop: 25,
-      marginStart: 130,
+      alignItems: "center"
     },
     top: {
       marginTop: 75,

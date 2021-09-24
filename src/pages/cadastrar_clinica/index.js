@@ -7,7 +7,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useIsFocused } from '@react-navigation/core';
 
 import styles from "./styles"
-import { add } from "react-native-reanimated";
 
 export default function CadastrarClinica({ navigation }) {
   const isFocused = useIsFocused();
@@ -34,16 +33,17 @@ export default function CadastrarClinica({ navigation }) {
       email,
       user
     }
-    try {
-     const response = await api.post('clinic/create', data);
-           if (response.data) {
-    
-           navigation.navigate("Infos");
-           }
 
-    } catch (e) {
-      console.log(e);
-    }
+        try {
+        const response = await api.post('clinic/create', data);
+              if (response.data) {
+        
+              navigation.navigate("Infos");
+              }
+
+        } catch (e) {
+          console.log(e);
+        }
   }
 
       useEffect(() => {
