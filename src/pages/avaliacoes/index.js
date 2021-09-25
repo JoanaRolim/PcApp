@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import {
@@ -11,8 +11,51 @@ import {
 } from "react-native";
 
 import styles from "./styles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useIsFocused } from '@react-navigation/core';
+import api from '../../services/api'
 
 export default function Avaliacoes({ navigation }) {
+  const [avaliacoes, setAvaliacoes] = useState([]);
+
+  const [token, setToken] = useState('');
+  const [id, setId] = useState('');
+  const isFocused = useIsFocused();
+  const [name, setName] = useState('')
+
+  const [clinicName, setClinicName] = useState('') 
+    
+  async function onInit(){
+    const storageToken = await AsyncStorage.getItem('token');
+    setToken(storageToken);
+
+    const storageClinic = await AsyncStorage.getItem('clinicId');
+    setClinicName(storageClinic);
+
+    getRatings();
+}
+
+  async function getRatings(){
+      const storageId = await AsyncStorage.getItem('id');
+      setId(storageId);
+
+      const user = await AsyncStorage.getItem('name');
+      setName(user)
+
+      try{
+          const response = await api.get('/review')
+          
+          setAvaliacoes(response.data.data)
+
+      }catch(e){
+        console.log(e.response.data);
+      }
+  }
+
+  useEffect(() => {
+      onInit()
+  },[isFocused])
+
     React.useLayoutEffect(()=>{
         navigation.setOptions({
             headerRight: () => (
@@ -26,50 +69,21 @@ export default function Avaliacoes({ navigation }) {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.descricao}>
-                <View style={styles.detalhes}>
+               { avaliacoes.length > 0 ? avaliacoes.map(avaliacao=> ( 
+               <View key={avaliacao._id} style={styles.detalhes}>
                         <View>
                             <Text style={styles.nome}>
-                                Camila Marques Rodriguez
+                                {name}
                             </Text>
                             <Text style={styles.avaliacao}>
-                                Atendimento impecável, cuidaram muito bem dos
-                                meus bichinhos!
+                                {avaliacao.text}
                             </Text>
                         </View>
 
                         <FontAwesome name="star" size={15} color="black">
-                            <Text style={styles.nota}>10</Text>
+                            <Text style={styles.nota}>{avaliacao.rating}</Text>
                         </FontAwesome>
-                </View>
-
-                <View style={styles.detalhes}>
-                        <View>
-                            <Text style={styles.nome}>Joana Pacheco Rolim</Text>
-                            <Text style={styles.avaliacao}>
-                                Deixaram a desejar, cheguei antes do horário
-                                marcado e ainda atrasaram meu atendimento.
-                            </Text>
-                        </View>
-
-                        <FontAwesome name="star" size={15} color="black">
-                            <Text style={styles.nota}>5</Text>
-                        </FontAwesome>
-                </View>
-
-                <View style={styles.detalhes}>
-                        <View>
-                            <Text style={styles.nome}>Ana Paula Merencia</Text>
-                            <Text style={styles.avaliacao}>
-                                Ótimo atendimento, porém na hora de pagar
-                                cobraram um valor diferente do estipulado no
-                                aplicativo.
-                            </Text>
-                        </View>
-
-                        <FontAwesome name="star" size={15} color="black">
-                            <Text style={styles.nota}>8</Text>
-                        </FontAwesome>
-                </View>
+                </View> )):  <Text>Sem avaliações registradas.</Text> }
             </View>
         </ScrollView>
     );

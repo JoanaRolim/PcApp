@@ -25,7 +25,7 @@ export default function CadastrarAvaliacoes({navigation,route}){
     }
  
       try {
-      const response = await api.post('pet/create', data);
+      const response = await api.post(`clinic/${clinic}/reviews`, data);
             if (response.data) {
       
             navigation.navigate("Avaliacoes")
@@ -46,7 +46,7 @@ export default function CadastrarAvaliacoes({navigation,route}){
                  <View style = {styles.detalhes}>
                     <View>
                         <Text style = {styles.inputTitle}>Avaliação:</Text>
-                        <TextInput value={text} onChangeText={value => setText(value)}  style={styles.inputText} keyboardType="default" />
+                        <TextInput value={text} onChangeText={value => setText(value)}  style={styles.inputText} />
 
                         <Text style = {styles.inputTitle}>Nota:</Text>
                         <TextInput value={rating} onChangeText={value => setRating(value)}  style={styles.input} placeholder="1...10" placeholderTextColor="gray" keyboardType="numeric" />

@@ -64,7 +64,6 @@ export default StyleSheet.create({
     marginTop: 12
   },
   inputText: {
-    padding: 50,
     width: 340,
     backgroundColor: "#E8E6E6",
     borderRadius: 10,
@@ -74,7 +73,6 @@ export default StyleSheet.create({
     marginBottom: 20
   },
   input: {
-    padding: 20,
     width: 70,
     backgroundColor: "#E8E6E6",
     borderRadius: 10,
