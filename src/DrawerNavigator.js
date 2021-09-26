@@ -4,7 +4,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 const { Navigator, Screen } = createDrawerNavigator();
 
 import Perfil_pets from "./pages/perfil_pets";
-import Clinicas from "./pages/clininas";
+import Clinicas from "./pages/clinicas";
 import CadastrarClinica from "./pages/cadastrar_clinica";
 
 export default function DrawerNavigator() {

@@ -26,7 +26,7 @@ import CadastrarProfissionais from "./pages/cadastrar_profissionais";
 import Avaliacoes from "./pages/avaliacoes";
 import CadastrarAvaliacoes from "./pages/cadastrar_avaliacoes";
 import DescricaoServicos from "./pages/descricao_servicos";
-import Clinicas from "./pages/clininas";
+import Clinicas from "./pages/clinicas";
 import EditarClinica from "./pages/editar_clinica";
 import EditarPet from "./pages/editar_pet";
 import EditarProfissional from "./pages/editar_profissional";

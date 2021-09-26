@@ -5,13 +5,14 @@ import {View, Image, Text, ScrollView, TouchableOpacity, ImageBackground, TextIn
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useIsFocused } from '@react-navigation/core';
+import api from '../../services/api';
 
 import styles from "./styles"
 
 export default function CadastrarAvaliacoes({navigation,route}){
   const isFocused = useIsFocused();
   const user = AsyncStorage.getItem('id');
-  const clinic = AsyncStorage.getItem('clinicId')
+  const clinicId = AsyncStorage.getItem('clinicId')
 
   const [text, setText] = useState();
   const [rating, setRating] = useState();
@@ -25,7 +26,7 @@ export default function CadastrarAvaliacoes({navigation,route}){
     }
  
       try {
-      const response = await api.post(`clinic/${clinic}/reviews`, data);
+      const response = await api.post(`clinic/${clinicId}/reviews`, data);
             if (response.data) {
       
             navigation.navigate("Avaliacoes")

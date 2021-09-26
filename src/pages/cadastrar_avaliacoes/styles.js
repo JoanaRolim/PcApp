@@ -37,8 +37,8 @@ export default StyleSheet.create({
     fontSize: 17,
     marginBottom: 24
   },
-    containerbutton: {
-    marginVertical: 385,
+  containerbutton: {
+    marginVertical: 435,
     backgroundColor: "#086281",
     width: "100%",
     paddingTop: 20,
