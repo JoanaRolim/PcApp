@@ -11,34 +11,34 @@ import styles from "./styles"
 
 export default function CadastrarAvaliacoes({navigation,route}){
   const isFocused = useIsFocused();
-  const user = AsyncStorage.getItem('id');
-  const clinicId = AsyncStorage.getItem('clinicId')
 
   const [text, setText] = useState();
   const [rating, setRating] = useState();
 
+
   async function addReview() {
+    const user = await AsyncStorage.getItem('id');
+    const clinicId = await AsyncStorage.getItem('clinicId')
+
     data = {
       text,
       rating,
-      user,
-      clinic
+      user
     }
- 
+
       try {
-      const response = await api.post(`clinic/${clinicId}/reviews`, data);
+      const response = await api.post(`review/${clinicId}`, data);
             if (response.data) {
-      
             navigation.navigate("Avaliacoes")
             }
       } catch (e) {
         console.log(e);
       }
 }
-      useEffect(() => {
-        addReview()
-    },[isFocused])
 
+  useEffect(() => {
+    addReview()
+  },[isFocused])
 
     return(
         <ScrollView style = {styles.container} >
@@ -56,7 +56,7 @@ export default function CadastrarAvaliacoes({navigation,route}){
 
                 </View>
                 </View>
-                <TouchableOpacity style={styles.containerbutton}   onPress = { () => addReview()}>
+                <TouchableOpacity style={styles.containerbutton}   onPress = { () => {addReview()}}>
             <Text style={styles.button} >Salvar</Text>
             <Feather style={styles.chevron} name="chevron-right" size={40} color="#FFFF" />
           </TouchableOpacity>

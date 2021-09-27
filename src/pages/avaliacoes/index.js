@@ -10,6 +10,7 @@ import {
     ImageBackground,
 } from "react-native";
 
+
 import styles from "./styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useIsFocused } from '@react-navigation/core';
@@ -29,7 +30,7 @@ export default function Avaliacoes({ navigation }) {
     const storageToken = await AsyncStorage.getItem('token');
     setToken(storageToken);
 
-    const storageClinic = await AsyncStorage.getItem('clinicId');
+    const storageClinic = AsyncStorage.getItem('clinicId');
     setClinicName(storageClinic);
 
     getRatings();
@@ -39,12 +40,11 @@ export default function Avaliacoes({ navigation }) {
       const storageId = await AsyncStorage.getItem('id');
       setId(storageId);
 
-      const user = await AsyncStorage.getItem('name');
-      setName(user)
+      const storageClinic = await AsyncStorage.getItem('clinicId');
 
       try{
-          const response = await api.get('/review')
-          
+          const response = await api.get(`/clinic/${storageClinic}/reviews`)
+          console.log(response.data.data);
           setAvaliacoes(response.data.data)
 
       }catch(e){
@@ -70,20 +70,20 @@ export default function Avaliacoes({ navigation }) {
         <ScrollView style={styles.container}>
             <View style={styles.descricao}>
                { avaliacoes.length > 0 ? avaliacoes.map(avaliacao=> ( 
-               <View key={avaliacao._id} style={styles.detalhes}>
-                        <View>
-                            <Text style={styles.nome}>
-                                {name}
-                            </Text>
-                            <Text style={styles.avaliacao}>
-                                {avaliacao.text}
-                            </Text>
-                        </View>
+            <View key={avaliacao._id} style={styles.detalhes}>
+            <View>
+                <Text style={styles.nome}>
+                {avaliacao.user.name}
+                </Text>
+                <Text style={styles.avaliacao}>
+                {avaliacao.text}
+                </Text>
+            </View>
 
-                        <FontAwesome name="star" size={15} color="black">
-                            <Text style={styles.nota}>{avaliacao.rating}</Text>
-                        </FontAwesome>
-                </View> )):  <Text>Sem avaliações registradas.</Text> }
+            <FontAwesome name="star" size={15} color="black">
+                <Text style={styles.nota}>{avaliacao.rating}</Text>
+            </FontAwesome>
+        </View> )) : <Text>Sem avaliações registradas.</Text> }
             </View>
         </ScrollView>
     );

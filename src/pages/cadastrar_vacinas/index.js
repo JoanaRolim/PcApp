@@ -23,7 +23,7 @@ export default function CadastarVacinas({navigation,route}){
       }
 
         try {
-        const response = await api.post(`/${clinicId}`, data);
+        const response = await api.post(`/petvaccine/pet/${vaccineId}/petvaccines`, data);
 
         console.log(response);
               if (response.data.data) {

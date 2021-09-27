@@ -29,12 +29,20 @@ export default function Servicos({navigation}){
             
         try{
             const response = await api.get(`clinic/${storageId}/services`)
+            
             setServices(response.data.data)
         
         }catch(e){
            console.log(e.response.data);
         }
    }
+
+async function openService(service){
+    await AsyncStorage.setItem('serviceId', service._id);
+    await AsyncStorage.setItem('serviceName', service.name);
+
+    navigation.navigate("DescricaoServicos")
+}
         
     useEffect(() => {
         onInit()
@@ -64,7 +72,7 @@ export default function Servicos({navigation}){
                     
                     <TouchableOpacity 
                         style = {styles.icone} 
-                        onPress = { () => {navigation.navigate("DescricaoServicos")}}
+                        onPress = { () => openService(service)}
                     >
                         <Feather name = "more-vertical" size = {24} color = "#000000" />
                     </TouchableOpacity>

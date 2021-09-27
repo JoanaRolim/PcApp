@@ -6,7 +6,7 @@ export default StyleSheet.create({
   },
     headerText:{
         marginLeft: 35,
-        fontSize: 28,
+        fontSize: 21,
         fontStyle: 'normal',
         textTransform: "uppercase",
         fontWeight: 'bold',

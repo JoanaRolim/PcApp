@@ -70,7 +70,7 @@ React.useLayoutEffect(()=>{
                                       <Feather name = "edit" size = {24} color = "#000000" />
                                   </TouchableOpacity>
                                   </View>
-                                  )) :  <Text>Sem avaliações registradas.</Text>
+                                  )) :  <Text>Sem profissionais registrados.</Text>
                     }
             </View>
         </ScrollView>

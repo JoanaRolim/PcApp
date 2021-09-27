@@ -1,17 +1,51 @@
-import React from "react"
+import React,{useEffect, useState} from "react"
 import { Feather } from "@expo/vector-icons"
 import { FontAwesome } from "@expo/vector-icons"
-import { View, Image, Text, ScrollView, TouchableOpacity, ImageBackground, ScrollViewComponent } from "react-native"
+import { View, Image, Text, ScrollView, TouchableOpacity, ImageBackground, ScrollViewComponent, Button } from "react-native"
 
+import api from '../../services/api';
 import styles from "./styles"
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useIsFocused } from '@react-navigation/core';
+
 
 export default function DescricaoServicos({ navigation }) {
+
+    const [token, setToken] = useState('');
+    const [service, setService] = useState([]);
+    const isFocused = useIsFocused();
+    const [name, setName] = useState('')
+
+    async function onInit(){
+      const storageToken = await AsyncStorage.getItem('token');
+      setToken(storageToken);
+
+      getService();
+}
+
+    async function getService(){
+        const storageId = await AsyncStorage.getItem('serviceId');
+    
+        try{
+            const response = await api.get(`service/${storageId}`)
+            console.log(response.data.data);
+            setService(response.data.data)
+
+        }catch(e){
+          console.log(e.response.data);
+        }
+    }
+
+    useEffect(() => {
+        onInit()
+    },[isFocused])
+
   return (
     <ScrollView  style = {styles.containerClinica} >
 
     <View style = {styles.container_eco}>
         <Text style = {styles.headerText}>
-            Ecografia
+            {service.name}
         </Text>
             <TouchableOpacity style = {styles.icone} onPress ={()=>{navigation.navigate("EditarServico")}} >
                 <Feather name = "edit" size = {19} color = "#000000" />
@@ -22,18 +56,22 @@ export default function DescricaoServicos({ navigation }) {
         
         <View>
           <Text style = {styles.infos}>Profissionais responsáveis:</Text>
-          <Text style = {styles.descricao}>Marcia Rodriguez Kuntz </Text>
-          <Text style = {styles.descricao}>Marcela Rocha</Text>
+          <Text style = {styles.descricao}> {service.vet.name}</Text>
       </View>
 
         <View>
           <Text style = {styles.infos}>Informações adicionais:</Text>
-          <Text style = {styles.descricao}>Técnica de avaliação do organismo. Utilizamos equipamentos de alta tecnologia.</Text>
+          <Text style = {styles.descricao}>{service.description}</Text>
+      </View>
+
+      <View>
+          <Text style = {styles.infos}>Custo:</Text>
+          <Text style = {styles.descricao}> R$ {service.cost}</Text>
       </View>
 
         <View>
           <Text style = {styles.infos}>Indicações:</Text>
-          <Text style = {styles.descricao}>É recomendável que o pet esteja em jejum de água e alimentos por no mínimo 2 horas.</Text>
+          <Text style = {styles.descricao}>{service.indications}</Text>
       </View>
 
     </View>

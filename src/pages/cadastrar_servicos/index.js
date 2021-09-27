@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Feather} from '@expo/vector-icons';
-import { View, Image, Text, ScrollView, TouchableOpacity,TextInput} from "react-native";
+import { View, Image, Text, ScrollView, TouchableOpacity, TextInput } from "react-native";
 import SelectDropdown from "react-native-select-dropdown"
 import DropDownPicker from "react-native-dropdown-picker"
+import {Picker} from '@react-native-picker/picker';
 
 import styles from './styles';
 
@@ -11,34 +12,38 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useIsFocused } from '@react-navigation/core';
 
 export default function Servicos({navigation,route}){
-    const [input, setInput] = useState("")
-    const [hidePass, sethidePass] = useState(true)
-    const [open, setOpen] = useState(false)  
-    const [value, setValue] = useState(null)
-  
     const isFocused = useIsFocused();
-  
-    const [name, setName] = useState();
-    const [description, setDescription] = useState();
-    const [cost, setCost] = useState();
-    const [indication, setIndication] = useState();
+
+    const [vets, setVets] = useState([]);
+    const [clinicName, setClinicName] = useState('') 
+    const [token, setToken] = useState('')
+
+    const [vet, setVet] = useState('');
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [cost, setCost] = useState('');
+    const [indications, setIndications] = useState('');
   
     async function addService() {
       const clinicId = await AsyncStorage.getItem('clinicId');
+      console.log(vet, name, description, cost, indications);
 
-      data = {
+       const data = {
         name,
         description,
         cost,
-        indication,
+        indications,
         vet
       }
 
+      console.log('teste');
+      console.log(data);
+
         try {
-        const response = await api.post(`/${clinicId}`, data);
+        const response = await api.post(`service/${clinicId}`, data);
 
         console.log(response);
-              if (response.data.data) {
+              if (response.data) {
               navigation.navigate("Servicos");
               }
         } catch (e) {
@@ -46,9 +51,33 @@ export default function Servicos({navigation,route}){
         }
   }
 
-  useEffect(() => {
-      addService()
-  },[isFocused])
+  async function onInit(){
+    const storageToken = await AsyncStorage.getItem('token');
+    setToken(storageToken);
+
+    const storageName = await AsyncStorage.getItem('clinicName');
+    setClinicName(storageName);
+
+    getVets();
+    addService();
+}
+
+
+  async function getVets(){
+    const storageId = await AsyncStorage.getItem('clinicId');
+
+    try{
+        const response = await api.get(`clinic/${storageId}/vets`)
+        setVets(response.data.data)
+
+    }catch(e){
+      console.log(e.response.data);
+    }
+}
+
+useEffect(() => {
+    onInit()
+},[isFocused])
 
     return(
         <ScrollView style = {styles.container} >
@@ -64,25 +93,19 @@ export default function Servicos({navigation,route}){
                         <Text style = {styles.inputTitle}  >Custo:</Text>
                         <TextInput  value={cost} onChangeText={value => setCost(value)} style ={styles.input}  placeholder="R$" keyboardType="numbers-and-punctuation" placeholderTextColor="gray"></TextInput>
                         <Text style = {styles.inputTitle}  >Indicações:</Text>
-                        <TextInput  value={indication} onChangeText={value => setIndication(value)} style = {styles.input} placeholderTextColor="black"></TextInput>
+                        <TextInput  value={indications} onChangeText={value => setIndications(value)} style = {styles.input} placeholderTextColor="black"></TextInput>
                         <Text style = {styles.inputTitle}  >Profissional Responsável:</Text>
-                        <DropDownPicker
-                         //   value = {type}
-                          //  setValue={setType}
-                         //   open = {openType}
-                          //  setOpen = {setOpenType}
-                            items={[
-                            { label: "Cachorro", value: "Cachorro" },
-                            { label: "Gato", value: "Gato" },
-                            { label: "Peixe", value: "Peixe" },
-                            { label: "Pássaro", value: "Pássaro" },
-                            { label: "Coelho", value: "Coelho" },
-                            ]}
-                            style={styles.selector}
-                            placeholder="Selecione"
-                            containerStyle={{ height: 50, borderRadius: 10, width: 320 }}
-                          //  onChangeItem={value => setType(value)}
-                      />
+                        <Picker
+                        selectedValue={vet}
+                        onValueChange={(itemValue, itemIndex) =>
+                          setVet(itemValue)
+                        }>
+                        
+                       { vets.map(vet => (
+                       <Picker.Item label={vet.name} value={vet._id} />
+                       ))}
+                        </Picker>
+                     
                     </View>
 
                 </View>
