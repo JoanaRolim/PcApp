@@ -4,7 +4,9 @@
         "android": "react-native run-android",
         "ios": "react-native run-ios",
         "web": "expo start --web",
-        "start": "react-native start"
+        "start": "react-native start",
+        "preinstall": "npm config set package-lock false",
+        "build": "npm install"
     },
     "dependencies": {
         "@expo-google-fonts/dev": "^0.2.0",
