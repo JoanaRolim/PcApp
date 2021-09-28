@@ -88,7 +88,7 @@ export default StyleSheet.create({
     },
     historico:{
         flex: 1,
-        backgroundColor: '#DEF0F6',
+        backgroundColor:  '#D0EFE6',
         borderRadius: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',

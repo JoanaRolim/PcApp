@@ -8,6 +8,7 @@ import {
     ScrollView,
     TouchableOpacity,
     ImageBackground,
+    ActivityIndicator
 } from "react-native";
 
 
@@ -23,6 +24,8 @@ export default function Avaliacoes({ navigation }) {
   const [id, setId] = useState('');
   const isFocused = useIsFocused();
   const [name, setName] = useState('')
+
+  const [load, setLoad] = useState(true);
 
   const [clinicName, setClinicName] = useState('') 
     
@@ -50,11 +53,14 @@ export default function Avaliacoes({ navigation }) {
       }catch(e){
         console.log(e.response.data);
       }
+      setLoad(false);
   }
 
   useEffect(() => {
-      onInit()
-  },[isFocused])
+    const unsubscribe = navigation.addListener("focus", ()=> {onInit()}); 
+    
+ },[navigation])
+ 
 
     React.useLayoutEffect(()=>{
         navigation.setOptions({
@@ -68,6 +74,7 @@ export default function Avaliacoes({ navigation }) {
 
     return (
         <ScrollView style={styles.container}>
+            { load ? <ActivityIndicator size="large" style={{marginTop: 10}} /> :
             <View style={styles.descricao}>
                { avaliacoes.length > 0 ? avaliacoes.map(avaliacao=> ( 
             <View key={avaliacao._id} style={styles.detalhes}>
@@ -84,7 +91,7 @@ export default function Avaliacoes({ navigation }) {
                 <Text style={styles.nota}>{avaliacao.rating}</Text>
             </FontAwesome>
         </View> )) : <Text>Sem avaliações registradas.</Text> }
-            </View>
+            </View> }
         </ScrollView>
     );
 }

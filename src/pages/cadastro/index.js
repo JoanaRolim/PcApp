@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Feather } from "@expo/vector-icons"
-import { View, Image, Text, TextInput, TouchableOpacity, Button, Picker } from "react-native"
+import { View, Image, Text, TextInput, TouchableOpacity, Button, Picker, ActivityIndicator } from "react-native"
 import SelectDropdown from "react-native-select-dropdown"
 import DropDownPicker from "react-native-dropdown-picker"
 import styles from "./styles"
@@ -35,6 +35,10 @@ export default function Cadastro({ navigation }) {
       console.log(e);
     }
   }
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener("focus", ()=> {handleSubmit()}); 
+ },[navigation])
 
   return (
     <View style={styles.container}>

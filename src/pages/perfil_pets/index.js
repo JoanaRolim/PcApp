@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { Feather} from '@expo/vector-icons';
-import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Image, Text, ScrollView, TouchableOpacity, ActivityIndicator} from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import icone from '../../assets/perfil.png';
+import icone from '../../assets/icono-de-perfil.jpg';
 import styles from './styles';
 import api from '../../services/api';
 import { useIsFocused } from '@react-navigation/core';
@@ -12,12 +12,17 @@ export default function Perfil({navigation}){
     const [token, setToken] = useState('');
     const [id, setId] = useState('');
     const [pets, setPets] = useState([ ]);
-    const isFocused = useIsFocused();
     const [name, setName] = useState('');
+    const [load, setLoad] = useState(true);
+    const [role, setRole] = useState()
+   
 
     async function onInit(){
       const storageToken = await AsyncStorage.getItem('token');
       setToken(storageToken);
+
+      const role = await AsyncStorage.getItem('role');
+      setRole(role);
 
       await getPets();
 }
@@ -33,11 +38,11 @@ export default function Perfil({navigation}){
             const response = await api.get(`user/${storageId}/pets`)
 
             setPets(response.data.data)
-            console.log(response.data);
 
         }catch(e){
           console.log(e.response.data);
         }
+        setLoad(false)
     }
 
     async function openPetInfo(id){
@@ -49,8 +54,10 @@ export default function Perfil({navigation}){
 
 
     useEffect(() => {
-        onInit()
-    },[isFocused])
+        const unsubscribe = navigation.addListener("focus", ()=> {onInit()}); 
+        
+     },[navigation])
+
 
     React.useLayoutEffect(()=>{
         navigation.setOptions({
@@ -64,6 +71,9 @@ export default function Perfil({navigation}){
 
     return(
         <ScrollView  style = {styles.container} >
+
+ { load ? <ActivityIndicator size="large" style={{marginTop: 10}} /> :
+<View>
             <View style={styles.containerFoto}>
                 <Image source={icone} style={styles.foto} />
             </View> 
@@ -71,13 +81,14 @@ export default function Perfil({navigation}){
                 <Text style = {styles.text_nome_usuario} >{name}</Text>
             </View>
 
-            <View style = {styles.menu} >
+          <View style = {styles.menu} >
                 <TouchableOpacity>
                     <Text style = {styles.text_menu} >Pets</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress = { () => {navigation.navigate("Clinicas_perfil")} } >
+               {role === 'clinicOwner' ? 
+               ( <TouchableOpacity onPress = { () => {navigation.navigate("Clinicas_perfil")} } >
                     <Text style = {styles.text_menu} >Clínicas</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> ) : <Text></Text>}
             </View>
 
          {pets.length > 0 ? pets.map(pet=> (
@@ -100,6 +111,7 @@ export default function Perfil({navigation}){
            </View>
        </View>)) : <Text style = {styles.list}> Sem pets cadastrados.</Text> }
 
+       </View> }
 
         </ScrollView>
     );

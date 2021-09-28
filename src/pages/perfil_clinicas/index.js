@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { Feather} from '@expo/vector-icons';
-import {View, Image, Text, ScrollView, TouchableOpacity, Button} from 'react-native';
+import {View, Image, Text, ScrollView, TouchableOpacity, Button, ActivityIndicator} from 'react-native';
 
-import icone from '../../assets/perfil.png';
+import icone from '../../assets/icono-de-perfil.jpg';
 
 import styles from './styles';
 
@@ -16,6 +16,7 @@ export default function Perfil({navigation}){
     const [clinicas, setClinicas] = useState([]);
     const isFocused = useIsFocused();
     const [name, setName] = useState('')
+    const [load, setLoad] = useState(true);
 
     async function onInit(){
       const storageToken = await AsyncStorage.getItem('token');
@@ -39,6 +40,8 @@ export default function Perfil({navigation}){
         }catch(e){
           console.log(e.response.data);
         }
+        setLoad(false);
+
     }
 
     async function openClinicInfo(id){
@@ -49,8 +52,9 @@ export default function Perfil({navigation}){
     }
 
     useEffect(() => {
-        onInit()
-    },[isFocused])
+        const unsubscribe = navigation.addListener("focus", ()=> {onInit()}); 
+        
+     },[navigation])
 
     React.useLayoutEffect(()=>{
         navigation.setOptions({
@@ -65,6 +69,8 @@ export default function Perfil({navigation}){
 
     return(
         <ScrollView  style = {styles.container} >
+             { load ? <ActivityIndicator size="large" style={{marginTop: 10}} /> :
+            <View>
                  <View style={styles.containerFoto}>
             <Image source={icone} style={styles.foto} />
           </View> 
@@ -100,7 +106,7 @@ export default function Perfil({navigation}){
             </View> 
             )) : <Text style = {styles.list}> Sem clínicas cadastradas.</Text> } 
 
-
+</View>}
         </ScrollView>
     );
 }

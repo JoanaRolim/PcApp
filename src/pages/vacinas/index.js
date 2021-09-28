@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import { Feather} from '@expo/vector-icons';
-import {View, Image, Text, ScrollView, TouchableOpacity, ImageBackground} from 'react-native';
+import {View, Image, Text, ScrollView, TouchableOpacity, ImageBackground, ActivityIndicator} from 'react-native';
 
 import styles from './styles';
 import api from '../../services/api';
@@ -16,6 +16,8 @@ export default function Vacinas({navigation}){
 
     const [vacinas, setVacinas] = useState([]);
     const [clinicName, setClinicName] = useState('');
+
+    const [load, setLoad] = useState(true);
 
     async function onInit(){
       const storageClinic = await AsyncStorage.getItem('clinicId');
@@ -37,11 +39,19 @@ export default function Vacinas({navigation}){
         }catch(e){
           console.log(e.response.data);
         }
+        setLoad(false);
     }
 
-    useEffect(() => {
-        onInit()
-    },[isFocused])
+async function setVacinaId(vacina){
+    AsyncStorage.setItem('idVacina', vacina._id);
+
+    navigation.navigate("EditarVacina" )
+}
+
+useEffect(() => {
+    const unsubscribe = navigation.addListener("focus", ()=> {onInit()}); 
+    
+ },[navigation])
 
 
     React.useLayoutEffect(()=>{
@@ -56,26 +66,26 @@ export default function Vacinas({navigation}){
 
     return(
         <ScrollView style = {styles.container} >
+             { load ? <ActivityIndicator size="large" style={{marginTop: 10}} /> :
             <View style = {styles.descricao}>
 
             {vacinas.length > 0 ? vacinas.map(vacina=> ( 
-                <View style = {styles.detalhes}>
-                    <View key={vacina._id} >
+                <View key={vacina._id} style = {styles.detalhes}>
+                    <View  >
                         <Text style = {styles.vacina}>Vacina: {vacina.vaccine} </Text>
                         <Text style = {styles.data}>Data: {vacina.date}</Text>
-                        <Text style = {styles.local}>Local: {clinicName}</Text>
                     </View>
                     
                     <TouchableOpacity 
                         style = {styles.icone} 
-                        onPress = { () => {navigation.navigate("EditarVacina" )}}
+                        onPress = { () => setVacinaId(vacina)}
                     >
                         <Feather name = "edit" size = {24} color = "#000000" />
                     </TouchableOpacity>
 
                 </View>)) : <Text>Sem vacinas cadastradas.</Text>
                 }
-            </View>
+            </View> }
         </ScrollView>
     );
 }

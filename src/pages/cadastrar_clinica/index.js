@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import api from '../../services/api';
 import { Feather } from "@expo/vector-icons"
-import { View, TextInput, Text, ScrollView, Button, Image, TouchableOpacity } from "react-native"
+import { View, TextInput, Text, ScrollView, Button, Image, TouchableOpacity, ActivityIndicator } from "react-native"
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useIsFocused } from '@react-navigation/core';
@@ -20,6 +20,14 @@ export default function CadastrarClinica({ navigation }) {
   const [phone, setPhone] = useState();
   const [cellphone, setCellphone] = useState();
   const [email, setEmail] = useState();
+
+  const [load, setLoad] = useState(true);
+
+
+  async function onInit(){
+    addClinic();
+}
+  
 
   async function addClinic() {
     data = {
@@ -44,15 +52,17 @@ export default function CadastrarClinica({ navigation }) {
         } catch (e) {
           console.log(e);
         }
+        setLoad(false);
+
   }
 
-      useEffect(() => {
-        addClinic()
-    },[isFocused])
+  useEffect(() => {
+    const unsubscribe = navigation.addListener("focus", ()=> {onInit()}); 
+ },[navigation])
 
   return (
     <ScrollView style={styles.container}>
-
+       { load ? <ActivityIndicator size="large" style={{marginTop: 10}} /> :
         <View>
           <View style={styles.descricao}>
             <View style={styles.detalhes}>
@@ -91,7 +101,7 @@ export default function CadastrarClinica({ navigation }) {
             <Text style={styles.button} >Salvar</Text>
             <Feather style={styles.chevron} name="chevron-right" size={40} color="black" />
           </TouchableOpacity>
-      </View>
+      </View> }
     </ScrollView>
   )
 }

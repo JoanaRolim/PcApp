@@ -25,6 +25,7 @@ import CadastrarServicos from "./pages/cadastrar_servicos";
 import CadastrarProfissionais from "./pages/cadastrar_profissionais";
 import Avaliacoes from "./pages/avaliacoes";
 import CadastrarAvaliacoes from "./pages/cadastrar_avaliacoes";
+import CadastrarAgendamento from "./pages/cadastrar_agendamentos";
 import DescricaoServicos from "./pages/descricao_servicos";
 import Clinicas from "./pages/clinicas";
 import EditarClinica from "./pages/editar_clinica";
@@ -85,7 +86,7 @@ export default function Routes() {
                 <Screen
                     name="EditarClinica"
                     options={{
-                        title: "Editar Informações da Clínica",
+                        title: "Editar Clínica",
                     }}
                     component={EditarClinica}
                 />
@@ -162,6 +163,14 @@ export default function Routes() {
                     component={EditarServico}
                 />
 
+            <Screen
+                    name="CadastrarAgendamento"
+                    options={{
+                        title: "Agendar Serviço",
+                    }}
+                    component={CadastrarAgendamento}
+                />
+
 
                 <Screen
                     name="Servicos"
@@ -223,7 +232,7 @@ export default function Routes() {
                 <Screen
                     name="Consultas"
                     options={{
-                        title: "Histórico",
+                        title: "Agendamentos",
                     }}
                     component={Consultas}
                 />

@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from "react"
 import { Feather } from "@expo/vector-icons"
 import { FontAwesome } from "@expo/vector-icons"
-import { View, Image, Text, ScrollView, TouchableOpacity, ImageBackground, ScrollViewComponent, Button } from "react-native"
+import { View, Image, Text, ScrollView, TouchableOpacity, ImageBackground, ScrollViewComponent, Button, ActivityIndicator } from "react-native"
 
 import api from '../../services/api';
 import styles from "./styles"
@@ -13,10 +13,20 @@ export default function ClinicasInfo({ navigation }) {
     const [clinica, setClinica] = useState([]);
     const isFocused = useIsFocused();
     const [name, setName] = useState('')
+    const [role, setRole] = useState('')
+    const [id, setId] = useState('')
+
+    const [load, setLoad] = useState(true);
 
     async function onInit(){
       const storageToken = await AsyncStorage.getItem('token');
       setToken(storageToken);
+
+      const role = await AsyncStorage.getItem('role');
+      setRole(role);
+
+      const id = await AsyncStorage.getItem('id');
+      setId(id);
 
       getClinica();
 }
@@ -31,6 +41,7 @@ export default function ClinicasInfo({ navigation }) {
         }catch(e){
           console.log(e.response.data);
         }
+        setLoad(false);
     }
 
     async function openVetInfo(clinica){
@@ -40,19 +51,31 @@ export default function ClinicasInfo({ navigation }) {
         navigation.navigate("Profissionais")
     }
 
+    async function setClinicId(clinica){
+        await AsyncStorage.setItem('clinicId', clinica._id);
+        await AsyncStorage.setItem('clinicName', clinica.name);
+      
+        navigation.navigate("EditarClinica")
+    }
+
+
     useEffect(() => {
-        onInit()
-    },[isFocused])
+        const unsubscribe = navigation.addListener("focus", ()=> {onInit()}); 
+        
+     },[navigation])
 
   return (
     <ScrollView  style = {styles.containerClinica} >
 
+{ load ? <ActivityIndicator size="large" style={{marginTop: 10}} /> :
+<View>
     <View>
         <Text style = {styles.headerText}>
            {clinica.name}
-            <TouchableOpacity style = {styles.icone} onPress ={()=>{navigation.navigate("EditarClinica")}} >
+           {role === 'clinicOwner' && clinica.user === id  ? 
+            (<TouchableOpacity style = {styles.icone} onPress ={()=>setClinicId(clinica)} >
                         <Feather name = "edit" size = {24} color = "#000000" />
-        </TouchableOpacity>
+        </TouchableOpacity>) : <Text></Text> }
         </Text>
     </View>
       
@@ -101,7 +124,7 @@ export default function ClinicasInfo({ navigation }) {
                 </View>
             </View>
           </View>
-
+          </View> }
     </ScrollView>
   )
 }

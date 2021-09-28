@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import { Feather} from '@expo/vector-icons';
-import {View, Image, Text, ScrollView, TouchableOpacity, ImageBackground} from 'react-native';
+import {View, Image, Text, ScrollView, TouchableOpacity, ImageBackground, ActivityIndicator} from 'react-native';
 
 import api from '../../services/api';
 import styles from "./styles"
@@ -14,6 +14,10 @@ export default function Profissionais({navigation}){
         const isFocused = useIsFocused();
         const [name, setName] = useState('')
         const [clinicName, setClinicName] = useState('') 
+        const [load, setLoad] = useState(true);
+
+        const [role, setRole] = useState('');
+        const [id, setId] =  useState('');
     
         async function onInit(){
           const storageToken = await AsyncStorage.getItem('token');
@@ -21,6 +25,12 @@ export default function Profissionais({navigation}){
 
           const storageName = await AsyncStorage.getItem('clinicName');
           setClinicName(storageName);
+
+          const role = await AsyncStorage.getItem('role');
+          setRole(role);
+    
+          const id = await AsyncStorage.getItem('id');
+          setId(id);
     
           getVets();
     }
@@ -35,24 +45,38 @@ export default function Profissionais({navigation}){
             }catch(e){
               console.log(e.response.data);
             }
-        }
-    
-        useEffect(() => {
-            onInit()
-        },[isFocused])
+            setLoad(false);
 
+        }
+
+        
+    async function setVetId(vet){
+        await AsyncStorage.setItem('vetId', vet._id);
+      
+        navigation.navigate("EditarProfissional")
+    }
+
+    
+    useEffect(() => {
+        const unsubscribe = navigation.addListener("focus", ()=> {onInit()}); 
+        
+     },[navigation])
+    
+     
 React.useLayoutEffect(()=>{
     navigation.setOptions({
         headerRight: () => (
-            <TouchableOpacity onPress = {()=>{navigation.navigate("CadastrarProfissionais", {teste:null} )}} style={{ paddingRight: 20 }}>
-              <Feather name="plus-circle" size={27} color="#ffffffff" />
-            </TouchableOpacity>
+            role === 'clinicOwner' && clinica.user === id  ?
+           ( <TouchableOpacity onPress = {()=>{navigation.navigate("CadastrarProfissionais", {teste:null} )}} style={{ paddingRight: 20 }}>
+              <Feather name="plus-circle" size={27} color="#ffffffff" />   </TouchableOpacity>
+           ) : <Text></Text>
           )
-    })
+        })
 },[navigation])
 
     return(
         <ScrollView style = {styles.container} >
+             { load ? <ActivityIndicator size="large" style={{marginTop: 10}} /> :
             <View style = {styles.descricao}>
 
                     {vets.length > 0 ? vets.map(vet=> (
@@ -63,16 +87,16 @@ React.useLayoutEffect(()=>{
                         <Text style = {styles.local}>{clinicName}</Text>
                     </View>
                     
-                    <TouchableOpacity 
+                    {role === 'clinicOwner' && clinica.user === id  ? ( <TouchableOpacity 
                                       style = {styles.icone} 
-                                      onPress = { () => {navigation.navigate("EditarProfissional", {teste:"teste"} )}} 
+                                      onPress = { () => setVetId(vet)} 
                                   >
                                       <Feather name = "edit" size = {24} color = "#000000" />
-                                  </TouchableOpacity>
+                                  </TouchableOpacity> ) : <Text></Text> }
                                   </View>
                                   )) :  <Text>Sem profissionais registrados.</Text>
                     }
-            </View>
+            </View>}
         </ScrollView>
     );
 }

@@ -25,12 +25,16 @@ export default StyleSheet.create({
     fontSize: 20
   },
   input: {
-    padding: 5,
-    marginLeft: 10,
-    marginRight: 10,
-    width: 360,
-    height: 24,
-    backgroundColor: "#FAD3CB"
+      padding: 5,
+      marginLeft: 10,
+      marginRight: 10,
+      width: 360,
+      height: 24,
+      backgroundColor: "#E8E6E6",
+      borderRadius: 5,
+      paddingLeft: 7,
+      borderColor: "gray",
+      height: 40
   },
   foto: {
     padding: 5,
@@ -46,6 +50,7 @@ export default StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
     flexDirection: 'row',
+    marginVertical: 40
   },
   button: {
     fontSize: 24,

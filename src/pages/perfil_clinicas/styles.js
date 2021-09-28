@@ -61,8 +61,10 @@ export default StyleSheet.create({
       width: "100%"
     },
     foto: {
-      borderRadius: 200,
-      marginTop: 30
+      borderRadius: 880,
+      marginTop: 30,
+      width: "35%",
+      height: 150
     },
     containerFoto: {
       alignItems: 'center'

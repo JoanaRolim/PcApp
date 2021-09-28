@@ -13,7 +13,7 @@ export default StyleSheet.create({
         marginTop: 45
     },
     icone: {
-        
+        paddingLeft: 8
     },
 
     detalhes: {

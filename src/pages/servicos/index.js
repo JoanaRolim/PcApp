@@ -1,18 +1,20 @@
 import React,{useEffect, useState} from 'react';
 import { Feather} from '@expo/vector-icons';
-import {View, Image, Text, ScrollView, TouchableOpacity, ImageBackground} from 'react-native';
+import {View, Image, Text, ScrollView, TouchableOpacity, ImageBackground, ActivityIndicator} from 'react-native';
     
 import api from '../../services/api';
 import styles from "./styles"
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useIsFocused } from '@react-navigation/core';
 
 export default function Servicos({navigation}){    
     const [token, setToken] = useState('');
     const [services, setServices] = useState([]);
-    const isFocused = useIsFocused();
     const [name, setName] = useState('')
     const [clinicName, setClinicName] = useState('') 
+    const [load, setLoad] = useState(true);
+
+    const [role, setRole] = useState('')
+    const [id, setId] = useState('')
         
   async function onInit(){
       const storageToken = await AsyncStorage.getItem('token');
@@ -20,8 +22,14 @@ export default function Servicos({navigation}){
     
       const storageName = await AsyncStorage.getItem('clinicName');
       setClinicName(storageName);
+
+      const role = await AsyncStorage.getItem('role');
+      setRole(role);
+
+      const id = await AsyncStorage.getItem('id');
+      setId(id);
         
-        getServices();
+       await getServices();
         }
         
     async function getServices(){
@@ -31,56 +39,61 @@ export default function Servicos({navigation}){
             const response = await api.get(`clinic/${storageId}/services`)
             
             setServices(response.data.data)
+         
         
         }catch(e){
            console.log(e.response.data);
         }
+        setLoad(false);
    }
 
 async function openService(service){
     await AsyncStorage.setItem('serviceId', service._id);
-    await AsyncStorage.setItem('serviceName', service.name);
+    console.log(service._id);
 
     navigation.navigate("DescricaoServicos")
 }
         
     useEffect(() => {
-        onInit()
-    },[isFocused])
+       const unsubscribe = navigation.addListener("focus", ()=> {onInit()}); 
+       
+    },[navigation])
     
 
     React.useLayoutEffect(()=>{
         navigation.setOptions({
             headerRight: () => (
+                role === 'clinicOwner' && clinica.user === id  ? (
                 <TouchableOpacity onPress = {()=>{navigation.navigate("CadastrarServicos", {teste:null} )}} style={{ paddingRight: 20 }}>
                   <Feather name="plus-circle" size={27} color="#ffffffff" />
-                </TouchableOpacity>
+                </TouchableOpacity> ) : <Text></Text> 
               )
         })
     },[navigation])
 
     return(
         <ScrollView style = {styles.container} >
+            { load ? <ActivityIndicator size="large" style={{marginTop: 10}} /> :
             <View style = {styles.descricao}>
 
              {services.length > 0 ? services.map(service=> ( 
-                <View style = {styles.detalhes}>
+                <View key={service._id} style = {styles.detalhes}>
                     <View>
                         <Text style = {styles.nome} >{service.name}</Text>
                         <Text style = {styles.local}>{clinicName}</Text>
                     </View>
-                    
-                    <TouchableOpacity 
+                   
+                        <TouchableOpacity 
                         style = {styles.icone} 
                         onPress = { () => openService(service)}
                     >
                         <Feather name = "more-vertical" size = {24} color = "#000000" />
                     </TouchableOpacity>
 
-                </View> )) :  <Text>Sem serviços cadastrados.</Text>
-                } 
+                </View> )) :  <Text>Sem serviços cadastrados.</Text>}
+                
 
-            </View>
+            </View>}
         </ScrollView>
     );
 }

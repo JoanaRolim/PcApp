@@ -17,36 +17,40 @@ export default StyleSheet.create({
   },
   detalhes: {
     flex: 1,
-    padding: 22,
     borderRadius: 10,
     backgroundColor: "#D0EFE6",
-    marginBottom: 15,
-    marginTop: 18,
-    marginLeft: 7,
+    marginTop: 20,
+    padding: 30,
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    marginBottom: 0
   },
-  vacina: {
-    marginTop: 8,
+  nome: {
     fontSize: 17,
+    lineHeight: 19,
     marginBottom: 24
   },
-  local: {
-    marginTop: 8,
+  profissional: {
     fontSize: 17,
-    marginBottom: 24,
+    lineHeight: 19,
+    marginBottom: 24
   },
-  data: {
-    marginTop: 8,
+  infos: {
     fontSize: 17,
+    lineHeight: 19,
+    marginBottom: 24
+  },
+  indicacao: {
+    fontSize: 17,
+    lineHeight: 19,
     marginBottom: 24
   },
     containerbutton: {
-    paddingTop: 20,
-    paddingBottom: 30,
-    marginTop: 470,
+    marginTop: 40,
     backgroundColor: "#086281",
     width: "100%",
+    paddingTop: 20,
+    paddingBottom: 30,
     alignItems: "center",
     alignContent: "center",
     justifyContent: "center",
@@ -55,6 +59,7 @@ export default StyleSheet.create({
   },
   button: {
     fontSize: 24,
+    lineHeight: 30,
     color: "white",
     fontWeight: "bold",
     alignContent: "center",
@@ -81,5 +86,16 @@ export default StyleSheet.create({
   inputTitle: {
     fontSize: 17,
     marginBottom: 5,
-  }
+  },
+  selector: {
+    backgroundColor: "#E8E6E6",
+    borderRadius: 10,
+    padding: 5,
+    width: 266,
+    height: 40,
+    color: "black",
+    width: "100%",
+    zIndex: 1,
+    borderColor: "gray",
+  },
 })

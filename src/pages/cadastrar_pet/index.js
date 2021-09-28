@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import api from '../../services/api';
 import { Feather } from "@expo/vector-icons"
-import { View, TextInput, Text, ScrollView, Button, Image, TouchableOpacity } from "react-native"
+import { View, TextInput, Text, ScrollView, Button, Image, TouchableOpacity, ActivityIndicator} from "react-native"
 import SelectDropdown from "react-native-select-dropdown"
 import DropDownPicker from "react-native-dropdown-picker"
 
@@ -22,6 +22,8 @@ export default function Infos({ navigation }) {
 
   const [openCastracao, setOpenCastracao] = useState(false)  
 
+  const [load, setLoad] = useState(true);
+
   const isFocused = useIsFocused();
   const user = AsyncStorage.getItem('id');
   const role = AsyncStorage.getItem('role')
@@ -34,6 +36,12 @@ export default function Infos({ navigation }) {
   const [height, setHeight] = useState();
   const [allergy, setAllergy] = useState();
   const [castracao, setCastracao] = useState();
+
+
+  async function onInit(){
+    addPet();
+}
+  
 
   async function addPet() {
     data = {
@@ -57,13 +65,19 @@ export default function Infos({ navigation }) {
       } catch (e) {
         console.log(e);
       }
+      setLoad(false);
 }
-      useEffect(() => {
-        addPet()
-    },[isFocused])
+
+useEffect(() => {
+  const unsubscribe = navigation.addListener("focus", ()=> {onInit()}); 
+  
+},[navigation])
 
   return (
     <ScrollView style={styles.container}>
+      { load ? <ActivityIndicator size="large" style={{marginTop: 10}} /> :
+<View>
+
 
       <View style={styles.header}>
         <Text style={styles.headerText}>Cadastrar Pet</Text>
@@ -134,7 +148,7 @@ export default function Infos({ navigation }) {
             <Feather style={styles.chevron} name="chevron-right" size={40} color="black" />
           </TouchableOpacity>
 
-
+          </View> }
   </ScrollView>
     
   )

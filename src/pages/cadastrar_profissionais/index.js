@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Feather} from '@expo/vector-icons';
-import {View, Image, Text, ScrollView, TouchableOpacity, TextInput, ImageBackground} from 'react-native';
+import {View, Image, Text, ScrollView, TouchableOpacity, TextInput, ImageBackground, ActivityIndicator} from 'react-native';
 
 import styles from './styles';
 
@@ -9,14 +9,21 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useIsFocused } from '@react-navigation/core';
 
 export default function CadastrarProfissionais({navigation,route}){
-
     const isFocused = useIsFocused();
+
+    const [load, setLoad] = useState(true);
   
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [cpf, setCpf] = useState();
     const [crmv, setCrmv] = useState();
     const [phone, setPhone] = useState();
+
+
+    async function onInit(){
+      addVet();
+  }
+    
   
     async function addVet() {
       const clinicId = await AsyncStorage.getItem('clinicId');
@@ -39,14 +46,17 @@ export default function CadastrarProfissionais({navigation,route}){
         } catch (e) {
           console.log(e);
         }
+        setLoad(false);
   }
 
   useEffect(() => {
-      addVet()
-  },[isFocused])
+    const unsubscribe = navigation.addListener("focus", ()=> {onInit()}); 
+ },[navigation])
 
     return(
         <ScrollView style = {styles.container} >
+           { load ? <ActivityIndicator size="large" style={{marginTop: 10}} /> :
+           <View>
             <View style = {styles.descricao}>
 
                 <View style = {styles.detalhes}>
@@ -74,6 +84,7 @@ export default function CadastrarProfissionais({navigation,route}){
             <Text style={styles.button} >Salvar</Text>
             <Feather style={styles.chevron} name="chevron-right" size={40} color="#FFFF" />
           </TouchableOpacity>
+          </View> }
         </ScrollView>
     );
 }

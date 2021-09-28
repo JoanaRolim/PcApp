@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Feather} from '@expo/vector-icons';
 import { FontAwesome } from "@expo/vector-icons"
-import {View, Image, Text, ScrollView, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
+import {View, Image, Text, ScrollView, TouchableOpacity, ImageBackground, TextInput, ActivityIndicator} from 'react-native';
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useIsFocused } from '@react-navigation/core';
@@ -14,7 +14,13 @@ export default function CadastrarAvaliacoes({navigation,route}){
 
   const [text, setText] = useState();
   const [rating, setRating] = useState();
+  const [load, setLoad] = useState(true);
 
+
+  async function onInit(){
+    addReview();
+}
+  
 
   async function addReview() {
     const user = await AsyncStorage.getItem('id');
@@ -34,14 +40,18 @@ export default function CadastrarAvaliacoes({navigation,route}){
       } catch (e) {
         console.log(e);
       }
+      setLoad(false);
 }
 
-  useEffect(() => {
-    addReview()
-  },[isFocused])
+useEffect(() => {
+  const unsubscribe = navigation.addListener("focus", ()=> {onInit()}); 
+  
+},[navigation])
 
     return(
         <ScrollView style = {styles.container} >
+         { load ? <ActivityIndicator size="large" style={{marginTop: 10}} /> :
+         <View>
             <View style = {styles.descricao}>
 
                  <View style = {styles.detalhes}>
@@ -60,6 +70,7 @@ export default function CadastrarAvaliacoes({navigation,route}){
             <Text style={styles.button} >Salvar</Text>
             <Feather style={styles.chevron} name="chevron-right" size={40} color="#FFFF" />
           </TouchableOpacity>
+          </View> }
         </ScrollView>
     );
 }

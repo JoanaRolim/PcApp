@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import { Feather} from '@expo/vector-icons';
-import {View, Image, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {View, Image, Text, ScrollView, TouchableOpacity, ActivityIndicator} from 'react-native';
 
 import api from '../../services/api';
 import styles from "./styles"
@@ -12,6 +12,7 @@ export default function Pets({navigation}){
     const [pet, setPet] = useState([]);
     const isFocused = useIsFocused();
     const [name, setName] = useState('')
+    const [load, setLoad] = useState(true);
 
     async function onInit(){
       const storageToken = await AsyncStorage.getItem('token');
@@ -30,14 +31,26 @@ export default function Pets({navigation}){
         }catch(e){
           console.log(e.response.data);
         }
+        setLoad(false);
+    }
+
+    async function setPetId(pet){
+        await AsyncStorage.setItem('petId', pet._id);
+      
+
+        navigation.navigate("Vacinas")
     }
 
     useEffect(() => {
-        onInit()
-    },[isFocused])
+        const unsubscribe = navigation.addListener("focus", ()=> {onInit()}); 
+        
+     },[navigation])
 
     return(
         <ScrollView  style = {styles.container} >
+
+ { load ? <ActivityIndicator size="large" style={{marginTop: 10}} /> :
+<View>
             <View>
                 <Text style = {styles.headerText}>
                     {pet.name}
@@ -74,7 +87,7 @@ export default function Pets({navigation}){
                     </Text>
                 </View>
                 <View style = {styles.list}>
-                    <TouchableOpacity onPress = { () => {navigation.navigate("Vacinas")} }>
+                    <TouchableOpacity onPress = { () => setPetId(pet) }>
                     <Feather  style = {styles.icone} name="more-vertical" size={21} color="black" />
                     </TouchableOpacity>
                 </View>
@@ -83,7 +96,7 @@ export default function Pets({navigation}){
             <View style = {styles.historico}>
                 <View>
                     <Text style = {styles.text_historico} >
-                        Histórico
+                        Histórico de Agendamentos
                     </Text>
                 </View>
                 <View style = {styles.list}>
@@ -93,14 +106,7 @@ export default function Pets({navigation}){
                 </View>
             </View>
 
-            <View>
-                <View style = {styles.detalhes_consulta}>  
-                    <View>
-                        <Text style = {styles.text_consultas}>Próximas consultas:</Text>
-                    </View>
-                </View>
-            </View>
-
+        </View>}
         </ScrollView>
     );
 }

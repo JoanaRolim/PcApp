@@ -7,6 +7,7 @@ import {
     ScrollView,
     TouchableOpacity,
     ImageBackground,
+    ActivityIndicator
 } from "react-native";
 
 import styles from "./styles";
@@ -22,6 +23,7 @@ export default function Clinicas({ navigation }) {
     const [clinicas, setClinicas] = useState([]);
     const isFocused = useIsFocused();
     const [name, setName] = useState('')
+    const [load, setLoad] = useState(true);
 
     async function onInit(){
       const storageToken = await AsyncStorage.getItem('token');
@@ -42,6 +44,7 @@ export default function Clinicas({ navigation }) {
         }catch(e){
           console.log(e.response.data);
         }
+        setLoad(false);
     }
 
     async function openClinicInfo(id){
@@ -52,11 +55,14 @@ export default function Clinicas({ navigation }) {
     }
 
     useEffect(() => {
-        onInit()
-    },[isFocused])
+        const unsubscribe = navigation.addListener("focus", ()=> {onInit()}); 
+        
+     },[navigation])
 
     return (
         <ScrollView style={styles.container}>
+
+ { load ? <ActivityIndicator size="large" style={{marginTop: 10}} /> :
             <View style={styles.descricao}>
                 { clinicas.length > 0 ? clinicas.map(clinica=> ( 
                     <View key={clinica._id} style={styles.detalhes}>
@@ -80,7 +86,7 @@ export default function Clinicas({ navigation }) {
                         />
                     </TouchableOpacity>
                 </View> )) : <Text style = {styles.list}> Sem clínicas cadastradas no sistema.</Text> } 
-            </View>
+            </View>}
         </ScrollView>
     );
 }

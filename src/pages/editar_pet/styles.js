@@ -11,6 +11,10 @@ export default StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#086281"
   },
+  container: {
+    flex: 1,
+    height: "100%"
+  },
   headerText: {
     fontSize: 30,
     color: "#ffffff"
@@ -19,7 +23,6 @@ export default StyleSheet.create({
     margin: 24,
     lineHeight: 30
   },
-  detalhes: {},
   containerinput: {
     padding: 10,
     fontSize: 20
@@ -29,8 +32,11 @@ export default StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     width: 360,
-    height: 24,
-    backgroundColor: "#DEF0F6"
+    backgroundColor: "#E8E6E6",
+    borderRadius: 5,
+    borderColor: "gray",
+    height: 40,
+    paddingLeft: 7
   },
   foto: {
     padding: 5,
@@ -39,7 +45,8 @@ export default StyleSheet.create({
   },
   containerbutton: {
     paddingTop: 20,
-    backgroundColor: "#52B3D4",
+    marginTop: 40,
+    backgroundColor: "#7AE8C7",
     paddingBottom: 30,
     width: "100%",
     alignItems: "center",
@@ -55,21 +62,15 @@ export default StyleSheet.create({
     justifyContent: "center",
     color: "black"
   },
-  containerfoto: {
-    alignItems: "center"
-  },
-  foto: {
-    backgroundColor: "black",
-    width: 125,
-    height: 116,
-    borderRadius: 189,
-    padding: 10
-  },
-  containericon: {
-    flexDirection: "row"
-  },
-  icon: {
-    marginTop: 12
-  },
+  selector: {
+    borderRadius: 5,
+    backgroundColor: "#E8E6E6",
+    padding: 10,
+    height: 40,
+    color: "black",
+    zIndex: 1,
+    bottom: 5,
+    borderColor: "gray"
+  }
   
 })
