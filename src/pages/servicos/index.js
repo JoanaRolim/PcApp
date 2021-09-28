@@ -13,8 +13,10 @@ export default function Servicos({navigation}){
     const [clinicName, setClinicName] = useState('') 
     const [load, setLoad] = useState(true);
 
-    const [role, setRole] = useState('')
-    const [id, setId] = useState('')
+    const [role, setRole] = useState('');
+    const [idUser, setIdUser] =  useState('');
+
+    const [userClinic, setUserClinic] = useState('')
         
   async function onInit(){
       const storageToken = await AsyncStorage.getItem('token');
@@ -22,18 +24,22 @@ export default function Servicos({navigation}){
     
       const storageName = await AsyncStorage.getItem('clinicName');
       setClinicName(storageName);
-
-      const role = await AsyncStorage.getItem('role');
-      setRole(role);
-
-      const id = await AsyncStorage.getItem('id');
-      setId(id);
         
        await getServices();
         }
         
     async function getServices(){
       const storageId = await AsyncStorage.getItem('clinicId');
+
+      const user = await AsyncStorage.getItem('clinicUser')
+      setUserClinic(user);
+
+      const id = await AsyncStorage.getItem('id');
+      setIdUser(id);
+
+      const role = await AsyncStorage.getItem('role');
+      setRole(role);
+  
             
         try{
             const response = await api.get(`clinic/${storageId}/services`)
@@ -63,13 +69,12 @@ async function openService(service){
     React.useLayoutEffect(()=>{
         navigation.setOptions({
             headerRight: () => (
-                role === 'clinicOwner' && clinica.user === id  ? (
+                ( role === 'clinicOwner' && userClinic === idUser )  ?
                 <TouchableOpacity onPress = {()=>{navigation.navigate("CadastrarServicos", {teste:null} )}} style={{ paddingRight: 20 }}>
-                  <Feather name="plus-circle" size={27} color="#ffffffff" />
-                </TouchableOpacity> ) : <Text></Text> 
+                  <Feather name="plus-circle" size={27} color="#ffffffff" /></TouchableOpacity> : <></>
               )
         })
-    },[navigation])
+    },[navigation, role, userClinic, idUser])
 
     return(
         <ScrollView style = {styles.container} >

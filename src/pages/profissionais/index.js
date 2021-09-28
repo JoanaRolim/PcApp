@@ -17,7 +17,9 @@ export default function Profissionais({navigation}){
         const [load, setLoad] = useState(true);
 
         const [role, setRole] = useState('');
-        const [id, setId] =  useState('');
+        const [idUser, setIdUser] =  useState('');
+
+        const [userClinic, setUserClinic] = useState('')
     
         async function onInit(){
           const storageToken = await AsyncStorage.getItem('token');
@@ -26,17 +28,19 @@ export default function Profissionais({navigation}){
           const storageName = await AsyncStorage.getItem('clinicName');
           setClinicName(storageName);
 
-          const role = await AsyncStorage.getItem('role');
-          setRole(role);
-    
-          const id = await AsyncStorage.getItem('id');
-          setId(id);
-    
           getVets();
     }
     
         async function getVets(){
             const storageId = await AsyncStorage.getItem('clinicId');
+            const user = await AsyncStorage.getItem('clinicUser')
+            setUserClinic(user);
+      
+            const id = await AsyncStorage.getItem('id');
+            setIdUser(id);
+
+            const role = await AsyncStorage.getItem('role');
+            setRole(role);
         
             try{
                 const response = await api.get(`clinic/${storageId}/vets`)
@@ -59,20 +63,20 @@ export default function Profissionais({navigation}){
     
     useEffect(() => {
         const unsubscribe = navigation.addListener("focus", ()=> {onInit()}); 
-        
+        return unsubscribe;
      },[navigation])
     
      
 React.useLayoutEffect(()=>{
     navigation.setOptions({
         headerRight: () => (
-            role === 'clinicOwner' && clinica.user === id  ?
+           ( role === 'clinicOwner' && userClinic === idUser )  ?
            ( <TouchableOpacity onPress = {()=>{navigation.navigate("CadastrarProfissionais", {teste:null} )}} style={{ paddingRight: 20 }}>
-              <Feather name="plus-circle" size={27} color="#ffffffff" />   </TouchableOpacity>
-           ) : <Text></Text>
+              <Feather name="plus-circle" size={27} color="#ffffffff" /></TouchableOpacity>
+           ) : <></> 
           )
         })
-},[navigation])
+},[navigation, role, userClinic, idUser])
 
     return(
         <ScrollView style = {styles.container} >
@@ -87,7 +91,7 @@ React.useLayoutEffect(()=>{
                         <Text style = {styles.local}>{clinicName}</Text>
                     </View>
                     
-                    {role === 'clinicOwner' && clinica.user === id  ? ( <TouchableOpacity 
+                    {role === 'clinicOwner' && userClinic === idUser  ? ( <TouchableOpacity 
                                       style = {styles.icone} 
                                       onPress = { () => setVetId(vet)} 
                                   >

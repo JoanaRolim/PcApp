@@ -18,20 +18,26 @@ export default function DescricaoServicos({ navigation }) {
     const [role, setRole] = useState('')
     const [idUser, setIdUser] = useState('')
 
+    const [userClinic, setUserClinic] = useState('')
+
    async function onInit(){
        getService();
 
-    const role = await AsyncStorage.getItem('role');
-    setRole(role);
-
-    const idUser = await AsyncStorage.getItem('id');
-    setIdUser(idUser);
 }
 
     async function getService(){
         const storageId = await AsyncStorage.getItem('serviceId');
-
         console.log(id);
+
+        const role = await AsyncStorage.getItem('role');
+        setRole(role);
+    
+        const idUser = await AsyncStorage.getItem('id');
+        setIdUser(idUser);
+
+        const user = await AsyncStorage.getItem('clinicUser')
+        setUserClinic(user);
+  
 
         try{
             const response = await api.get(`service/${storageId}`)
@@ -67,10 +73,9 @@ export default function DescricaoServicos({ navigation }) {
             <Text style = {styles.headerText}>
                 {service.name}
             </Text>
-            {role === 'clinicOwner' && clinica.user === idUser  ? 
+            {role === 'clinicOwner' &&  userClinic === idUser  ? 
             ( <TouchableOpacity style = {styles.icone} onPress ={()=> setServiceId(service)} >
-                    <Feather name = "edit" size = {19} color = "#000000" />
-            </TouchableOpacity>) : <Text></Text> }
+                    <Feather name = "edit" size = {19} color = "#000000" /></TouchableOpacity>) : <Text></Text> }
         </View>
           
     {  service&&   

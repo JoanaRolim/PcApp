@@ -108,7 +108,7 @@ export default function CadastrarAgendamento({navigation,route}){
                 ]}
                 style={styles.selector}
                 placeholder="Selecione um horário"
-                containerStyle={{ height: 30, borderRadius: 10, width: 365, marginLeft: 8 }}
+                containerStyle={{ height: 30, borderRadius: 10, width: 320, marginLeft: 0 }}
                 onChangeItem={value => setType(value)}
               />
                         <Text style = {styles.inputTitle}  >Pet:</Text>

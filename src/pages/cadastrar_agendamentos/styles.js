@@ -46,7 +46,7 @@ export default StyleSheet.create({
     marginBottom: 24
   },
     containerbutton: {
-    marginTop: 40,
+    marginTop: 160,
     backgroundColor: "#086281",
     width: "100%",
     paddingTop: 20,
@@ -85,7 +85,8 @@ export default StyleSheet.create({
   },
   inputTitle: {
     fontSize: 17,
-    marginBottom: 5,
+    marginBottom: 2,
+    marginTop: 30
   },
   selector: {
     backgroundColor: "#E8E6E6",

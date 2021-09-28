@@ -47,6 +47,7 @@ export default function ClinicasInfo({ navigation }) {
     async function openVetInfo(clinica){
         await AsyncStorage.setItem('clinicId', clinica._id);
         await AsyncStorage.setItem('clinicName', clinica.name);
+        await AsyncStorage.setItem('clinicUser', clinica.user);
 
         navigation.navigate("Profissionais")
     }
@@ -54,6 +55,8 @@ export default function ClinicasInfo({ navigation }) {
     async function setClinicId(clinica){
         await AsyncStorage.setItem('clinicId', clinica._id);
         await AsyncStorage.setItem('clinicName', clinica.name);
+        await AsyncStorage.setItem('clinicUser', clinica.user);
+
       
         navigation.navigate("EditarClinica")
     }
